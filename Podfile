@@ -19,6 +19,7 @@ target 'NetworkPlataform' do
   use_frameworks!
 
   # Pods for NetworkPlataform
+  pod 'Alamofire', '~> 4.7'
 
   target 'NetworkPlataformTests' do
     inherit! :search_paths

@@ -1,4 +1,5 @@
 import UIKit
+import NetworkPlataform
 
 class HomeViewController: UIViewController {
 	
@@ -12,7 +13,7 @@ class HomeViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+		APIProvider().getToken()
 	}
 
 }
