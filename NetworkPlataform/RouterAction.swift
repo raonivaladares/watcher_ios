@@ -28,7 +28,7 @@ struct Route {
 		var encoding: ParameterEncoding {
 			switch self {
 			default:
-				return JSONEncoding.default
+				return URLEncoding(destination: .queryString)
 			}
 		}
 	}

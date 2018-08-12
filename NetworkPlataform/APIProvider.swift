@@ -3,39 +3,43 @@ import Alamofire
 
 public struct APIProvider {
 	let configuration: APIConfiguration
+	let watchServer: WatcherServer
 	
 	public init() {
-		self.configuration = APIProviderConfiguration()
+		configuration = APIProviderConfiguration()
+		watchServer = WatcherServer()
 	}
 }
 
 extension APIProvider {
 	public func getToken() {
-		WatcherServer.ValidationActions.getToken(configuration: configuration, completion: {})
+		//preparar params
+		//execute request
+		//parsererror
+		//result
+		
+		let parameters = ["api_key": configuration.apiKey]
+		let request = RequestBuilder(
+			action: Route.userValidation.requestToken,
+      configuration: configuration
+			)
+			.parameters(parameters: parameters)
+			.build()
+		
+		watchServer.execute(request: request)
+		//WatcherServer.ValidationActions.getToken(configuration: configuration, completion: {})
 	}
 }
 
-extension WatcherServer {
-	struct ValidationActions {
-		static func getToken(configuration: APIConfiguration, completion: () -> Void ) {
-			let parameters = ["api_key": configuration.apiKey]
-			let builder: APIRequestBuilder = APIRequestBuilder(
-				action: Route.userValidation.requestToken,
-				configuration: configuration,
-				parameters: parameters
-			)
-			
-			Alamofire.request(
-				builder.path,
-				method: builder.method,
-				parameters: builder.parameters,
-				encoding: URLEncoding(destination: .queryString),
-				headers: nil).response { dataResponse in
-					
-					if let error = WatcherServer.parseError(dataResponse: dataResponse) {
-						
-					}
-			}
-		}
-	}
-}
+//struct ValidationActions {
+//	func getToken(configuration: APIConfiguration, completion: () -> Void ) {
+//		let parameters = ["api_key": configuration.apiKey]
+//		let builder: APIRequestBuilder = APIRequestBuilder(
+//			action: Route.userValidation.requestToken,
+//			configuration: configuration,
+//			parameters: parameters
+//		)
+//
+//	}
+//}
+

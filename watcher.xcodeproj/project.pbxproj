@@ -13,6 +13,7 @@
 		78BA3AF5931A247A2774DD46 /* Pods_Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6AF1E52413C3217AA2EA8C /* Pods_Domain.framework */; };
 		79795AE54A813DC23C53F104 /* Pods_NetworkPlataformTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C445F5520414CB242D1366 /* Pods_NetworkPlataformTests.framework */; };
 		D14E4B1821164BA20056829F /* PrivateKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14E4B1721164BA20056829F /* PrivateKeys.swift */; };
+		D14E4B1A211F425D0056829F /* WatcherServerErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14E4B19211F425D0056829F /* WatcherServerErrorParser.swift */; };
 		D16889E4210CBC8B00947D1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16889E3210CBC8B00947D1F /* AppDelegate.swift */; };
 		D16889E6210CBC8B00947D1F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16889E5210CBC8B00947D1F /* HomeViewController.swift */; };
 		D16889EB210CBC9300947D1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D16889EA210CBC9300947D1F /* Assets.xcassets */; };
@@ -34,7 +35,7 @@
 		D1688A63210EAD4900947D1F /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1688A62210EAD4900947D1F /* APIProvider.swift */; };
 		D1688A65210EB4CA00947D1F /* RouterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1688A64210EB4CA00947D1F /* RouterAction.swift */; };
 		D1688A67210EB60900947D1F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1688A66210EB60900947D1F /* Alamofire.framework */; };
-		D1688A69210EB65E00947D1F /* APIRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1688A68210EB65E00947D1F /* APIRequestBuilder.swift */; };
+		D1688A69210EB65E00947D1F /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1688A68210EB65E00947D1F /* RequestBuilder.swift */; };
 		D1688A6B210EB8A400947D1F /* ServerProviderConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1688A6A210EB8A400947D1F /* ServerProviderConfiguration.swift */; };
 		D1CD5F6B2115BE2A001F2474 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CD5F6A2115BE2A001F2474 /* Request.swift */; };
 		EB9A7353B092AC63FFFAD099 /* Pods_DomainTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68A0CD52749101E7825F2B09 /* Pods_DomainTests.framework */; };
@@ -134,6 +135,7 @@
 		B87DB071711EB29F06B6FDB1 /* Pods_NetworkPlataform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetworkPlataform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1030E6E24FE097B1AF0B656 /* Pods-watcher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watcher.release.xcconfig"; path = "Pods/Target Support Files/Pods-watcher/Pods-watcher.release.xcconfig"; sourceTree = "<group>"; };
 		D14E4B1721164BA20056829F /* PrivateKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKeys.swift; sourceTree = "<group>"; };
+		D14E4B19211F425D0056829F /* WatcherServerErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatcherServerErrorParser.swift; sourceTree = "<group>"; };
 		D16889E0210CBC8B00947D1F /* watcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16889E3210CBC8B00947D1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D16889E5210CBC8B00947D1F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -163,7 +165,7 @@
 		D1688A62210EAD4900947D1F /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		D1688A64210EB4CA00947D1F /* RouterAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterAction.swift; sourceTree = "<group>"; };
 		D1688A66210EB60900947D1F /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D1688A68210EB65E00947D1F /* APIRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestBuilder.swift; sourceTree = "<group>"; };
+		D1688A68210EB65E00947D1F /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
 		D1688A6A210EB8A400947D1F /* ServerProviderConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerProviderConfiguration.swift; sourceTree = "<group>"; };
 		D1CD5F6A2115BE2A001F2474 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		D36E9B022832DD8CB5175597 /* Pods-watcherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watcherTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watcherTests/Pods-watcherTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -376,10 +378,11 @@
 				D1688A60210EAC3D00947D1F /* WatcherServer.swift */,
 				D1688A62210EAD4900947D1F /* APIProvider.swift */,
 				D1688A64210EB4CA00947D1F /* RouterAction.swift */,
-				D1688A68210EB65E00947D1F /* APIRequestBuilder.swift */,
+				D1688A68210EB65E00947D1F /* RequestBuilder.swift */,
 				D1688A6A210EB8A400947D1F /* ServerProviderConfiguration.swift */,
 				D1CD5F6A2115BE2A001F2474 /* Request.swift */,
 				D14E4B1721164BA20056829F /* PrivateKeys.swift */,
+				D14E4B19211F425D0056829F /* WatcherServerErrorParser.swift */,
 			);
 			path = NetworkPlataform;
 			sourceTree = "<group>";
@@ -881,11 +884,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1688A69210EB65E00947D1F /* APIRequestBuilder.swift in Sources */,
+				D1688A69210EB65E00947D1F /* RequestBuilder.swift in Sources */,
 				D1688A65210EB4CA00947D1F /* RouterAction.swift in Sources */,
 				D1688A63210EAD4900947D1F /* APIProvider.swift in Sources */,
 				D14E4B1821164BA20056829F /* PrivateKeys.swift in Sources */,
 				D1CD5F6B2115BE2A001F2474 /* Request.swift in Sources */,
+				D14E4B1A211F425D0056829F /* WatcherServerErrorParser.swift in Sources */,
 				D1688A6B210EB8A400947D1F /* ServerProviderConfiguration.swift in Sources */,
 				D1688A61210EAC3D00947D1F /* WatcherServer.swift in Sources */,
 			);
