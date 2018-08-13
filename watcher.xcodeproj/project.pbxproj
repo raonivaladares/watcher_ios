@@ -37,6 +37,11 @@
 		D1688A67210EB60900947D1F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1688A66210EB60900947D1F /* Alamofire.framework */; };
 		D1688A69210EB65E00947D1F /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1688A68210EB65E00947D1F /* RequestBuilder.swift */; };
 		D1688A6B210EB8A400947D1F /* ServerProviderConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1688A6A210EB8A400947D1F /* ServerProviderConfiguration.swift */; };
+		D18AE0452121C54200CC50B0 /* ServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE0442121C54200CC50B0 /* ServerError.swift */; };
+		D18AE0482121C5F300CC50B0 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE0472121C5F300CC50B0 /* RouterProtocol.swift */; };
+		D18AE04C2121CF7900CC50B0 /* TokenNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE04A2121CC1100CC50B0 /* TokenNetwork.swift */; };
+		D18AE0502121EB3800CC50B0 /* RequestToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE04F2121EB3800CC50B0 /* RequestToken.swift */; };
+		D18AE0522121ECCD00CC50B0 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1688A1E210CC76700947D1F /* Domain.framework */; };
 		D1CD5F6B2115BE2A001F2474 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CD5F6A2115BE2A001F2474 /* Request.swift */; };
 		EB9A7353B092AC63FFFAD099 /* Pods_DomainTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68A0CD52749101E7825F2B09 /* Pods_DomainTests.framework */; };
 		EC000F811A31F7EDE9C83DE4 /* Pods_watcherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8E57FA07D1814E424DA43D /* Pods_watcherUITests.framework */; };
@@ -167,6 +172,10 @@
 		D1688A66210EB60900947D1F /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1688A68210EB65E00947D1F /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
 		D1688A6A210EB8A400947D1F /* ServerProviderConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerProviderConfiguration.swift; sourceTree = "<group>"; };
+		D18AE0442121C54200CC50B0 /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
+		D18AE0472121C5F300CC50B0 /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
+		D18AE04A2121CC1100CC50B0 /* TokenNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenNetwork.swift; sourceTree = "<group>"; };
+		D18AE04F2121EB3800CC50B0 /* RequestToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestToken.swift; sourceTree = "<group>"; };
 		D1CD5F6A2115BE2A001F2474 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		D36E9B022832DD8CB5175597 /* Pods-watcherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watcherTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watcherTests/Pods-watcherTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DB9EC44A1DA8770A87F19381 /* Pods-watcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watcher.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watcher/Pods-watcher.debug.xcconfig"; sourceTree = "<group>"; };
@@ -222,6 +231,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D18AE0522121ECCD00CC50B0 /* Domain.framework in Frameworks */,
 				D1688A67210EB60900947D1F /* Alamofire.framework in Frameworks */,
 				021F239BABB1D221CD08EED0 /* Pods_NetworkPlataform.framework in Frameworks */,
 			);
@@ -355,6 +365,7 @@
 		D1688A1F210CC76700947D1F /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				D18AE0512121EC0800CC50B0 /* Models */,
 				D1688A20210CC76700947D1F /* Domain.h */,
 				D1688A21210CC76700947D1F /* Info.plist */,
 			);
@@ -373,16 +384,17 @@
 		D1688A42210CC79900947D1F /* NetworkPlataform */ = {
 			isa = PBXGroup;
 			children = (
+				D18AE0492121CBC300CC50B0 /* API */,
+				D18AE0462121C5A300CC50B0 /* Router */,
+				D18AE0432121C50000CC50B0 /* Request */,
 				D1688A43210CC79900947D1F /* NetworkPlataform.h */,
 				D1688A44210CC79900947D1F /* Info.plist */,
 				D1688A60210EAC3D00947D1F /* WatcherServer.swift */,
 				D1688A62210EAD4900947D1F /* APIProvider.swift */,
-				D1688A64210EB4CA00947D1F /* RouterAction.swift */,
-				D1688A68210EB65E00947D1F /* RequestBuilder.swift */,
 				D1688A6A210EB8A400947D1F /* ServerProviderConfiguration.swift */,
-				D1CD5F6A2115BE2A001F2474 /* Request.swift */,
 				D14E4B1721164BA20056829F /* PrivateKeys.swift */,
 				D14E4B19211F425D0056829F /* WatcherServerErrorParser.swift */,
+				D18AE0442121C54200CC50B0 /* ServerError.swift */,
 			);
 			path = NetworkPlataform;
 			sourceTree = "<group>";
@@ -394,6 +406,40 @@
 				D1688A52210CC79900947D1F /* Info.plist */,
 			);
 			path = NetworkPlataformTests;
+			sourceTree = "<group>";
+		};
+		D18AE0432121C50000CC50B0 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				D1CD5F6A2115BE2A001F2474 /* Request.swift */,
+				D1688A68210EB65E00947D1F /* RequestBuilder.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		D18AE0462121C5A300CC50B0 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				D1688A64210EB4CA00947D1F /* RouterAction.swift */,
+				D18AE0472121C5F300CC50B0 /* RouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		D18AE0492121CBC300CC50B0 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				D18AE04A2121CC1100CC50B0 /* TokenNetwork.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		D18AE0512121EC0800CC50B0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D18AE04F2121EB3800CC50B0 /* RequestToken.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -505,6 +551,7 @@
 				D1688A22210CC76800947D1F /* Sources */,
 				D1688A23210CC76800947D1F /* Frameworks */,
 				D1688A24210CC76800947D1F /* Resources */,
+				AE29F3A321279323AB93DA70 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -580,6 +627,7 @@
 					};
 					D1688A1D210CC76700947D1F = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 					D1688A25210CC76800947D1F = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -735,15 +783,37 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NetworkPlataformTests/Pods-NetworkPlataformTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NetworkPlataformTests/Pods-NetworkPlataformTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE29F3A321279323AB93DA70 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DomainTests/Pods-DomainTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DomainTests/Pods-DomainTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B14010692C5879A6BED8893A /* [CP] Check Pods Manifest.lock */ = {
@@ -807,11 +877,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-watcher/Pods-watcher-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -869,6 +943,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D18AE0502121EB3800CC50B0 /* RequestToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -884,14 +959,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D18AE04C2121CF7900CC50B0 /* TokenNetwork.swift in Sources */,
 				D1688A69210EB65E00947D1F /* RequestBuilder.swift in Sources */,
 				D1688A65210EB4CA00947D1F /* RouterAction.swift in Sources */,
+				D18AE0482121C5F300CC50B0 /* RouterProtocol.swift in Sources */,
 				D1688A63210EAD4900947D1F /* APIProvider.swift in Sources */,
 				D14E4B1821164BA20056829F /* PrivateKeys.swift in Sources */,
 				D1CD5F6B2115BE2A001F2474 /* Request.swift in Sources */,
 				D14E4B1A211F425D0056829F /* WatcherServerErrorParser.swift in Sources */,
 				D1688A6B210EB8A400947D1F /* ServerProviderConfiguration.swift in Sources */,
 				D1688A61210EAC3D00947D1F /* WatcherServer.swift in Sources */,
+				D18AE0452121C54200CC50B0 /* ServerError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1204,6 +1282,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 008D381E33904E1BE5CFDA90 /* Pods-Domain.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1222,6 +1301,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rov.com.Domain;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1233,6 +1313,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 162085F7B1990D3AC063DA2E /* Pods-Domain.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

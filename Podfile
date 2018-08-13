@@ -6,6 +6,7 @@ target 'Domain' do
   use_frameworks!
 
   # Pods for Domain
+	pod 'Result', '~> 4.0.0'
 
   target 'DomainTests' do
     inherit! :search_paths
@@ -20,6 +21,8 @@ target 'NetworkPlataform' do
 
   # Pods for NetworkPlataform
   pod 'Alamofire', '~> 4.7'
+	pod 'SwiftyJSON', '~> 4.0'
+	pod 'Result', '~> 4.0.0'
 
   target 'NetworkPlataformTests' do
     inherit! :search_paths

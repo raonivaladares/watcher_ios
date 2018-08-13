@@ -22,3 +22,4 @@ class RequestBuilder {
 		return Request(path: path, method: action.method, encoding: action.encoding, parameters: parameters)
 	}
 }
+

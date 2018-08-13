@@ -1,33 +1,35 @@
 import Foundation
 import Alamofire
-
-enum ServerError: Error {
-	case unkown
-	case serverInternalError
-	case networkTimedOut
-}
+import enum Result.Result
+import SwiftyJSON
 
 struct WatcherServer {
 	let serverErrorParser: WatcherServerErrorParser
 	let apiConfiguration: APIProviderConfiguration
 	
-	init() {
+	init(apiConfiguration: APIProviderConfiguration) {
 		serverErrorParser = WatcherServerErrorParser()
-		apiConfiguration = APIProviderConfiguration()
+		self.apiConfiguration = apiConfiguration
 	}
 	
-	func execute(request: Requestable) {
+	func execute(request: Requestable, completion: @escaping (Result<JSON, ServerError>) -> Void){
 		Alamofire.request(
 			request.path,
 			method: request.method,
 			parameters: request.parameters,
 			encoding: request.encoding,
 			headers: nil).response { dataResponse in
-				
-				print(dataResponse)
 				if let error = self.serverErrorParser.parse(dataResponse: dataResponse) {
-					
+					completion(.failure(error))
 				}
+				
+				guard let data = dataResponse.data else {
+					completion(.failure(ServerError.emptyDataResponse))
+					return
+				}
+				
+				let json = JSON(data)
+				completion(.success(json))
 		}
 	}
 }

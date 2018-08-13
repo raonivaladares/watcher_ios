@@ -2,7 +2,7 @@ import Foundation
 import Alamofire
 
 struct WatcherServerErrorParser {
-	func parse(dataResponse: DefaultDataResponse) -> Error? {
+	func parse(dataResponse: DefaultDataResponse) -> ServerError? {
 		guard let response = dataResponse.response,
 			let data = dataResponse.data else {
 				
@@ -12,7 +12,7 @@ struct WatcherServerErrorParser {
 		return parse(reponse: response, data: data)
 	}
 	
-	private func parse(reponse response: HTTPURLResponse, data responseData: Any) -> Error? {
+	private func parse(reponse response: HTTPURLResponse, data responseData: Any) -> ServerError? {
 		switch response.statusCode {
 		case 200, 201, 202, 204:
 			return nil

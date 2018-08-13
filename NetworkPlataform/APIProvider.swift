@@ -2,44 +2,21 @@ import Foundation
 import Alamofire
 
 public struct APIProvider {
-	let configuration: APIConfiguration
 	let watchServer: WatcherServer
 	
 	public init() {
-		configuration = APIProviderConfiguration()
-		watchServer = WatcherServer()
+		watchServer = WatcherServer(apiConfiguration: APIProviderConfiguration())
 	}
 }
 
 extension APIProvider {
-	public func getToken() {
-		//preparar params
-		//execute request
-		//parsererror
-		//result
+	public func makeTokenNetwork() -> TokenNetwork {
 		
-		let parameters = ["api_key": configuration.apiKey]
-		let request = RequestBuilder(
-			action: Route.userValidation.requestToken,
-      configuration: configuration
-			)
-			.parameters(parameters: parameters)
-			.build()
-		
-		watchServer.execute(request: request)
-		//WatcherServer.ValidationActions.getToken(configuration: configuration, completion: {})
+		return TokenNetwork(watchServer: watchServer)
 	}
-}
-
-//struct ValidationActions {
-//	func getToken(configuration: APIConfiguration, completion: () -> Void ) {
-//		let parameters = ["api_key": configuration.apiKey]
-//		let builder: APIRequestBuilder = APIRequestBuilder(
-//			action: Route.userValidation.requestToken,
-//			configuration: configuration,
-//			parameters: parameters
-//		)
 //
+//	public func makeCommentsNetwork() -> CommentsNetwork {
+//		let network = Network<Comment>(apiEndpoint)
+//		return CommentsNetwork(network: network)
 //	}
-//}
-
+}
