@@ -1,8 +1,9 @@
 import Foundation
 
-enum ServerError: Error {
+public enum ServerError: Error {
 	case unkown
 	case serverInternalError
 	case emptyDataResponse
+	case invalidJSON
 	case networkTimedOut
 }

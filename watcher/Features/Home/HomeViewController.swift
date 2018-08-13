@@ -13,7 +13,9 @@ class HomeViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		APIProvider().makeTokenNetwork().requestAPIToken()
+		APIProvider().makeTokenNetwork().requestAPIToken() { result in
+			print(result)
+		}
 	}
 
 }

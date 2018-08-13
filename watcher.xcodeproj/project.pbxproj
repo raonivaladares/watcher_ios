@@ -42,6 +42,7 @@
 		D18AE04C2121CF7900CC50B0 /* TokenNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE04A2121CC1100CC50B0 /* TokenNetwork.swift */; };
 		D18AE0502121EB3800CC50B0 /* RequestToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE04F2121EB3800CC50B0 /* RequestToken.swift */; };
 		D18AE0522121ECCD00CC50B0 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1688A1E210CC76700947D1F /* Domain.framework */; };
+		D18AE0552121FDF700CC50B0 /* RequestToken+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE0542121FDF700CC50B0 /* RequestToken+Mapping.swift */; };
 		D1CD5F6B2115BE2A001F2474 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CD5F6A2115BE2A001F2474 /* Request.swift */; };
 		EB9A7353B092AC63FFFAD099 /* Pods_DomainTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68A0CD52749101E7825F2B09 /* Pods_DomainTests.framework */; };
 		EC000F811A31F7EDE9C83DE4 /* Pods_watcherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8E57FA07D1814E424DA43D /* Pods_watcherUITests.framework */; };
@@ -176,6 +177,7 @@
 		D18AE0472121C5F300CC50B0 /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
 		D18AE04A2121CC1100CC50B0 /* TokenNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenNetwork.swift; sourceTree = "<group>"; };
 		D18AE04F2121EB3800CC50B0 /* RequestToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestToken.swift; sourceTree = "<group>"; };
+		D18AE0542121FDF700CC50B0 /* RequestToken+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RequestToken+Mapping.swift"; sourceTree = "<group>"; };
 		D1CD5F6A2115BE2A001F2474 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		D36E9B022832DD8CB5175597 /* Pods-watcherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watcherTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watcherTests/Pods-watcherTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DB9EC44A1DA8770A87F19381 /* Pods-watcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watcher.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watcher/Pods-watcher.debug.xcconfig"; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 		D1688A42210CC79900947D1F /* NetworkPlataform */ = {
 			isa = PBXGroup;
 			children = (
+				D18AE0532121FDCF00CC50B0 /* Models */,
 				D18AE0492121CBC300CC50B0 /* API */,
 				D18AE0462121C5A300CC50B0 /* Router */,
 				D18AE0432121C50000CC50B0 /* Request */,
@@ -438,6 +441,14 @@
 			isa = PBXGroup;
 			children = (
 				D18AE04F2121EB3800CC50B0 /* RequestToken.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D18AE0532121FDCF00CC50B0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D18AE0542121FDF700CC50B0 /* RequestToken+Mapping.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -965,6 +976,7 @@
 				D18AE0482121C5F300CC50B0 /* RouterProtocol.swift in Sources */,
 				D1688A63210EAD4900947D1F /* APIProvider.swift in Sources */,
 				D14E4B1821164BA20056829F /* PrivateKeys.swift in Sources */,
+				D18AE0552121FDF700CC50B0 /* RequestToken+Mapping.swift in Sources */,
 				D1CD5F6B2115BE2A001F2474 /* Request.swift in Sources */,
 				D14E4B1A211F425D0056829F /* WatcherServerErrorParser.swift in Sources */,
 				D1688A6B210EB8A400947D1F /* ServerProviderConfiguration.swift in Sources */,

@@ -1,26 +1,11 @@
 import Foundation
 import Domain.Swift
-
-//public final class AlbumsNetwork {
-//	private let network: Network<Album>
-//
-//	init(network: Network<Album>) {
-//		self.network = network
-//	}
-//
-//	public func fetchAlbums() -> Observable<[Album]> {
-//		return network.getItems("albums")
-//	}
-//
-//	public func fetchAlbum(albumId: String) -> Observable<Album> {
-//		return network.getItem("albums", itemId: albumId)
-//	}
-//}
+import Result
 
 public struct TokenNetwork {
 	let watchServer: WatcherServer
 	
-	public func requestAPIToken() {
+	public func requestAPIToken(completion: @escaping (Result<RequestToken, ServerError>) -> Void) {
 		let parameters = ["api_key": watchServer.apiConfiguration.apiKey]
 		let request = RequestBuilder(
 			action: RouterAction.userValidation.requestToken,
@@ -31,12 +16,16 @@ public struct TokenNetwork {
 		
 		
 		watchServer.execute(request: request) { result in
-				let tokenR = RequestToken(success: false, expiresAt: Date(), token: "")
-				result.analysis(ifSuccess: { json in
-						print(json)
-				}, ifFailure: { error in
-					print(error)
-				})
+			result.analysis(ifSuccess: { json in
+				guard let requestToken = RequestToken(json: json) else {
+					completion(.failure(ServerError.invalidJSON))//Parse
+					return
+				}
+
+				completion(.success(requestToken))
+			}, ifFailure: {
+					completion(.failure($0))
+			})
 		}
 	}
 }
