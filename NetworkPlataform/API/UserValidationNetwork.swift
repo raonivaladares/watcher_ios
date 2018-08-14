@@ -2,10 +2,10 @@ import Foundation
 import Domain.Swift
 import Result
 
-public struct TokenNetwork {
+public struct UserValidationNetwork {
 	let watchServer: WatcherServer
 	
-	public func requestAPIToken(completion: @escaping (Result<RequestToken, ServerError>) -> Void) {
+	public func requestUserToken(completion: @escaping (Result<RequestToken, ServerError>) -> Void) {
 		let parameters = ["api_key": watchServer.apiConfiguration.apiKey]
 		let request = RequestBuilder(
 			action: RouterAction.userValidation.requestToken,
@@ -18,7 +18,7 @@ public struct TokenNetwork {
 		watchServer.execute(request: request) { result in
 			result.analysis(ifSuccess: { json in
 				guard let requestToken = RequestToken(json: json) else {
-					completion(.failure(ServerError.invalidJSON))//Parse
+					completion(.failure(ServerError.invalidJSON))
 					return
 				}
 

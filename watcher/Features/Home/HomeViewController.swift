@@ -13,8 +13,16 @@ class HomeViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		APIProvider().makeTokenNetwork().requestAPIToken() { result in
+		view.backgroundColor = .blue
+		
+		APIProvider().makeTokenNetwork().requestUserToken() { [weak self] result in
 			print(result)
+			
+			if let token = result.value?.token {
+				let viewModel = LoginWebViewModel(requestToken: token)
+				let viewController = TMVDBLoginViewController(viewModel: viewModel)
+				self?.present(viewController, animated: true, completion: nil)
+			}
 		}
 	}
 
