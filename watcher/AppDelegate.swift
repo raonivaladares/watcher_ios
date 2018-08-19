@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  watcher
-//
-//  Created by Raoni Valadares on 28/07/18.
-//  Copyright © 2018 solo. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain
@@ -18,8 +10,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// Override point for customization after application launch.
 		window = UIWindow(frame: UIScreen.main.bounds)
 		window?.makeKeyAndVisible()
-		let viewModel = HomeViewModel()
-		window?.rootViewController = HomeViewController(viewModel: viewModel)
+		let navigationController = UINavigationController(rootViewController: WelcomeViewController())
+		window?.rootViewController = navigationController
 		
 		return true
 	}

@@ -3,7 +3,7 @@ import NetworkPlataform
 
 class HomeViewController: UIViewController {
 	
-	init(viewModel: HomeViewPresentable) {
+	init(withViewModel viewModel: HomeViewPresentable) {
 		super.init(nibName: nil, bundle: nil)
 	}
 	
@@ -13,7 +13,6 @@ class HomeViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		view.backgroundColor = .blue
 		
 		APIProvider().makeTokenNetwork().requestUserToken() { [weak self] result in
 			print(result)
@@ -21,10 +20,10 @@ class HomeViewController: UIViewController {
 			if let token = result.value?.token {
 				let viewModel = LoginWebViewModel(requestToken: token)
 				let viewController = TMVDBLoginViewController(viewModel: viewModel)
-				self?.present(viewController, animated: true, completion: nil)
+				self?.navigationController?.pushViewController(viewController, animated: true)
+//				self?.present(viewController, animated: true, completion: nil)
 			}
 		}
 	}
-
 }
 

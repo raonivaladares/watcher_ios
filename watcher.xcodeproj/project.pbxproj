@@ -44,6 +44,7 @@
 		D18AE0552121FDF700CC50B0 /* RequestToken+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE0542121FDF700CC50B0 /* RequestToken+Mapping.swift */; };
 		D18AE059212219D000CC50B0 /* UserValidationNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE058212219D000CC50B0 /* UserValidationNetwork.swift */; };
 		D18AE05B21221BB400CC50B0 /* TMVDBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE05A21221BB400CC50B0 /* TMVDBLoginViewController.swift */; };
+		D18AE05F212A25D000CC50B0 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE05E212A25D000CC50B0 /* WelcomeViewController.swift */; };
 		D1CD5F6B2115BE2A001F2474 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CD5F6A2115BE2A001F2474 /* Request.swift */; };
 		EB9A7353B092AC63FFFAD099 /* Pods_DomainTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68A0CD52749101E7825F2B09 /* Pods_DomainTests.framework */; };
 		EC000F811A31F7EDE9C83DE4 /* Pods_watcherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8E57FA07D1814E424DA43D /* Pods_watcherUITests.framework */; };
@@ -180,6 +181,7 @@
 		D18AE0542121FDF700CC50B0 /* RequestToken+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RequestToken+Mapping.swift"; sourceTree = "<group>"; };
 		D18AE058212219D000CC50B0 /* UserValidationNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserValidationNetwork.swift; sourceTree = "<group>"; };
 		D18AE05A21221BB400CC50B0 /* TMVDBLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMVDBLoginViewController.swift; sourceTree = "<group>"; };
+		D18AE05E212A25D000CC50B0 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		D1CD5F6A2115BE2A001F2474 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		D36E9B022832DD8CB5175597 /* Pods-watcherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watcherTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watcherTests/Pods-watcherTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DB9EC44A1DA8770A87F19381 /* Pods-watcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watcher.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watcher/Pods-watcher.debug.xcconfig"; sourceTree = "<group>"; };
@@ -354,6 +356,7 @@
 			children = (
 				D1688A15210CC13D00947D1F /* Home */,
 				D18AE05A21221BB400CC50B0 /* TMVDBLoginViewController.swift */,
+				D18AE05E212A25D000CC50B0 /* WelcomeViewController.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -932,6 +935,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D16889E6210CBC8B00947D1F /* HomeViewController.swift in Sources */,
+				D18AE05F212A25D000CC50B0 /* WelcomeViewController.swift in Sources */,
 				D1688A17210CC15C00947D1F /* HomeViewModel.swift in Sources */,
 				D16889E4210CBC8B00947D1F /* AppDelegate.swift in Sources */,
 				D18AE05B21221BB400CC50B0 /* TMVDBLoginViewController.swift in Sources */,

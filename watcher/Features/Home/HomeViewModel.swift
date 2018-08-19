@@ -1,7 +1,11 @@
 import Foundation
 
-protocol HomeViewPresentable {}
+protocol HomeViewPresentable {
+	func requestUserToken()
+}
 
 struct HomeViewModel: HomeViewPresentable {
-	
+	func requestUserToken() {
+		
+	}
 }
