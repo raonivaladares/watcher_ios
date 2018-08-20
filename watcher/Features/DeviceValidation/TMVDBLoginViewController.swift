@@ -16,7 +16,7 @@ class TMVDBLoginViewController: UIViewController, WKNavigationDelegate {
 	}()
 	
 	@objc func buttonDoneHandler() {
-		print("aaa")
+		navigationController?.popViewController(animated: true)
 	}
 	
 	init(viewModel: LoginWebViewModel) {

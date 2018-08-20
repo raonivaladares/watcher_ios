@@ -1,10 +1,11 @@
 import UIKit
+import NetworkPlataform
 
 class WelcomeViewController: UIViewController {
 	let validationLabel: UILabel = {
 		let label = UILabel()
 		label.text = "We use this app you need to validate your device at:"
-		label.font = UIFont.boldSystemFont(ofSize: 16)
+		label.font = UIFont.boldSystemFont(ofSize: 22)
 		label.textColor = .red
 		label.numberOfLines = 0
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -27,10 +28,13 @@ class WelcomeViewController: UIViewController {
 		button.setTitleColor(.red, for: .normal)
 		button.backgroundColor = .white
 		button.layer.cornerRadius = 20
+		button.addTarget(self, action: #selector(validationActionHandler(_:)), for: .touchUpInside)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		
 		return button
 	}()
+	
+	private let welcomeViewModel: WelcomeViewModel = WelcomeViewModel()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -38,8 +42,17 @@ class WelcomeViewController: UIViewController {
 		view.backgroundColor = .blue
 		addViews()
 		defineAndActivateConstraints()
+		
+		welcomeViewModel.registerDevice()
 	}
 	
+	@objc private func validationActionHandler(_ sender: UIButton) {
+		
+	}
+}
+
+// MARK: - UI methods
+extension WelcomeViewController {
 	private func addViews() {
 		view.addSubview(validationLabel)
 		view.addSubview(tmdLogoImageView)
