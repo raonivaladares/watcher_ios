@@ -14,13 +14,19 @@ struct WelcomeViewModel {
 			return validationUseCases.userToken
 	}
 	
-	func validateUserToken() {
-		validationUseCases.validateUserToken { _ in
-
+//	func validateUserToken() {
+//		validationUseCases.validateUserToken { _ in
+//
+//		}
+//	}
+	
+	func requestUserToken() {
+		validationUseCases.requestUserToken { result in
+			
 		}
 	}
 	
-	func requestUserToken() {
+	func requestNewSession() {
 		validationUseCases.requestUserToken { result in
 			
 		}
@@ -48,8 +54,9 @@ struct ValidationUseCases {
 		}
 	}
 	
-	func validateUserToken(completion: (Result<Void, ServerError>) -> Void) {//TODO: ViewModelError
-		
+	func requestNewSession(completion: (Result<Void, ServerError>) -> Void) {//TODO: ViewModelError
+		//authentication/session/new
+		//resquestToken
 	}
 }
 

@@ -47,12 +47,19 @@ class WelcomeViewController: UIViewController {
 	}
 	
 	@objc private func validationButtonHandler(_ sender: UIButton) {
-		
+		//TODO: refactor
 		guard let userToken = viewModel.userToken else { return }
 
 		let loginViewModel = TMVDBLoginViewModel(requestToken: userToken)
 		let viewController = TMVDBLoginViewController(viewModel: loginViewModel)
 		present(viewController, animated: true)
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		//TODO: refactor
+		guard let _ = viewModel.userToken else { return }
+		
+		viewModel.requestNewSession()
 	}
 }
 
