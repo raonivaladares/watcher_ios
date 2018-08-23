@@ -28,13 +28,13 @@ class WelcomeViewController: UIViewController {
 		button.setTitleColor(.red, for: .normal)
 		button.backgroundColor = .white
 		button.layer.cornerRadius = 20
-		button.addTarget(self, action: #selector(validationActionHandler(_:)), for: .touchUpInside)
+		button.addTarget(self, action: #selector(validationButtonHandler(_:)), for: .touchUpInside)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		
 		return button
 	}()
 	
-	private let welcomeViewModel: WelcomeViewModel = WelcomeViewModel()
+	private let viewModel: WelcomeViewModel = WelcomeViewModel()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -43,11 +43,16 @@ class WelcomeViewController: UIViewController {
 		addViews()
 		defineAndActivateConstraints()
 		
-		welcomeViewModel.registerDevice()
+		viewModel.requestUserToken()
 	}
 	
-	@objc private func validationActionHandler(_ sender: UIButton) {
+	@objc private func validationButtonHandler(_ sender: UIButton) {
 		
+		guard let userToken = viewModel.userToken else { return }
+
+		let loginViewModel = TMVDBLoginViewModel(requestToken: userToken)
+		let viewController = TMVDBLoginViewController(viewModel: loginViewModel)
+		present(viewController, animated: true)
 	}
 }
 

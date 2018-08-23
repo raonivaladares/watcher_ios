@@ -4,27 +4,33 @@ import NetworkPlataform
 import Result
 
 struct WelcomeViewModel {
-	let validationUseCases: ValidationUseCases
+	private let validationUseCases: ValidationUseCases
 	
 	init(validationUseCases: ValidationUseCases = ValidationUseCases()) {
 		self.validationUseCases = validationUseCases
 	}
 	
-	func registerDevice() {
-		validationUseCases.registerDevice { _ in
-			
+	var userToken: String? {
+			return validationUseCases.userToken
+	}
+	
+	func validateUserToken() {
+		validationUseCases.validateUserToken { _ in
+
 		}
 	}
 	
-	func deviceToken() -> String? {
-		return validationUseCases.deviceToken
+	func requestUserToken() {
+		validationUseCases.requestUserToken { result in
+			
+		}
 	}
 }
 
 struct ValidationUseCases {
 	private let localDataProvider: LocalDataProvider
 	
-	var deviceToken: String? {
+	var userToken: String? {
 		return localDataProvider.deviceToken?.token
 	}
 	
@@ -32,7 +38,7 @@ struct ValidationUseCases {
 		localDataProvider = LocalDataProvider()
 	}
 	
-	func registerDevice(completion: (Result<Void, ServerError>) -> Void) {//TODO: ViewModelError
+	func requestUserToken(completion: (Result<Void, ServerError>) -> Void) {//TODO: ViewModelError
 		APIProvider().makeTokenNetwork().requestUserToken() { result in
 			print(result)
 			
@@ -40,6 +46,10 @@ struct ValidationUseCases {
 				self.localDataProvider.deviceToken = deviceToken
 			}
 		}
+	}
+	
+	func validateUserToken(completion: (Result<Void, ServerError>) -> Void) {//TODO: ViewModelError
+		
 	}
 }
 

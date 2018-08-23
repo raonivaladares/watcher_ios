@@ -2,24 +2,19 @@ import UIKit
 import WebKit
 
 class TMVDBLoginViewController: UIViewController, WKNavigationDelegate {
-	private let viewModel: LoginWebViewModel
-//	private let wkToolBar: UIToolbar = {
-//		let toolBar = UIToolbar()
-//		toolBar.translatesAutoresizingMaskIntoConstraints = false
-//
-//		return toolBar
-//	}()
 	private let doneButton: UIBarButtonItem = {
 		let button = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(buttonDoneHandler))
 		
 		return button
 	}()
 	
+	private let viewModel: TMVDBLoginViewModel
+	
 	@objc func buttonDoneHandler() {
 		navigationController?.popViewController(animated: true)
 	}
 	
-	init(viewModel: LoginWebViewModel) {
+	init(viewModel: TMVDBLoginViewModel) {
 		self.viewModel = viewModel
 		
 		super.init(nibName: nil, bundle: nil)
@@ -50,7 +45,7 @@ class TMVDBLoginViewController: UIViewController, WKNavigationDelegate {
 	}
 }
 
-struct LoginWebViewModel {
+struct TMVDBLoginViewModel {
 	private let requestToken: String
 	
 	var url: URL {
