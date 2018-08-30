@@ -1,12 +1,11 @@
 import Foundation
 import Domain
-import NetworkPlataform
 import Result
 
 struct WelcomeViewModel {
-	private let validationUseCases: ValidationUseCases
+	private let validationUseCases: Domain.ValidationUseCases
 	
-	init(validationUseCases: ValidationUseCases = ValidationUseCases()) {
+	init(validationUseCases: Domain.ValidationUseCases = ValidationUseCases()) {
 		self.validationUseCases = validationUseCases
 	}
 	
@@ -31,35 +30,4 @@ struct WelcomeViewModel {
 			
 		}
 	}
-}
-
-struct ValidationUseCases {
-	private let localDataProvider: LocalDataProvider
-	
-	var userToken: String? {
-		return localDataProvider.deviceToken?.token
-	}
-	
-	init() {
-		localDataProvider = LocalDataProvider()
-	}
-	
-	func requestUserToken(completion: (Result<Void, ServerError>) -> Void) {//TODO: ViewModelError
-		APIProvider().makeTokenNetwork().requestUserToken() { result in
-			print(result)
-			
-			if let deviceToken = result.value {
-				self.localDataProvider.deviceToken = deviceToken
-			}
-		}
-	}
-	
-	func requestNewSession(completion: (Result<Void, ServerError>) -> Void) {//TODO: ViewModelError
-		//authentication/session/new
-		//resquestToken
-	}
-}
-
-class LocalDataProvider {
-	var deviceToken: RequestToken?
 }

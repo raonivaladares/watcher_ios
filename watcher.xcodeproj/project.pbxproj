@@ -46,6 +46,8 @@
 		D18AE05B21221BB400CC50B0 /* TMVDBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE05A21221BB400CC50B0 /* TMVDBLoginViewController.swift */; };
 		D18AE05F212A25D000CC50B0 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE05E212A25D000CC50B0 /* WelcomeViewController.swift */; };
 		D18AE062212A3BB500CC50B0 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE061212A3BB500CC50B0 /* WelcomeViewModel.swift */; };
+		D1AE05C821361CA50023D445 /* ValidationUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AE05C721361CA50023D445 /* ValidationUseCases.swift */; };
+		D1AE05CE21377DDC0023D445 /* ValidationUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AE05CD21377DDC0023D445 /* ValidationUseCases.swift */; };
 		D1CD5F6B2115BE2A001F2474 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CD5F6A2115BE2A001F2474 /* Request.swift */; };
 		EB9A7353B092AC63FFFAD099 /* Pods_DomainTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68A0CD52749101E7825F2B09 /* Pods_DomainTests.framework */; };
 		EC000F811A31F7EDE9C83DE4 /* Pods_watcherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8E57FA07D1814E424DA43D /* Pods_watcherUITests.framework */; };
@@ -184,6 +186,8 @@
 		D18AE05A21221BB400CC50B0 /* TMVDBLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMVDBLoginViewController.swift; sourceTree = "<group>"; };
 		D18AE05E212A25D000CC50B0 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		D18AE061212A3BB500CC50B0 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
+		D1AE05C721361CA50023D445 /* ValidationUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationUseCases.swift; sourceTree = "<group>"; };
+		D1AE05CD21377DDC0023D445 /* ValidationUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationUseCases.swift; sourceTree = "<group>"; };
 		D1CD5F6A2115BE2A001F2474 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		D36E9B022832DD8CB5175597 /* Pods-watcherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watcherTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watcherTests/Pods-watcherTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DB9EC44A1DA8770A87F19381 /* Pods-watcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watcher.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watcher/Pods-watcher.debug.xcconfig"; sourceTree = "<group>"; };
@@ -358,6 +362,7 @@
 			children = (
 				D18AE060212A33CD00CC50B0 /* DeviceValidation */,
 				D1688A15210CC13D00947D1F /* Home */,
+				D1AE05CD21377DDC0023D445 /* ValidationUseCases.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -377,6 +382,7 @@
 				D18AE0512121EC0800CC50B0 /* Models */,
 				D1688A20210CC76700947D1F /* Domain.h */,
 				D1688A21210CC76700947D1F /* Info.plist */,
+				D1AE05C721361CA50023D445 /* ValidationUseCases.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -947,6 +953,7 @@
 			files = (
 				D16889E6210CBC8B00947D1F /* HomeViewController.swift in Sources */,
 				D18AE062212A3BB500CC50B0 /* WelcomeViewModel.swift in Sources */,
+				D1AE05CE21377DDC0023D445 /* ValidationUseCases.swift in Sources */,
 				D18AE05F212A25D000CC50B0 /* WelcomeViewController.swift in Sources */,
 				D1688A17210CC15C00947D1F /* HomeViewModel.swift in Sources */,
 				D16889E4210CBC8B00947D1F /* AppDelegate.swift in Sources */,
@@ -974,6 +981,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1AE05C821361CA50023D445 /* ValidationUseCases.swift in Sources */,
 				D18AE0502121EB3800CC50B0 /* RequestToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
