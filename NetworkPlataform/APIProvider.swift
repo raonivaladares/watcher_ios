@@ -10,9 +10,9 @@ public struct APIProvider {
 }
 
 extension APIProvider {
-	public func makeTokenNetwork() -> UserValidationNetwork {
+	public func guestSessionNetwork() -> GuestSessionNetwork {
 		
-		return UserValidationNetwork(watchServer: watchServer)
+		return GuestSessionNetwork(watchServer: watchServer)
 	}
 //
 //	public func makeCommentsNetwork() -> CommentsNetwork {

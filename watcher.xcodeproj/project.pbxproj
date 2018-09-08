@@ -39,11 +39,10 @@
 		D1688A6B210EB8A400947D1F /* ServerProviderConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1688A6A210EB8A400947D1F /* ServerProviderConfiguration.swift */; };
 		D18AE0452121C54200CC50B0 /* ServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE0442121C54200CC50B0 /* ServerError.swift */; };
 		D18AE0482121C5F300CC50B0 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE0472121C5F300CC50B0 /* RouterProtocol.swift */; };
-		D18AE0502121EB3800CC50B0 /* RequestToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE04F2121EB3800CC50B0 /* RequestToken.swift */; };
+		D18AE0502121EB3800CC50B0 /* GuestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE04F2121EB3800CC50B0 /* GuestSession.swift */; };
 		D18AE0522121ECCD00CC50B0 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1688A1E210CC76700947D1F /* Domain.framework */; };
-		D18AE0552121FDF700CC50B0 /* RequestToken+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE0542121FDF700CC50B0 /* RequestToken+Mapping.swift */; };
-		D18AE059212219D000CC50B0 /* UserValidationNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE058212219D000CC50B0 /* UserValidationNetwork.swift */; };
-		D18AE05B21221BB400CC50B0 /* TMVDBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE05A21221BB400CC50B0 /* TMVDBLoginViewController.swift */; };
+		D18AE0552121FDF700CC50B0 /* GuestSession+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE0542121FDF700CC50B0 /* GuestSession+Mapping.swift */; };
+		D18AE059212219D000CC50B0 /* GuestSessionNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE058212219D000CC50B0 /* GuestSessionNetwork.swift */; };
 		D18AE05F212A25D000CC50B0 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE05E212A25D000CC50B0 /* WelcomeViewController.swift */; };
 		D18AE062212A3BB500CC50B0 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE061212A3BB500CC50B0 /* WelcomeViewModel.swift */; };
 		D1AE05C821361CA50023D445 /* ValidationUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AE05C721361CA50023D445 /* ValidationUseCases.swift */; };
@@ -180,10 +179,9 @@
 		D1688A6A210EB8A400947D1F /* ServerProviderConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerProviderConfiguration.swift; sourceTree = "<group>"; };
 		D18AE0442121C54200CC50B0 /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
 		D18AE0472121C5F300CC50B0 /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
-		D18AE04F2121EB3800CC50B0 /* RequestToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestToken.swift; sourceTree = "<group>"; };
-		D18AE0542121FDF700CC50B0 /* RequestToken+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RequestToken+Mapping.swift"; sourceTree = "<group>"; };
-		D18AE058212219D000CC50B0 /* UserValidationNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserValidationNetwork.swift; sourceTree = "<group>"; };
-		D18AE05A21221BB400CC50B0 /* TMVDBLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMVDBLoginViewController.swift; sourceTree = "<group>"; };
+		D18AE04F2121EB3800CC50B0 /* GuestSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestSession.swift; sourceTree = "<group>"; };
+		D18AE0542121FDF700CC50B0 /* GuestSession+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GuestSession+Mapping.swift"; sourceTree = "<group>"; };
+		D18AE058212219D000CC50B0 /* GuestSessionNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestSessionNetwork.swift; sourceTree = "<group>"; };
 		D18AE05E212A25D000CC50B0 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		D18AE061212A3BB500CC50B0 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		D1AE05C721361CA50023D445 /* ValidationUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationUseCases.swift; sourceTree = "<group>"; };
@@ -360,7 +358,7 @@
 		D1688A14210CC12F00947D1F /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				D18AE060212A33CD00CC50B0 /* DeviceValidation */,
+				D1C2710D213B1174001C7DAB /* Welcome */,
 				D1688A15210CC13D00947D1F /* Home */,
 				D1AE05CD21377DDC0023D445 /* ValidationUseCases.swift */,
 			);
@@ -445,7 +443,7 @@
 		D18AE0492121CBC300CC50B0 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				D18AE058212219D000CC50B0 /* UserValidationNetwork.swift */,
+				D18AE058212219D000CC50B0 /* GuestSessionNetwork.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -453,7 +451,7 @@
 		D18AE0512121EC0800CC50B0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D18AE04F2121EB3800CC50B0 /* RequestToken.swift */,
+				D18AE04F2121EB3800CC50B0 /* GuestSession.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -461,19 +459,18 @@
 		D18AE0532121FDCF00CC50B0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D18AE0542121FDF700CC50B0 /* RequestToken+Mapping.swift */,
+				D18AE0542121FDF700CC50B0 /* GuestSession+Mapping.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		D18AE060212A33CD00CC50B0 /* DeviceValidation */ = {
+		D1C2710D213B1174001C7DAB /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
 				D18AE05E212A25D000CC50B0 /* WelcomeViewController.swift */,
-				D18AE05A21221BB400CC50B0 /* TMVDBLoginViewController.swift */,
 				D18AE061212A3BB500CC50B0 /* WelcomeViewModel.swift */,
 			);
-			path = DeviceValidation;
+			path = Welcome;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -957,7 +954,6 @@
 				D18AE05F212A25D000CC50B0 /* WelcomeViewController.swift in Sources */,
 				D1688A17210CC15C00947D1F /* HomeViewModel.swift in Sources */,
 				D16889E4210CBC8B00947D1F /* AppDelegate.swift in Sources */,
-				D18AE05B21221BB400CC50B0 /* TMVDBLoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -982,7 +978,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1AE05C821361CA50023D445 /* ValidationUseCases.swift in Sources */,
-				D18AE0502121EB3800CC50B0 /* RequestToken.swift in Sources */,
+				D18AE0502121EB3800CC50B0 /* GuestSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1003,10 +999,10 @@
 				D18AE0482121C5F300CC50B0 /* RouterProtocol.swift in Sources */,
 				D1688A63210EAD4900947D1F /* APIProvider.swift in Sources */,
 				D14E4B1821164BA20056829F /* PrivateKeys.swift in Sources */,
-				D18AE0552121FDF700CC50B0 /* RequestToken+Mapping.swift in Sources */,
+				D18AE0552121FDF700CC50B0 /* GuestSession+Mapping.swift in Sources */,
 				D1CD5F6B2115BE2A001F2474 /* Request.swift in Sources */,
 				D14E4B1A211F425D0056829F /* WatcherServerErrorParser.swift in Sources */,
-				D18AE059212219D000CC50B0 /* UserValidationNetwork.swift in Sources */,
+				D18AE059212219D000CC50B0 /* GuestSessionNetwork.swift in Sources */,
 				D1688A6B210EB8A400947D1F /* ServerProviderConfiguration.swift in Sources */,
 				D1688A61210EAC3D00947D1F /* WatcherServer.swift in Sources */,
 				D18AE0452121C54200CC50B0 /* ServerError.swift in Sources */,

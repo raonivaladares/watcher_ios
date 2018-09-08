@@ -2,29 +2,29 @@ import Foundation
 import Domain.Swift
 import Result
 
-public struct UserValidationNetwork {
+public struct GuestSessionNetwork {
 	let watchServer: WatcherServer
 	
-	public func requestUserToken(completion: @escaping (Result<RequestToken, ServerError>) -> Void) {
+	public func requestGuestSessionToken(completion: @escaping (Result<GuestSession, ServerError>) -> Void) {
+		
 		let parameters = ["api_key": watchServer.apiConfiguration.apiKey]
 		let request = RequestBuilder(
-			action: RouterAction.userValidation.requestToken,
+			action: RouterAction.userValidation.requestGuestSession,
 			configuration: watchServer.apiConfiguration
 			)
 			.parameters(parameters: parameters)
 			.build()
 		
-		
 		watchServer.execute(request: request) { result in
 			result.analysis(ifSuccess: { json in
-				guard let requestToken = RequestToken(json: json) else {
+				guard let requestToken = GuestSession(json: json) else {
 					completion(.failure(ServerError.invalidJSON))
 					return
 				}
-
+				
 				completion(.success(requestToken))
 			}, ifFailure: {
-					completion(.failure($0))
+				completion(.failure($0))
 			})
 		}
 	}

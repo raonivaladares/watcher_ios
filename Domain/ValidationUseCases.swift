@@ -2,16 +2,16 @@ import Foundation
 import Result
 
 public protocol ValidationUseCases {
-	var userToken: String? { get }
-	func requestUserToken(completion: (Result<Void, ViewModelError>) -> Void)
-	func requestNewSession(completion: (Result<Void, ViewModelError>) -> Void)
+//	func requestUserToken(completion: (Result<Void, ViewModelError>) -> Void)
+	func requestGuestSession(completion: @escaping (Result<Void, ViewModelError>) -> Void)
+	func isCurrentGuestSessionValid() -> Bool
 }
 
 public struct ViewModelError: Error {
 	var title: String
 	var message: String
 	
-	init(title: String, message: String) {
+	public init(title: String, message: String) {
 		self.title = title
 		self.message = message
 	}

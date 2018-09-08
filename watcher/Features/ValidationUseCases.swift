@@ -13,31 +13,32 @@ import Result
 
 struct ValidationUseCases: Domain.ValidationUseCases {
 	private let localDataProvider: LocalDataProvider
-	
-	public var userToken: String? {
-		return localDataProvider.deviceToken?.token
-	}
+	private let apiProvider: APIProvider
 	
 	init() {
 		localDataProvider = LocalDataProvider()
+		apiProvider = APIProvider()
 	}
 	
-	func requestUserToken(completion: (Result<Void, ViewModelError>) -> Void) {//TODO: ViewModelError
-		APIProvider().makeTokenNetwork().requestUserToken() { result in
-			print(result)
-			
-			if let deviceToken = result.value {
-				self.localDataProvider.deviceToken = deviceToken
+	func requestGuestSession(completion: @escaping (Result<Void, ViewModelError>) -> Void) {//
+		apiProvider.guestSessionNetwork().requestGuestSessionToken { result in
+			if let session = result.value {
+				self.localDataProvider.session = session
 			}
+			completion(result.bimap(success: { _ in }, failure: { _ in ViewModelError(title: "a", message: "aaa") }))
+//			completion(result.map { $0 }.mapError(ViewModelError.init))
 		}
 	}
 	
-	func requestNewSession(completion: (Result<Void, ViewModelError>) -> Void) {//TODO: ViewModelError
-		//authentication/session/new
-		//resquestToken
+	func isCurrentGuestSessionValid() -> Bool {
+		if let session = localDataProvider.session {
+			let now = Date()
+			return session.expiresAt <= now
+		}
+		return false
 	}
 }
 
 class LocalDataProvider {
-	var deviceToken: RequestToken?
+	var session: GuestSession?
 }

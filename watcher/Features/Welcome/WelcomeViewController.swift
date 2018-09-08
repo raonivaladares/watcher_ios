@@ -2,6 +2,9 @@ import UIKit
 import NetworkPlataform
 
 class WelcomeViewController: UIViewController {
+	
+	// MARK: Private UI properties
+	
 	let validationLabel: UILabel = {
 		let label = UILabel()
 		label.text = "We use this app you need to validate your device at:"
@@ -34,8 +37,14 @@ class WelcomeViewController: UIViewController {
 		return button
 	}()
 	
-	private let viewModel: WelcomeViewModel = WelcomeViewModel()
+	// MARK: Private properties
 	
+	private let viewModel: WelcomeViewModel = WelcomeViewModel()
+}
+
+// MARK: ViewController life-cycle
+
+extension WelcomeViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -43,27 +52,36 @@ class WelcomeViewController: UIViewController {
 		addViews()
 		defineAndActivateConstraints()
 		
-		viewModel.requestUserToken()
-	}
-	
-	@objc private func validationButtonHandler(_ sender: UIButton) {
-		//TODO: refactor
-		guard let userToken = viewModel.userToken else { return }
-
-		let loginViewModel = TMVDBLoginViewModel(requestToken: userToken)
-		let viewController = TMVDBLoginViewController(viewModel: loginViewModel)
-		present(viewController, animated: true)
-	}
-	
-	override func viewWillAppear(_ animated: Bool) {
-		//TODO: refactor
-		guard let _ = viewModel.userToken else { return }
-		
-		viewModel.requestNewSession()
 	}
 }
 
-// MARK: - UI methods
+// MARK: Action Handlers
+
+extension WelcomeViewController {
+	@objc private func validationButtonHandler(_ sender: UIButton) {
+		//TODO: refactor
+		LoadingHelper().showLoading()
+		viewModel.requestGuestNewSession { result in
+			LoadingHelper().hideLoading()
+			result.analysis(ifSuccess: {
+				let viewModel = HomeViewModel()
+				let homeViewController = HomeViewController(withViewModel: viewModel)
+				let navigationController = UINavigationController(rootViewController: homeViewController)
+				self.present(navigationController, animated: true)
+			}, ifFailure: { error in
+				print(error)
+				let alertController = UIAlertController(title: "a", message: "aa", preferredStyle: .alert)
+				let okAction = UIAlertAction(title: "OK", style: .default)
+				
+				alertController.addAction(okAction)
+				self.present(alertController, animated: true, completion: nil)
+			})
+		}
+	}
+}
+
+// MARK: - Private methods - UI
+
 extension WelcomeViewController {
 	private func addViews() {
 		view.addSubview(validationLabel)
@@ -87,5 +105,39 @@ extension WelcomeViewController {
 			validationButton.widthAnchor.constraint(equalToConstant: 200),
 			validationButton.heightAnchor.constraint(equalToConstant: 40),
 			])
+	}
+}
+
+class LoadingHelper {
+	private var overlayView = UIView()
+	private var activityIndicator = UIActivityIndicatorView()
+	
+	static let sharedInstance = LoadingHelper()
+	
+	public func showLoading() {
+		if let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+			let window = appDelegate.window {
+			overlayView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+			overlayView.center = CGPoint(x: window.frame.width / 2.0, y: window.frame.height / 2.0)
+			overlayView.backgroundColor = UIColor.darkGray.withAlphaComponent(0.7)
+			overlayView.clipsToBounds = true
+			overlayView.layer.cornerRadius = 10
+			
+			activityIndicator.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+			activityIndicator.activityIndicatorViewStyle = .whiteLarge
+			activityIndicator.center = CGPoint(x: overlayView.bounds.width / 2, y: overlayView.bounds.height / 2)
+			
+			overlayView.addSubview(activityIndicator)
+			window.addSubview(overlayView)
+			
+			activityIndicator.startAnimating()
+		}
+	}
+	
+	public func hideLoading() {
+		DispatchQueue.main.async {
+			self.activityIndicator.stopAnimating()
+			self.overlayView.removeFromSuperview()
+		}
 	}
 }
