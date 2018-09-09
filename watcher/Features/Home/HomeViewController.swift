@@ -7,6 +7,7 @@ class HomeViewController: UIViewController {
 	private let buttonSearchMovie: UIButton = {
 		let button = UIButton()
 		button.setTitle("Search moview", for: .normal)
+		button.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		
 		return button
@@ -18,8 +19,14 @@ class HomeViewController: UIViewController {
 		super.init(nibName: nil, bundle: nil)
 	}
 	
+	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
+	}
+	
+	@objc private func buttonClicked(sender: UIButton) {
+		let viewController = SearchMovieViewController()
+		navigationController?.pushViewController(viewController, animated: true)
 	}
 }
 
@@ -30,6 +37,8 @@ extension HomeViewController {
 		super.viewDidLoad()
 		view.backgroundColor = .blue
 		
+		addViews()
+		defineAndActivateConstraints()
 	}
 }
 

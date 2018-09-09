@@ -40,6 +40,7 @@ class WelcomeViewController: UIViewController {
 	// MARK: Private properties
 	
 	private let viewModel: WelcomeViewModel = WelcomeViewModel()
+	private let loadingController = LoadingViewController()
 }
 
 // MARK: ViewController life-cycle
@@ -47,6 +48,10 @@ class WelcomeViewController: UIViewController {
 extension WelcomeViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		addChildViewController(loadingController)
+		view.addSubview(loadingController.view)
+		loadingController.didMove(toParentViewController: self)
 		
 		view.backgroundColor = .blue
 		addViews()
@@ -60,9 +65,9 @@ extension WelcomeViewController {
 extension WelcomeViewController {
 	@objc private func validationButtonHandler(_ sender: UIButton) {
 		//TODO: refactor
-		LoadingHelper().showLoading()
+		loadingController.showLoading()
 		viewModel.requestGuestNewSession { result in
-			LoadingHelper().hideLoading()
+			self.loadingController.hideLoading()
 			result.analysis(ifSuccess: {
 				let viewModel = HomeViewModel()
 				let homeViewController = HomeViewController(withViewModel: viewModel)
@@ -105,39 +110,5 @@ extension WelcomeViewController {
 			validationButton.widthAnchor.constraint(equalToConstant: 200),
 			validationButton.heightAnchor.constraint(equalToConstant: 40),
 			])
-	}
-}
-
-class LoadingHelper {
-	private var overlayView = UIView()
-	private var activityIndicator = UIActivityIndicatorView()
-	
-	static let sharedInstance = LoadingHelper()
-	
-	public func showLoading() {
-		if let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-			let window = appDelegate.window {
-			overlayView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
-			overlayView.center = CGPoint(x: window.frame.width / 2.0, y: window.frame.height / 2.0)
-			overlayView.backgroundColor = UIColor.darkGray.withAlphaComponent(0.7)
-			overlayView.clipsToBounds = true
-			overlayView.layer.cornerRadius = 10
-			
-			activityIndicator.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-			activityIndicator.activityIndicatorViewStyle = .whiteLarge
-			activityIndicator.center = CGPoint(x: overlayView.bounds.width / 2, y: overlayView.bounds.height / 2)
-			
-			overlayView.addSubview(activityIndicator)
-			window.addSubview(overlayView)
-			
-			activityIndicator.startAnimating()
-		}
-	}
-	
-	public func hideLoading() {
-		DispatchQueue.main.async {
-			self.activityIndicator.stopAnimating()
-			self.overlayView.removeFromSuperview()
-		}
 	}
 }
