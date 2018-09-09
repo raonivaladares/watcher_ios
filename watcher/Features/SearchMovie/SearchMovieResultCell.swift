@@ -22,7 +22,8 @@ class SearchMovieResultCell: UITableViewCell {
 	
 	private let movieNameLabel: UILabel = {
 		let label = UILabel()
-		label.text = "AAA"
+		label.text = "AAAadjsalsjdlaksjd AAAadjsalsjdlaksjd AAAadjsalsjdlaksjd AAAadjsalsjdlaksjd AAAadjsalsjdlaksjd AAAadjsalsjdlaksjd "
+		label.numberOfLines = 2
 		label.textColor = .white
 		label.translatesAutoresizingMaskIntoConstraints = false
 		
@@ -64,18 +65,20 @@ extension SearchMovieResultCell {
 	}
 	
 	private func defineAndActivateConstraints() {
+		
+		let foo = stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+		foo.priority = UILayoutPriority.defaultLow
 		NSLayoutConstraint.activate([
-			coverImageView.widthAnchor.constraint(equalToConstant: 50),
+			coverImageView.widthAnchor.constraint(equalToConstant: 60),
 			coverImageView.heightAnchor.constraint(equalToConstant: 100),
+			coverImageView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 20),
 			coverImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+			coverImageView.bottomAnchor.constraint(greaterThanOrEqualTo: contentView.bottomAnchor, constant: -20),
 			coverImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 			
-			stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
 			stackView.leadingAnchor.constraint(equalTo: coverImageView.trailingAnchor, constant: 20),
-			stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
 			stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-			
-//			movieNameLabel.leadingAnchor.constraint(equalTo: coverImageView.trailingAnchor, constant: 20)
-			])
+			stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+		])
 	}
 }
