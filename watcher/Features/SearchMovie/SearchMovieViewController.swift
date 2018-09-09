@@ -6,6 +6,7 @@ class SearchMovieViewController: UIViewController {
 	
 	private let tableView: UITableView = {
 		let tableView = UITableView()
+		tableView.backgroundColor = .clear
 		tableView.estimatedRowHeight = 60
 		tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -22,6 +23,8 @@ class SearchMovieViewController: UIViewController {
 extension SearchMovieViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		view.backgroundColor = .black
 		
 		addViews()
 		defineAndActivateConstraints()
