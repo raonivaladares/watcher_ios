@@ -39,10 +39,12 @@ class SearchMovieResultCell: UITableViewCell {
 		return label
 	}()
 	
+	// MARK: Initialization
+	
 	override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		
-		addViews()
+		addViewProperties()
 		defineAndActivateConstraints()
 		selectionStyle = .none
 		backgroundColor = .clear
@@ -51,12 +53,18 @@ class SearchMovieResultCell: UITableViewCell {
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+	
+	func configure(withContent content: SearchMovieCellContent) {
+		movieNameLabel.text = content.movieTitle
+		movieYearlabel.text = content.movieYear
+//		coverImageView.image = content.movieCoverPath
+	}
 }
 
 // MARK: - Private methods - UI
 
 extension SearchMovieResultCell {
-	private func addViews() {
+	private func addViewProperties() {
 		contentView.addSubview(coverImageView)
 		contentView.addSubview(stackView)
 		
@@ -65,9 +73,6 @@ extension SearchMovieResultCell {
 	}
 	
 	private func defineAndActivateConstraints() {
-		
-		let foo = stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-		foo.priority = UILayoutPriority.defaultLow
 		NSLayoutConstraint.activate([
 			coverImageView.widthAnchor.constraint(equalToConstant: 60),
 			coverImageView.heightAnchor.constraint(equalToConstant: 100),

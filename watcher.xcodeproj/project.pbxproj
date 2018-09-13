@@ -16,6 +16,7 @@
 		D1418B3C2144345E006C385D /* SearchMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1418B3B2144345E006C385D /* SearchMovieViewController.swift */; };
 		D1418B3E21449844006C385D /* SearchMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1418B3D21449844006C385D /* SearchMovieViewModel.swift */; };
 		D1418B4021455281006C385D /* SearchMovieResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1418B3F21455281006C385D /* SearchMovieResultCell.swift */; };
+		D1418B422149F049006C385D /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1418B412149F048006C385D /* Movie.swift */; };
 		D14E4B1821164BA20056829F /* PrivateKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14E4B1721164BA20056829F /* PrivateKeys.swift */; };
 		D14E4B1A211F425D0056829F /* WatcherServerErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14E4B19211F425D0056829F /* WatcherServerErrorParser.swift */; };
 		D16889E4210CBC8B00947D1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16889E3210CBC8B00947D1F /* AppDelegate.swift */; };
@@ -152,6 +153,7 @@
 		D1418B3B2144345E006C385D /* SearchMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieViewController.swift; sourceTree = "<group>"; };
 		D1418B3D21449844006C385D /* SearchMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieViewModel.swift; sourceTree = "<group>"; };
 		D1418B3F21455281006C385D /* SearchMovieResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieResultCell.swift; sourceTree = "<group>"; };
+		D1418B412149F048006C385D /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		D14E4B1721164BA20056829F /* PrivateKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKeys.swift; sourceTree = "<group>"; };
 		D14E4B19211F425D0056829F /* WatcherServerErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatcherServerErrorParser.swift; sourceTree = "<group>"; };
 		D16889E0210CBC8B00947D1F /* watcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -480,6 +482,7 @@
 			isa = PBXGroup;
 			children = (
 				D18AE04F2121EB3800CC50B0 /* GuestSession.swift */,
+				D1418B412149F048006C385D /* Movie.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1011,6 +1014,7 @@
 			files = (
 				D1AE05C821361CA50023D445 /* ValidationUseCases.swift in Sources */,
 				D18AE0502121EB3800CC50B0 /* GuestSession.swift in Sources */,
+				D1418B422149F049006C385D /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

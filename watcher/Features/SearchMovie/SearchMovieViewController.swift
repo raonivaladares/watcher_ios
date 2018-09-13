@@ -54,6 +54,9 @@ extension SearchMovieViewController: UITableViewDataSource {
 		
 		let cell = tableView.dequeueReusableCell(withIdentifier: "SearchMovieResultCell", for: indexPath) as! SearchMovieResultCell
 		
+		let content = viewModel.cellContent(forIndex: indexPath.row)
+		cell.configure(withContent: content)
+		
 		return cell
 	}
 }
