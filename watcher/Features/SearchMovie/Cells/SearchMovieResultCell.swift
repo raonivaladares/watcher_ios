@@ -22,7 +22,6 @@ class SearchMovieResultCell: UITableViewCell {
 	
 	private let movieNameLabel: UILabel = {
 		let label = UILabel()
-		label.text = "AAAadjsalsjdlaksjd AAAadjsalsjdlaksjd AAAadjsalsjdlaksjd AAAadjsalsjdlaksjd AAAadjsalsjdlaksjd AAAadjsalsjdlaksjd "
 		label.numberOfLines = 2
 		label.textColor = .white
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -32,7 +31,6 @@ class SearchMovieResultCell: UITableViewCell {
 	
 	private let movieYearlabel: UILabel = {
 		let label = UILabel()
-		label.text = "AAA"
 		label.textColor = .white
 		label.translatesAutoresizingMaskIntoConstraints = false
 		
@@ -57,7 +55,10 @@ class SearchMovieResultCell: UITableViewCell {
 	func configure(withContent content: SearchMovieCellContent) {
 		movieNameLabel.text = content.movieTitle
 		movieYearlabel.text = content.movieYear
-//		coverImageView.image = content.movieCoverPath
+		if let stringPath = content.movieCoverPath,
+			 let url = URL(string: stringPath) {
+				coverImageView.load(url: url)
+		}
 	}
 }
 

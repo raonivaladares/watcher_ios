@@ -8,8 +8,8 @@ public protocol ValidationUseCases {
 }
 
 public struct ViewModelError: Error {
-	var title: String
-	var message: String
+	public let title: String
+	public let message: String
 	
 	public init(title: String, message: String) {
 		self.title = title

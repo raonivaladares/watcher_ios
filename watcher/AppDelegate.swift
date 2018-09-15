@@ -13,6 +13,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let navigationController = UINavigationController(rootViewController: WelcomeViewController())
 		window?.rootViewController = navigationController
 		
+		UINavigationBar.appearance().barTintColor = .black
+		UINavigationBar.appearance().tintColor = .white
+		UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+		UINavigationBar.appearance().isTranslucent = false
+		
+		UINavigationBar.appearance().largeTitleTextAttributes =
+			[NSAttributedStringKey.foregroundColor: UIColor.white]
+		
 		return true
 	}
 

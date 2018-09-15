@@ -53,10 +53,9 @@ extension WelcomeViewController {
 		view.addSubview(loadingController.view)
 		loadingController.didMove(toParentViewController: self)
 		
-		view.backgroundColor = .blue
+		view.backgroundColor = .black
 		addViews()
 		defineAndActivateConstraints()
-		
 	}
 }
 

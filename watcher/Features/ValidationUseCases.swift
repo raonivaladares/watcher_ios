@@ -1,11 +1,3 @@
-//
-//  ValidationUseCases.swift
-//  watcher
-//
-//  Created by Raoni Valadares on 29/08/18.
-//  Copyright © 2018 solo. All rights reserved.
-//
-
 import Foundation
 import Domain
 import NetworkPlataform

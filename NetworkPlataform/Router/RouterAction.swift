@@ -27,4 +27,28 @@ struct RouterAction {
 			}
 		}
 	}
+	
+	enum searchContent: RouterProtocol {
+		case searchMovie
+		
+		var path: String {
+			switch self {
+			case .searchMovie: return "/search/movie"
+			}
+		}
+		
+		var method: HTTPMethod {
+			switch self {
+			default:
+				return .get
+			}
+		}
+		
+		var encoding: ParameterEncoding {
+			switch self {
+			default:
+				return URLEncoding(destination: .queryString)
+			}
+		}
+	}
 }

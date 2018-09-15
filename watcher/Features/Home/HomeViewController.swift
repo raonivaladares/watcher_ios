@@ -35,7 +35,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		view.backgroundColor = .blue
+		view.backgroundColor = .black
 		
 		addViews()
 		defineAndActivateConstraints()

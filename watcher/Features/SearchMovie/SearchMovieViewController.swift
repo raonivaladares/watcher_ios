@@ -15,7 +15,6 @@ class SearchMovieViewController: UIViewController {
 	}()
 	
 	private let viewModel = SearchMovieViewModel()
-	
 }
 
 // MARK: ViewController life-cycle
@@ -32,20 +31,50 @@ extension SearchMovieViewController {
 		
 		tableView.dataSource = self
 		tableView.delegate = self
+		
+		title = "Search Movie"
+		navigationController?.navigationBar.prefersLargeTitles = true
+		
+		let searchController = UISearchController(searchResultsController: nil)
+		searchController.searchResultsUpdater = self
+		searchController.searchBar.barStyle = .black
+		navigationItem.searchController = searchController
+		navigationItem.hidesSearchBarWhenScrolling = false
 	}
 	
 	private func registerCells() {
 		tableView.register(SearchMovieResultCell.self, forCellReuseIdentifier: "SearchMovieResultCell")
 	}
+	
+	@objc private func search(_ text: String) {
+		viewModel.search(movie: "xx") { result in
+			result.analysis(ifSuccess: { _ in
+				self.tableView.reloadData()
+			}, ifFailure: { viewModelError in
+				print(viewModelError.title)
+				print(viewModelError.message)
+			})
+			
+		}
+	}
 }
 
-// MARK: ViewController life-cycle
+// MARK: UISearchResultsUpdating
+
+extension SearchMovieViewController: UISearchResultsUpdating {
+	func updateSearchResults(for searchController: UISearchController) {
+		if let text = searchController.searchBar.text,
+					!text.isEmpty {
+			NSObject.cancelPreviousPerformRequests(withTarget: self)
+			perform(#selector(search), with: text, afterDelay: 2)
+		}
+		
+	}
+}
+
+// MARK: UITableViewDataSource
 
 extension SearchMovieViewController: UITableViewDataSource {
-//	func numberOfSections(in tableView: UITableView) -> Int {
-//		return viewModel.numberOfSections
-//	}
-	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return viewModel.numberOfRolls
 	}
@@ -61,7 +90,7 @@ extension SearchMovieViewController: UITableViewDataSource {
 	}
 }
 
-// MARK: ViewController life-cycle
+// MARK: UITableViewDelegate
 
 extension SearchMovieViewController: UITableViewDelegate {}
 
@@ -81,4 +110,3 @@ extension SearchMovieViewController {
 			])
 	}
 }
-
