@@ -37,7 +37,11 @@ struct SearchMovieViewModel {
 	}
 	
 	func search(movie: String, completion: @escaping (Result<Void, ViewModelError>) -> Void) {
-		completion(.failure(ViewModelError(title: "erro", message: "a mockerd one")))
+		let useCases: SearchContentUseCases = SearchContentUseCasesImp()
+		useCases.searchForMovie(queryString: movie) { result in
+			
+		}
+//		completion(.failure(ViewModelError(title: "erro", message: "a mockerd one")))
 	}
 	
 	init() {

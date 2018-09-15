@@ -33,7 +33,7 @@ struct RouterAction {
 		
 		var path: String {
 			switch self {
-			case .searchMovie: return "/search/movie"
+			case .searchMovie: return "3/search/movie"
 			}
 		}
 		

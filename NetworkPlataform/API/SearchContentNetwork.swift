@@ -1,12 +1,12 @@
 import Foundation
 import Result
 
-public struct MovieNetwork {
+public struct SearchContentNetwork {
 	let watchServer: WatcherServer
 	
-	public func searchForMovie(quereyString: String, completion: @escaping (Result<[MovieSearchResultNetworkModel], ServerError>) -> Void) {
+	public func searchForMovie(queryString: String, completion: @escaping (Result<[MovieSearchResultNetworkModel], ServerError>) -> Void) {
 		
-		let parameters = ["api_key": watchServer.apiConfiguration.apiKey]
+		let parameters = ["api_key": watchServer.apiConfiguration.apiKey, "query": queryString]
 		let request = RequestBuilder(
 			action: RouterAction.searchContent.searchMovie,
 			configuration: watchServer.apiConfiguration

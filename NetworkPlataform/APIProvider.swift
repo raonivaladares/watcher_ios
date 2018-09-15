@@ -14,9 +14,20 @@ extension APIProvider {
 		
 		return GuestSessionNetwork(watchServer: watchServer)
 	}
+
+}
+
+extension APIProvider {
+	public func searchContentNetwork() -> SearchContentNetwork {
+		
+		return SearchContentNetwork(watchServer: watchServer)
+	}
+}
+
+//TODO: Setup configurarion here
+// ex:
 //
 //	public func makeCommentsNetwork() -> CommentsNetwork {
 //		let network = Network<Comment>(apiEndpoint)
 //		return CommentsNetwork(network: network)
 //	}
-}
