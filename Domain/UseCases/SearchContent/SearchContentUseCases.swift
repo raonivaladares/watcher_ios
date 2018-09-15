@@ -11,7 +11,9 @@ public struct SearchContentUseCasesImp: SearchContentUseCases {
 	
 	public func searchForMovie(queryString: String, completion: @escaping (Result<Void, ViewModelError>) -> Void) {
 		apiProvider.searchContentNetwork().searchForMovie(queryString: queryString) { result in
-			completion(result.bimap(success: { _ in }, failure: { _ in ViewModelError(title: "a", message: "aaa") }))
+			completion(result.bimap(success: {
+				print($0)
+			}, failure: { _ in ViewModelError(title: "a", message: "aaa") }))
 			//			completion(result.map { $0 }.mapError(ViewModelError.init))
 		}
 	}

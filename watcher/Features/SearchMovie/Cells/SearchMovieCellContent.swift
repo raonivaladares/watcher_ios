@@ -6,7 +6,7 @@ struct SearchMovieCellContent {
 	let movieYear: String
 	let movieCoverPath: String?
 	
-	init(movie: MovieSearchResult) {
+	init(movie: MovieSearchResult.Movie) {
 		movieTitle = movie.title
 		movieYear = movie.serverID.description
 		movieCoverPath = movie.backdropPath

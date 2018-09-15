@@ -4,7 +4,7 @@ import Result
 public struct SearchContentNetwork {
 	let watchServer: WatcherServer
 	
-	public func searchForMovie(queryString: String, completion: @escaping (Result<[MovieSearchResultNetworkModel], ServerError>) -> Void) {
+	public func searchForMovie(queryString: String, completion: @escaping (Result<MovieSearchResultNetworkModel, ServerError>) -> Void) {
 		
 		let parameters = ["api_key": watchServer.apiConfiguration.apiKey, "query": queryString]
 		let request = RequestBuilder(
@@ -16,7 +16,9 @@ public struct SearchContentNetwork {
 		
 		watchServer.execute(request: request) { result in
 			result.analysis(ifSuccess: { json in
-				print(json)
+				if let searchResult = MovieSearchResultNetworkModel(json: json) {
+						print(searchResult)
+				}
 			}, ifFailure: {
 				print($0)
 			})
