@@ -3,9 +3,9 @@ import Domain
 import Result
 
 struct WelcomeViewModel {
-	private let validationUseCases: Domain.ValidationUseCases
+	private let validationUseCases: ValidationUseCases
 	
-	init(validationUseCases: Domain.ValidationUseCases = ValidationUseCases()) {
+	init(validationUseCases: ValidationUseCases = ValidationUseCasesImp()) {
 		self.validationUseCases = validationUseCases
 	}
 	

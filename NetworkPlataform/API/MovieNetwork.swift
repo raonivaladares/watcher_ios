@@ -4,7 +4,7 @@ import Result
 public struct MovieNetwork {
 	let watchServer: WatcherServer
 	
-	public func searchForMovie(quereyString: String, completion: @escaping (Result<[MovieSearchResult], ServerError>) -> Void) {
+	public func searchForMovie(quereyString: String, completion: @escaping (Result<[MovieSearchResultNetworkModel], ServerError>) -> Void) {
 		
 		let parameters = ["api_key": watchServer.apiConfiguration.apiKey]
 		let request = RequestBuilder(

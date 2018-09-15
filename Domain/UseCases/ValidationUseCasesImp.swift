@@ -1,28 +1,28 @@
 import Foundation
-import Domain
 import NetworkPlataform
 import Result
 
-struct ValidationUseCases: Domain.ValidationUseCases {
+public struct ValidationUseCasesImp: ValidationUseCases {
 	private let localDataProvider: LocalDataProvider
 	private let apiProvider: APIProvider
 	
-	init() {
+	public init() {
 		localDataProvider = LocalDataProvider()
 		apiProvider = APIProvider()
 	}
 	
-	func requestGuestSession(completion: @escaping (Result<Void, ViewModelError>) -> Void) {//
+public	func requestGuestSession(completion: @escaping (Result<Void, ViewModelError>) -> Void) {
 		apiProvider.guestSessionNetwork().requestGuestSessionToken { result in
 			if let session = result.value {
-				self.localDataProvider.session = session
+				self.localDataProvider.session = session.asDomain()
 			}
+			
 			completion(result.bimap(success: { _ in }, failure: { _ in ViewModelError(title: "a", message: "aaa") }))
 //			completion(result.map { $0 }.mapError(ViewModelError.init))
 		}
 	}
 	
-	func isCurrentGuestSessionValid() -> Bool {
+public	func isCurrentGuestSessionValid() -> Bool {
 		if let session = localDataProvider.session {
 			let now = Date()
 			return session.expiresAt <= now

@@ -11,3 +11,10 @@ public struct GuestSession {
 		self.id = id
 	}
 }
+
+import NetworkPlataform
+extension GuestSessionNetworkModel {
+	func asDomain() -> GuestSession {
+		return GuestSession(success: self.success, expiresAt: self.expiresAt, id: self.id)
+	}
+}

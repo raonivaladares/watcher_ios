@@ -1,7 +1,7 @@
 import Foundation
 import SwiftyJSON
 
-public struct MovieSearchResult {
+public struct MovieSearchResultNetworkModel {
 	public let serverID: Int
 	public let title: String
 	public let backdropPath: String?

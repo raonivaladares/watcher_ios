@@ -1,7 +1,12 @@
-import Domain
 import SwiftyJSON
 
-extension GuestSession {
+import Foundation
+
+public struct GuestSessionNetworkModel {
+	public let success: Bool
+	public let expiresAt: Date
+	public let id: String
+	
 	init?(json: JSON) {
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
@@ -15,6 +20,8 @@ extension GuestSession {
 				return nil
 		}
 		
-		self.init(success: success, expiresAt: expiresAt, id: id)
+		self.success = success
+		self.expiresAt = expiresAt
+		self.id = id
 	}
 }
