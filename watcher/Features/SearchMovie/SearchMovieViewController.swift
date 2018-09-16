@@ -14,7 +14,7 @@ class SearchMovieViewController: UIViewController {
 		return tableView
 	}()
 	
-	private let viewModel = SearchMovieViewModel()
+	private var viewModel = SearchMovieViewModel()
 }
 
 // MARK: ViewController life-cycle
@@ -47,14 +47,13 @@ extension SearchMovieViewController {
 	}
 	
 	@objc private func search(_ text: String) {
-		viewModel.search(movie: "xx") { result in
+		viewModel.search(movieName: text) { result in
 			result.analysis(ifSuccess: { _ in
 				self.tableView.reloadData()
 			}, ifFailure: { viewModelError in
 				print(viewModelError.title)
 				print(viewModelError.message)
 			})
-			
 		}
 	}
 }

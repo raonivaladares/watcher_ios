@@ -17,10 +17,11 @@ public struct SearchContentNetwork {
 		watchServer.execute(request: request) { result in
 			result.analysis(ifSuccess: { json in
 				if let searchResult = MovieSearchResultNetworkModel(json: json) {
-						print(searchResult)
+					completion(.success(searchResult))
 				}
+				completion(.failure(ServerError.invalidJSON))
 			}, ifFailure: {
-				print($0)
+				completion(.failure($0))
 			})
 		}
 	}

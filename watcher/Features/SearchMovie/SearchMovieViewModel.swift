@@ -2,7 +2,7 @@ import Foundation
 import Result
 import Domain
 
-struct SearchMovieViewModel {
+class SearchMovieViewModel {
 	var numberOfSections: Int {
 		return 1
 	}
@@ -11,40 +11,29 @@ struct SearchMovieViewModel {
 		return cellContents.count
 	}
 	
-	let movies: [MovieSearchResult.Movie] = [
-		MovieSearchResult.Movie(
-			serverID: 0,
-			title: "mock 1",
-			backdropPath: "https://image.tmdb.org/t/p/w500_and_h282_face/zjOj2gnDJYFdYt6R7FtuHn7yrPr.jpg",
-			releaseDate: Date()
-		),
-		MovieSearchResult.Movie(serverID: 1, title: "mock 2", backdropPath: nil, releaseDate: Date()),
-		MovieSearchResult.Movie(serverID: 2, title: "mock 3", backdropPath: nil, releaseDate: Date()),
-		MovieSearchResult.Movie(serverID: 3, title: "mock 4", backdropPath: nil, releaseDate: Date()),
-		MovieSearchResult.Movie(serverID: 4, title: "mock 5", backdropPath: nil, releaseDate: Date()),
-		MovieSearchResult.Movie(
-			serverID: 5,
-			title: "mock 6",
-			backdropPath: "https://image.tmdb.org/t/p/w500_and_h282_face/zjOj2gnDJYFdYt6R7FtuHn7yrPr.jpg",
-			releaseDate: Date()
-		)
-	]
-	
-	let cellContents: [SearchMovieCellContent]
+	var movieSearchResult: MovieSearchResult?
+	var cellContents: [SearchMovieCellContent] = []
+	let useCases: SearchContentUseCases = SearchContentUseCasesImp()
 	
 	func cellContent(forIndex index: Int) -> SearchMovieCellContent {
 		return cellContents[index]
 	}
 	
-	func search(movie: String, completion: @escaping (Result<Void, ViewModelError>) -> Void) {
-		let useCases: SearchContentUseCases = SearchContentUseCasesImp()
-		useCases.searchForMovie(queryString: movie) { result in
-			
+	func search(movieName: String, completion: @escaping (Result<Void, ViewModelError>) -> Void) {
+		useCases.searchForMovie(queryString: movieName) { result in
+			if let movieSearchResult = result.value {
+				self.cellContents = movieSearchResult.results.map(SearchMovieCellContent.init)
+				self.movieSearchResult = movieSearchResult
+				completion(.success(()))
+			} else {
+				completion(.failure(ViewModelError(title: "erro", message: "a mockerd one")))
+				
+			}
+		
 		}
-//		completion(.failure(ViewModelError(title: "erro", message: "a mockerd one")))
 	}
 	
 	init() {
-		cellContents = movies.map(SearchMovieCellContent.init)
+		
 	}	
 }

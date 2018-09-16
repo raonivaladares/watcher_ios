@@ -1,14 +1,7 @@
 import Foundation
 
-public struct MovieSearchResult {
-	public let page: Int
-	public let movies: [Movie]
-	public let totalResults: Int
-	public let totalPages: Int
-}
-
 extension MovieSearchResult {
-	public struct Movie {
+	public struct Result {
 		public let serverID: Int
 		public let title: String
 		public let backdropPath: String?
