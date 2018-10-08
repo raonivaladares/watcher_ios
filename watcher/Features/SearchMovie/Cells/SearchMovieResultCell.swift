@@ -15,6 +15,7 @@ class SearchMovieResultCell: UITableViewCell {
 	private let stackView: UIStackView = {
 		let stackView = UIStackView()
 		stackView.axis = .vertical
+		stackView.spacing = 5
 		stackView.translatesAutoresizingMaskIntoConstraints = false
 		
 		return stackView
@@ -24,6 +25,7 @@ class SearchMovieResultCell: UITableViewCell {
 		let label = UILabel()
 		label.numberOfLines = 2
 		label.textColor = .white
+		label.font = UIFont.boldSystemFont(ofSize: 15)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		
 		return label

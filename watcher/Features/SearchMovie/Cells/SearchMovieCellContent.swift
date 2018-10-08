@@ -8,7 +8,11 @@ struct SearchMovieCellContent {
 	
 	init(movie: MovieSearchResult.Result) {
 		movieTitle = movie.title
-		movieYear = movie.serverID.description
+		
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "YYYY"
+		
+		movieYear = dateFormatter.string(from: movie.releaseDate)
 		movieCoverPath = movie.backdropPath
 	}
 }
