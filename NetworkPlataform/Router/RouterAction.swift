@@ -51,4 +51,28 @@ struct RouterAction {
 			}
 		}
 	}
+	
+	enum apiConfiguration: RouterProtocol {
+		case configuration
+		
+		var path: String {
+			switch self {
+			case .configuration: return "3/configuration"
+			}
+		}
+		
+		var method: HTTPMethod {
+			switch self {
+			default:
+				return .get
+			}
+		}
+		
+		var encoding: ParameterEncoding {
+			switch self {
+			default:
+				return URLEncoding(destination: .queryString)
+			}
+		}
+	}
 }

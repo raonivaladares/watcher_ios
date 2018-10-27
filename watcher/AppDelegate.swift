@@ -6,7 +6,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 
 
-	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
 		window = UIWindow(frame: UIScreen.main.bounds)
 		window?.makeKeyAndVisible()
@@ -15,11 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		UINavigationBar.appearance().barTintColor = .black
 		UINavigationBar.appearance().tintColor = .white
-		UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+		UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
 		UINavigationBar.appearance().isTranslucent = false
 		
 		UINavigationBar.appearance().largeTitleTextAttributes =
-			[NSAttributedStringKey.foregroundColor: UIColor.white]
+			[NSAttributedString.Key.foregroundColor: UIColor.white]
 		
 		return true
 	}

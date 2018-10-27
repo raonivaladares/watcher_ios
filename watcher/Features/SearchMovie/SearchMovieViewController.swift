@@ -8,7 +8,7 @@ class SearchMovieViewController: UIViewController {
 		let tableView = UITableView()
 		tableView.backgroundColor = .clear
 		tableView.estimatedRowHeight = 140
-		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.rowHeight = UITableView.automaticDimension
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		
 		return tableView

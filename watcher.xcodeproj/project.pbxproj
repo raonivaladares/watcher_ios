@@ -60,6 +60,7 @@
 		D18AE05F212A25D000CC50B0 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE05E212A25D000CC50B0 /* WelcomeViewController.swift */; };
 		D18AE062212A3BB500CC50B0 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18AE061212A3BB500CC50B0 /* WelcomeViewModel.swift */; };
 		D1AE05C821361CA50023D445 /* ValidationUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AE05C721361CA50023D445 /* ValidationUseCases.swift */; };
+		D1BACA23217D675E00D5E499 /* ConfigurationNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BACA22217D675E00D5E499 /* ConfigurationNetwork.swift */; };
 		D1CD5F6B2115BE2A001F2474 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CD5F6A2115BE2A001F2474 /* Request.swift */; };
 		EB9A7353B092AC63FFFAD099 /* Pods_DomainTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68A0CD52749101E7825F2B09 /* Pods_DomainTests.framework */; };
 		EC000F811A31F7EDE9C83DE4 /* Pods_watcherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8E57FA07D1814E424DA43D /* Pods_watcherUITests.framework */; };
@@ -212,6 +213,7 @@
 		D18AE061212A3BB500CC50B0 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		D1AE05C721361CA50023D445 /* ValidationUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationUseCases.swift; sourceTree = "<group>"; };
 		D1AE05CD21377DDC0023D445 /* ValidationUseCasesImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationUseCasesImp.swift; sourceTree = "<group>"; };
+		D1BACA22217D675E00D5E499 /* ConfigurationNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationNetwork.swift; sourceTree = "<group>"; };
 		D1CD5F6A2115BE2A001F2474 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		D36E9B022832DD8CB5175597 /* Pods-watcherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watcherTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watcherTests/Pods-watcherTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DB9EC44A1DA8770A87F19381 /* Pods-watcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watcher.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watcher/Pods-watcher.debug.xcconfig"; sourceTree = "<group>"; };
@@ -553,6 +555,7 @@
 			children = (
 				D18AE058212219D000CC50B0 /* GuestSessionNetwork.swift */,
 				D1418B4B214D53D3006C385D /* SearchContentNetwork.swift */,
+				D1BACA22217D675E00D5E499 /* ConfigurationNetwork.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -758,29 +761,34 @@
 				TargetAttributes = {
 					D16889DF210CBC8B00947D1F = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 					D16889F3210CBC9400947D1F = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = D16889DF210CBC8B00947D1F;
 					};
 					D16889FE210CBC9400947D1F = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = D16889DF210CBC8B00947D1F;
 					};
 					D1688A1D210CC76700947D1F = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 0940;
+						LastSwiftMigration = 1000;
 					};
 					D1688A25210CC76800947D1F = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = D16889DF210CBC8B00947D1F;
 					};
 					D1688A40210CC79900947D1F = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 0940;
+						LastSwiftMigration = 1000;
 					};
 					D1688A48210CC79900947D1F = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = D16889DF210CBC8B00947D1F;
 					};
 				};
@@ -1122,6 +1130,7 @@
 				D14E4B1821164BA20056829F /* PrivateKeys.swift in Sources */,
 				D18AE0552121FDF700CC50B0 /* GuestSessionNetworkModel.swift in Sources */,
 				D1CD5F6B2115BE2A001F2474 /* Request.swift in Sources */,
+				D1BACA23217D675E00D5E499 /* ConfigurationNetwork.swift in Sources */,
 				D1418B4C214D53D3006C385D /* SearchContentNetwork.swift in Sources */,
 				D14E4B1A211F425D0056829F /* WatcherServerErrorParser.swift in Sources */,
 				D1418B56214D9F69006C385D /* MovieSearchResultNetworkModel+Result.swift in Sources */,
@@ -1327,7 +1336,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = rov.com.watcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1347,7 +1356,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = rov.com.watcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1368,7 +1377,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = rov.com.watcherTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/watcher.app/watcher";
 			};
@@ -1390,7 +1399,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = rov.com.watcherTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/watcher.app/watcher";
 			};
@@ -1411,7 +1420,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = rov.com.watcherUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = watcher;
 			};
@@ -1432,7 +1441,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = rov.com.watcherUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = watcher;
 			};
@@ -1462,7 +1471,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1492,7 +1501,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rov.com.Domain;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1514,7 +1523,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = rov.com.DomainTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/watcher.app/watcher";
 			};
@@ -1535,7 +1544,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = rov.com.DomainTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/watcher.app/watcher";
 			};
@@ -1565,7 +1574,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1595,7 +1604,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = rov.com.NetworkPlataform;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1617,7 +1626,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = rov.com.NetworkPlataformTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/watcher.app/watcher";
 			};
@@ -1638,7 +1647,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = rov.com.NetworkPlataformTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/watcher.app/watcher";
 			};

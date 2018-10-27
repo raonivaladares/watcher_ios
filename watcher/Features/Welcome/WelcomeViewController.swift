@@ -49,9 +49,9 @@ extension WelcomeViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		addChildViewController(loadingController)
+		addChild(loadingController)
 		view.addSubview(loadingController.view)
-		loadingController.didMove(toParentViewController: self)
+		loadingController.didMove(toParent: self)
 		
 		view.backgroundColor = .black
 		addViews()

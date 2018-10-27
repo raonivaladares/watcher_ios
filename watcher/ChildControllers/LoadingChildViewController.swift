@@ -24,7 +24,7 @@ class LoadingViewController: UIViewController {
 		backLoading?.translatesAutoresizingMaskIntoConstraints = false
 		backLoading?.backgroundColor = UIColor.darkGray.withAlphaComponent(0.7)
 		
-		let spinner = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+		let spinner = UIActivityIndicatorView(style: .whiteLarge)
 		spinner.hidesWhenStopped = true
 		spinner.translatesAutoresizingMaskIntoConstraints = false
 		spinner.isUserInteractionEnabled = true
