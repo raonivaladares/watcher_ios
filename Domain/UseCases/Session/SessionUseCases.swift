@@ -1,7 +1,7 @@
 import Foundation
 import Result
 
-public protocol ValidationUseCases {
+public protocol SessionUseCases {
 //	func requestUserToken(completion: (Result<Void, ViewModelError>) -> Void)
 	func requestGuestSession(completion: @escaping (Result<Void, ViewModelError>) -> Void)
 	func isCurrentGuestSessionValid() -> Bool

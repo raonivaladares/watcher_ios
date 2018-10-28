@@ -3,14 +3,14 @@ import Domain
 import Result
 
 struct WelcomeViewModel {
-	private let validationUseCases: ValidationUseCases
+	private let sessionUseCases: SessionUseCases
 	
-	init(validationUseCases: ValidationUseCases = ValidationUseCasesImp()) {
-		self.validationUseCases = validationUseCases
+	init(sessionUseCases: SessionUseCases) {
+		self.sessionUseCases = sessionUseCases
 	}
 	
 	func requestGuestNewSession(completion: @escaping (Result<Void, ViewModelError>) -> Void) {
-		validationUseCases.requestGuestSession { result in
+		sessionUseCases.requestGuestSession { result in
 			completion(result)
 		}
 	}

@@ -2,16 +2,16 @@ import Foundation
 import NetworkPlataform
 import Result
 
-public struct ValidationUseCasesImp: ValidationUseCases {
+struct ValidationUseCasesImp: SessionUseCases {
 	private let localDataProvider: LocalDataProvider
 	private let apiProvider: APIProvider
 	
-	public init() {
-		localDataProvider = LocalDataProvider()
-		apiProvider = APIProvider()
+	init(localDataProvider: LocalDataProvider, apiProvider: APIProvider) {
+		self.localDataProvider = localDataProvider
+		self.apiProvider = apiProvider
 	}
 	
-public	func requestGuestSession(completion: @escaping (Result<Void, ViewModelError>) -> Void) {
+	func requestGuestSession(completion: @escaping (Result<Void, ViewModelError>) -> Void) {
 		apiProvider.guestSessionNetwork().requestGuestSessionToken { result in
 			if let session = result.value {
 				self.localDataProvider.session = session.asDomain()
@@ -22,7 +22,7 @@ public	func requestGuestSession(completion: @escaping (Result<Void, ViewModelErr
 		}
 	}
 	
-public	func isCurrentGuestSessionValid() -> Bool {
+	func isCurrentGuestSessionValid() -> Bool {
 		if let session = localDataProvider.session {
 			let now = Date()
 			return session.expiresAt <= now
