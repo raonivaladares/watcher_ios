@@ -1,17 +1,23 @@
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UITabBarController, UITabBarControllerDelegate {
 	
 	// MARK: Private UI properties
-	
-	private let buttonSearchMovie: UIButton = {
-		let button = UIButton()
-		button.setTitle("Search moview", for: .normal)
-		button.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
-		button.translatesAutoresizingMaskIntoConstraints = false
-		
-		return button
-	}()
+//	private let tabBar: UITabBarController = {
+//		let tabBar = UITabBarController()
+//		let foo = SearchMovieViewController()
+//		foo.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+//		tabBar.viewControllers = [foo]
+//		return tabBar
+//	}()
+//	private let buttonSearchMovie: UIButton = {
+//		let button = UIButton()
+//		button.setTitle("Search moview", for: .normal)
+//		button.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
+//		button.translatesAutoresizingMaskIntoConstraints = false
+//
+//		return button
+//	}()
 	
 	// MARK: Initialization
 	
@@ -39,6 +45,22 @@ extension HomeViewController {
 		
 		addViews()
 		defineAndActivateConstraints()
+		delegate = self
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		let controntoller = SearchMovieViewController()
+		let navigation = UINavigationController(rootViewController: controntoller)
+		let tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+		controntoller.tabBarItem = tabBarItem
+		
+		viewControllers = [navigation]
+	}
+	
+	func tabBarController(_ tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+		print("Selected \(viewController.title!)")
 	}
 }
 
@@ -46,13 +68,13 @@ extension HomeViewController {
 
 extension HomeViewController {
 	private func addViews() {
-		view.addSubview(buttonSearchMovie)
+//		view.addSubview(buttonSearchMovie)
 	}
 	
 	private func defineAndActivateConstraints() {
 		NSLayoutConstraint.activate([
-			buttonSearchMovie.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			buttonSearchMovie.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+//			buttonSearchMovie.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//			buttonSearchMovie.centerYAnchor.constraint(equalTo: view.centerYAnchor)
 		])
 	}
 }

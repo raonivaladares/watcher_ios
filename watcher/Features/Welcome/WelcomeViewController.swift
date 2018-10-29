@@ -1,5 +1,5 @@
 import UIKit
-import NetworkPlataform
+import SnapKit
 
 class WelcomeViewController: UIViewController {
 	
@@ -7,7 +7,7 @@ class WelcomeViewController: UIViewController {
 	
 	let validationLabel: UILabel = {
 		let label = UILabel()
-		label.text = "We use this app you need to validate your device at:"
+		label.text = "API by"
 		label.font = UIFont.boldSystemFont(ofSize: 22)
 		label.textColor = .red
 		label.numberOfLines = 0
@@ -27,7 +27,7 @@ class WelcomeViewController: UIViewController {
 	
 	let validationButton: UIButton = {
 		let button = UIButton()
-		button.setTitle("Validate", for: .normal)
+		button.setTitle("Start", for: .normal)
 		button.setTitleColor(.red, for: .normal)
 		button.backgroundColor = .white
 		button.layer.cornerRadius = 20
@@ -80,10 +80,8 @@ extension WelcomeViewController {
 			result.analysis(ifSuccess: {
 				let viewModel = HomeViewModel()
 				let homeViewController = HomeViewController(withViewModel: viewModel)
-				let navigationController = UINavigationController(rootViewController: homeViewController)
-				self.present(navigationController, animated: true)
+				self.present(homeViewController, animated: true)
 			}, ifFailure: { error in
-				print(error)
 				let alertController = UIAlertController(title: "a", message: "aa", preferredStyle: .alert)
 				let okAction = UIAlertAction(title: "OK", style: .default)
 				
@@ -98,26 +96,31 @@ extension WelcomeViewController {
 
 extension WelcomeViewController {
 	private func addViews() {
-		view.addSubview(validationLabel)
-		view.addSubview(tmdLogoImageView)
-		view.addSubview(validationButton)
+		view.addSubviews(validationLabel,
+										 tmdLogoImageView,
+										 validationButton
+		)
 	}
 	
 	private func defineAndActivateConstraints() {
-		NSLayoutConstraint.activate([
-			validationLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-			validationLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-			validationLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-			
-			tmdLogoImageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-			tmdLogoImageView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
-			tmdLogoImageView.widthAnchor.constraint(equalToConstant: 300),
-			tmdLogoImageView.heightAnchor.constraint(equalToConstant: 300),
-			
-			validationButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
-			validationButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			validationButton.widthAnchor.constraint(equalToConstant: 200),
-			validationButton.heightAnchor.constraint(equalToConstant: 40),
-			])
+		validationLabel.snp.makeConstraints {
+			$0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
+			$0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(16)
+			$0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-16)
+		}
+		
+		tmdLogoImageView.snp.makeConstraints {
+			$0.centerX.equalToSuperview()
+			$0.centerY.equalToSuperview()
+			$0.width.equalTo(200)
+			$0.height.equalTo(200)
+		}
+		
+		validationButton.snp.makeConstraints {
+			$0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-40)
+			$0.centerX.equalToSuperview()
+			$0.width.equalTo(200)
+			$0.height.equalTo(40)
+		}
 	}
 }
