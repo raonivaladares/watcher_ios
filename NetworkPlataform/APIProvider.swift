@@ -2,7 +2,7 @@ import Foundation
 import Alamofire
 
 public struct APIProvider {
-	let watchServer: WatcherServer
+	private let watchServer: WatcherServer
 	
 	public init() {
 		watchServer = WatcherServer(apiConfiguration: APIProviderConfiguration())

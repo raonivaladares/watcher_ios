@@ -81,8 +81,8 @@ extension WelcomeViewController {
 				let viewModel = HomeViewModel()
 				let homeViewController = HomeViewController(withViewModel: viewModel)
 				self.present(homeViewController, animated: true)
-			}, ifFailure: { error in
-				let alertController = UIAlertController(title: "a", message: "aa", preferredStyle: .alert)
+			}, ifFailure: { viewModelError in
+				let alertController = UIAlertController(title: viewModelError.title, message: viewModelError.message, preferredStyle: .alert)
 				let okAction = UIAlertAction(title: "OK", style: .default)
 				
 				alertController.addAction(okAction)
