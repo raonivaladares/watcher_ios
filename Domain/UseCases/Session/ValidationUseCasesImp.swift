@@ -1,8 +1,9 @@
 import Foundation
 import NetworkPlataform
+import DataPlataform
 import Result
 
-struct ValidationUseCasesImp: SessionUseCases {
+final class ValidationUseCasesImp: SessionUseCases {
 	private let localDataProvider: LocalDataProvider
 	private let apiProvider: APIProvider
 	
@@ -13,8 +14,8 @@ struct ValidationUseCasesImp: SessionUseCases {
 	
 	func requestGuestSession(completion: @escaping (Result<Void, ViewModelError>) -> Void) {
 		apiProvider.guestSessionNetwork().requestGuestSessionToken { result in
-			if let session = result.value {
-				self.localDataProvider.session = session.asDomain()
+			if let guestSession = result.value {
+//				self.localDataProvider.save(guestSession.asDomain())
 			}
 			
 			completion(result.bimap(success: { _ in }, failure: { _ in ViewModelError(title: "a", message: "aaa") }))
@@ -23,14 +24,10 @@ struct ValidationUseCasesImp: SessionUseCases {
 	}
 	
 	func isCurrentGuestSessionValid() -> Bool {
-		if let session = localDataProvider.session {
-			let now = Date()
-			return session.expiresAt <= now
-		}
+//		if let session = localDataProvider.query() {
+//			let now = Date()
+//			return session.expiresAt <= now
+//		}
 		return false
 	}
-}
-
-class LocalDataProvider {
-	var session: GuestSession?
 }

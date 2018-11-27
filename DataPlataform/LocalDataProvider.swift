@@ -1,25 +1,24 @@
 import Foundation
 
-struct LocalDataProvider {
-	private let persistedDataProvider: PersistedDataProvider = PersistedDataProviderImp()
-}
-
-
-extension LocalDataProvider {
-	public func persistData() {
+public final class LocalDataProvider {
+	public let userDefaultsDataProvider: UserDefaultsDataProvider
 	
+	init(userDefaultsDataProvider: UserDefaultsDataProvider) {
+		self.userDefaultsDataProvider = userDefaultsDataProvider
+	}
+	
+	public convenience init(userDefaultsDataProvider: UserDefaultsDataProvider? = nil) {
+		self.init(userDefaultsDataProvider: userDefaultsDataProvider ?? UserDefaultsDataProviderImp())
 	}
 }
 
-struct CachedDataProvider {}
-
-public protocol PersistedDataProvider {
+public protocol UserDefaultsDataProvider {
 		func save<T: Codable>(_ model: T)
 		func delete<T: Codable>(_ model: T)
-		func current<T: Codable>() -> T?
+		func query<T: Codable>() -> T?
 }
 
-struct PersistedDataProviderImp: PersistedDataProvider {
+final class UserDefaultsDataProviderImp: UserDefaultsDataProvider {
 	func save<T: Codable>(_ model: T) {
 		let encoder = JSONEncoder()
 				if let encoded = try? encoder.encode(model) {
@@ -31,7 +30,7 @@ struct PersistedDataProviderImp: PersistedDataProvider {
 		UserDefaults.standard.removeObject(forKey: String(describing: T.self))
 	}
 	
-	func current<T: Codable>() -> T? {
+	func query<T: Codable>() -> T? {
 		let decoder = JSONDecoder()
 				if let questionData = UserDefaults.standard.data(forKey: String(describing: T.self)),
 					let question = try? decoder.decode(T.self, from: questionData) {
@@ -41,30 +40,3 @@ struct PersistedDataProviderImp: PersistedDataProvider {
 				return nil
 	}
 }
-
-
-//protocol StandardUserDefaultsDataProvidable {
-//	func save<T: Codable>(_ model: T)
-//	func current<T: Codable>() -> T?
-//}
-//
-//struct StandardUserDefaultsDataProvider: StandardUserDefaultsDataProvidable {
-//	let userDefaults = UserDefaults.standard
-//
-//	func save<T: Codable>(_ model: T) {
-//		let encoder = JSONEncoder()
-//		if let encoded = try? encoder.encode(model) {
-//			UserDefaults.standard.set(encoded, forKey: String(describing: T.self))
-//		}
-//	}
-//
-//	func current<T: Codable>() -> T? {
-//		let decoder = JSONDecoder()
-//		if let questionData = UserDefaults.standard.data(forKey: String(describing: T.self)),
-//			let question = try? decoder.decode(T.self, from: questionData) {
-//			return question
-//		}
-//
-//		return nil
-//	}
-//}

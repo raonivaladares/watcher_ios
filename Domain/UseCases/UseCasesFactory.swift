@@ -1,5 +1,6 @@
 import Foundation
 import NetworkPlataform
+import DataPlataform
 
 public struct UseCasesFactory {
 	private let localDataProvider: LocalDataProvider

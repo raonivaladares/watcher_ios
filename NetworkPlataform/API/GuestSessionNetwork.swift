@@ -16,12 +16,12 @@ public struct GuestSessionNetwork {
 		
 		watchServer.execute(request: request) { result in
 			result.analysis(ifSuccess: { json in
-				guard let requestToken = GuestSessionNetworkModel(json: json) else {
+				guard let guestSession = GuestSessionNetworkModel(json: json) else {
 					completion(.failure(ServerError.invalidJSON))
 					return
 				}
 				
-				completion(.success(requestToken))
+				completion(.success(guestSession))
 			}, ifFailure: {
 				completion(.failure($0))
 			})
