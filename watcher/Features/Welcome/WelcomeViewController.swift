@@ -29,7 +29,7 @@ class WelcomeViewController: UIViewController {
 		let button = UIButton()
 		button.setTitle("Start", for: .normal)
 		button.setTitleColor(.red, for: .normal)
-		button.backgroundColor = .white
+		button.backgroundColor = .blue
 		button.layer.cornerRadius = 20
 		button.addTarget(self, action: #selector(validationButtonHandler(_:)), for: .touchUpInside)
 		button.translatesAutoresizingMaskIntoConstraints = false
@@ -58,12 +58,11 @@ class WelcomeViewController: UIViewController {
 extension WelcomeViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+		view.backgroundColor = .white
 		addChild(loadingController)
 		view.addSubview(loadingController.view)
 		loadingController.didMove(toParent: self)
 		
-		view.backgroundColor = .black
 		addViews()
 		defineAndActivateConstraints()
 	}
@@ -78,8 +77,7 @@ extension WelcomeViewController {
 		viewModel.requestGuestNewSession { result in
 			self.loadingController.hideLoading()
 			result.analysis(ifSuccess: {
-				let viewModel = HomeViewModel()
-				let homeViewController = HomeViewController(withViewModel: viewModel)
+				let homeViewController = SearchMovieViewController()
 				self.present(homeViewController, animated: true)
 			}, ifFailure: { viewModelError in
 				let alertController = UIAlertController(title: viewModelError.title, message: viewModelError.message, preferredStyle: .alert)

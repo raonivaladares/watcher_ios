@@ -13,7 +13,6 @@
 		78BA3AF5931A247A2774DD46 /* Pods_Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6AF1E52413C3217AA2EA8C /* Pods_Domain.framework */; };
 		79795AE54A813DC23C53F104 /* Pods_NetworkPlataformTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C445F5520414CB242D1366 /* Pods_NetworkPlataformTests.framework */; };
 		D1269CD22186A5D800BF8227 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1269CD12186A5D800BF8227 /* UIView+Extensions.swift */; };
-		D1269CD52186A80B00BF8227 /* HomeTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1269CD42186A80B00BF8227 /* HomeTabCoordinator.swift */; };
 		D1269CE42188731600BF8227 /* DataPlataform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1269CDB2188731600BF8227 /* DataPlataform.framework */; };
 		D1269CEB2188731600BF8227 /* DataPlataformTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1269CEA2188731600BF8227 /* DataPlataformTests.swift */; };
 		D1269CED2188731700BF8227 /* DataPlataform.h in Headers */ = {isa = PBXBuildFile; fileRef = D1269CDD2188731600BF8227 /* DataPlataform.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -38,12 +37,10 @@
 		D14E4B1821164BA20056829F /* PrivateKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14E4B1721164BA20056829F /* PrivateKeys.swift */; };
 		D14E4B1A211F425D0056829F /* WatcherServerErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14E4B19211F425D0056829F /* WatcherServerErrorParser.swift */; };
 		D16889E4210CBC8B00947D1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16889E3210CBC8B00947D1F /* AppDelegate.swift */; };
-		D16889E6210CBC8B00947D1F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16889E5210CBC8B00947D1F /* HomeViewController.swift */; };
 		D16889EB210CBC9300947D1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D16889EA210CBC9300947D1F /* Assets.xcassets */; };
 		D16889EE210CBC9300947D1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D16889EC210CBC9300947D1F /* LaunchScreen.storyboard */; };
 		D16889F9210CBC9400947D1F /* watcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16889F8210CBC9400947D1F /* watcherTests.swift */; };
 		D1688A04210CBC9400947D1F /* watcherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1688A03210CBC9400947D1F /* watcherUITests.swift */; };
-		D1688A17210CC15C00947D1F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1688A16210CC15C00947D1F /* HomeViewModel.swift */; };
 		D1688A27210CC76800947D1F /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1688A1E210CC76700947D1F /* Domain.framework */; };
 		D1688A2E210CC76800947D1F /* DomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1688A2D210CC76800947D1F /* DomainTests.swift */; };
 		D1688A30210CC76800947D1F /* Domain.h in Headers */ = {isa = PBXBuildFile; fileRef = D1688A20210CC76700947D1F /* Domain.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -191,7 +188,6 @@
 		B87DB071711EB29F06B6FDB1 /* Pods_NetworkPlataform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetworkPlataform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1030E6E24FE097B1AF0B656 /* Pods-watcher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watcher.release.xcconfig"; path = "Pods/Target Support Files/Pods-watcher/Pods-watcher.release.xcconfig"; sourceTree = "<group>"; };
 		D1269CD12186A5D800BF8227 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		D1269CD42186A80B00BF8227 /* HomeTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabCoordinator.swift; sourceTree = "<group>"; };
 		D1269CDB2188731600BF8227 /* DataPlataform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataPlataform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1269CDD2188731600BF8227 /* DataPlataform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataPlataform.h; sourceTree = "<group>"; };
 		D1269CDE2188731600BF8227 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -216,7 +212,6 @@
 		D14E4B19211F425D0056829F /* WatcherServerErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatcherServerErrorParser.swift; sourceTree = "<group>"; };
 		D16889E0210CBC8B00947D1F /* watcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16889E3210CBC8B00947D1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D16889E5210CBC8B00947D1F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D16889EA210CBC9300947D1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D16889ED210CBC9300947D1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D16889EF210CBC9400947D1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -226,7 +221,6 @@
 		D16889FF210CBC9400947D1F /* watcherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = watcherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1688A03210CBC9400947D1F /* watcherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = watcherUITests.swift; sourceTree = "<group>"; };
 		D1688A05210CBC9400947D1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D1688A16210CC15C00947D1F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		D1688A1E210CC76700947D1F /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1688A20210CC76700947D1F /* Domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Domain.h; sourceTree = "<group>"; };
 		D1688A21210CC76700947D1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -563,18 +557,8 @@
 			children = (
 				D1418B3A2144341B006C385D /* SearchMovie */,
 				D1C2710D213B1174001C7DAB /* Welcome */,
-				D1688A15210CC13D00947D1F /* Home */,
 			);
 			path = Features;
-			sourceTree = "<group>";
-		};
-		D1688A15210CC13D00947D1F /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				D16889E5210CBC8B00947D1F /* HomeViewController.swift */,
-				D1688A16210CC15C00947D1F /* HomeViewModel.swift */,
-			);
-			path = Home;
 			sourceTree = "<group>";
 		};
 		D1688A1F210CC76700947D1F /* Domain */ = {
@@ -692,7 +676,6 @@
 			isa = PBXGroup;
 			children = (
 				D1EF8EB52184D30D0083A3CE /* AppCoordinator.swift */,
-				D1269CD42186A80B00BF8227 /* HomeTabCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -1266,14 +1249,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1EF8EB62184D30D0083A3CE /* AppCoordinator.swift in Sources */,
-				D16889E6210CBC8B00947D1F /* HomeViewController.swift in Sources */,
 				D1418B392144158C006C385D /* LoadingChildViewController.swift in Sources */,
 				D18AE062212A3BB500CC50B0 /* WelcomeViewModel.swift in Sources */,
 				D18AE05F212A25D000CC50B0 /* WelcomeViewController.swift in Sources */,
-				D1269CD52186A80B00BF8227 /* HomeTabCoordinator.swift in Sources */,
 				D1269CD22186A5D800BF8227 /* UIView+Extensions.swift in Sources */,
 				D1418B452149FB41006C385D /* SearchMovieCellContent.swift in Sources */,
-				D1688A17210CC15C00947D1F /* HomeViewModel.swift in Sources */,
 				D16889E4210CBC8B00947D1F /* AppDelegate.swift in Sources */,
 				D1418B3E21449844006C385D /* SearchMovieViewModel.swift in Sources */,
 				D1418B3C2144345E006C385D /* SearchMovieViewController.swift in Sources */,
