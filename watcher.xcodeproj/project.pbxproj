@@ -68,6 +68,9 @@
 		D1AE05C821361CA50023D445 /* SessionUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AE05C721361CA50023D445 /* SessionUseCases.swift */; };
 		D1BACA23217D675E00D5E499 /* ConfigurationNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BACA22217D675E00D5E499 /* ConfigurationNetwork.swift */; };
 		D1CD5F6B2115BE2A001F2474 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CD5F6A2115BE2A001F2474 /* Request.swift */; };
+		D1D6602C21B475A1006C2104 /* GuestSessionLocalDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6602B21B475A1006C2104 /* GuestSessionLocalDataModel.swift */; };
+		D1D6602F21B480B4006C2104 /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6602E21B480B4006C2104 /* DomainError.swift */; };
+		D1D6603221B48168006C2104 /* ViewModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D6603121B48168006C2104 /* ViewModelError.swift */; };
 		D1EF8EB62184D30D0083A3CE /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EF8EB52184D30D0083A3CE /* AppCoordinator.swift */; };
 		D1EF8EB82185EF000083A3CE /* UseCasesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EF8EB72185EF000083A3CE /* UseCasesFactory.swift */; };
 		EB9A7353B092AC63FFFAD099 /* Pods_DomainTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68A0CD52749101E7825F2B09 /* Pods_DomainTests.framework */; };
@@ -251,6 +254,9 @@
 		D1AE05CD21377DDC0023D445 /* ValidationUseCasesImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationUseCasesImp.swift; sourceTree = "<group>"; };
 		D1BACA22217D675E00D5E499 /* ConfigurationNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationNetwork.swift; sourceTree = "<group>"; };
 		D1CD5F6A2115BE2A001F2474 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		D1D6602B21B475A1006C2104 /* GuestSessionLocalDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestSessionLocalDataModel.swift; sourceTree = "<group>"; };
+		D1D6602E21B480B4006C2104 /* DomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
+		D1D6603121B48168006C2104 /* ViewModelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelError.swift; sourceTree = "<group>"; };
 		D1EF8EB52184D30D0083A3CE /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		D1EF8EB72185EF000083A3CE /* UseCasesFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCasesFactory.swift; sourceTree = "<group>"; };
 		D36E9B022832DD8CB5175597 /* Pods-watcherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watcherTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watcherTests/Pods-watcherTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -389,6 +395,7 @@
 		D1269CDC2188731600BF8227 /* DataPlataform */ = {
 			isa = PBXGroup;
 			children = (
+				D1D6602A21B47562006C2104 /* Models */,
 				D1269CDD2188731600BF8227 /* DataPlataform.h */,
 				D1269CDE2188731600BF8227 /* Info.plist */,
 				D1269CFB2189BC3400BF8227 /* LocalDataProvider.swift */,
@@ -523,6 +530,7 @@
 		D16889E2210CBC8B00947D1F /* watcher */ = {
 			isa = PBXGroup;
 			children = (
+				D1D6603021B48141006C2104 /* Errors */,
 				D1269CD32186A5F700BF8227 /* Extensions */,
 				D1EF8EB42184D2B80083A3CE /* Coordinators */,
 				D1418B46214D39F1006C385D /* Temporary */,
@@ -566,6 +574,7 @@
 		D1688A1F210CC76700947D1F /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				D1D6602D21B480A3006C2104 /* Errors */,
 				D1418B4D214D5844006C385D /* UseCases */,
 				D18AE0512121EC0800CC50B0 /* Models */,
 				D1688A20210CC76700947D1F /* Domain.h */,
@@ -664,6 +673,30 @@
 				D18AE061212A3BB500CC50B0 /* WelcomeViewModel.swift */,
 			);
 			path = Welcome;
+			sourceTree = "<group>";
+		};
+		D1D6602A21B47562006C2104 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D1D6602B21B475A1006C2104 /* GuestSessionLocalDataModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D1D6602D21B480A3006C2104 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				D1D6602E21B480B4006C2104 /* DomainError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		D1D6603021B48141006C2104 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				D1D6603121B48168006C2104 /* ViewModelError.swift */,
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 		D1EF8EB32184D2370083A3CE /* Session */ = {
@@ -1234,6 +1267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1D6602C21B475A1006C2104 /* GuestSessionLocalDataModel.swift in Sources */,
 				D1269CFC2189BC3400BF8227 /* LocalDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1259,6 +1293,7 @@
 				D16889E4210CBC8B00947D1F /* AppDelegate.swift in Sources */,
 				D1418B3E21449844006C385D /* SearchMovieViewModel.swift in Sources */,
 				D1418B3C2144345E006C385D /* SearchMovieViewController.swift in Sources */,
+				D1D6603221B48168006C2104 /* ViewModelError.swift in Sources */,
 				D1418B4021455281006C385D /* SearchMovieResultCell.swift in Sources */,
 				D1418B48214D3A13006C385D /* UIImageView+AsyncLoad.swift in Sources */,
 			);
@@ -1291,6 +1326,7 @@
 				D1EF8EB82185EF000083A3CE /* UseCasesFactory.swift in Sources */,
 				D1418B422149F049006C385D /* MovieSearchResult.swift in Sources */,
 				D1418B50214D5C2C006C385D /* ValidationUseCasesImp.swift in Sources */,
+				D1D6602F21B480B4006C2104 /* DomainError.swift in Sources */,
 				D1418B4F214D5862006C385D /* SearchContentUseCasesImp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,12 +9,11 @@ public struct SearchContentUseCasesImp: SearchContentUseCases {
 		apiProvider = APIProvider()
 	}
 	
-	public func searchForMovie(queryString: String, completion: @escaping (Result<MovieSearchResult, ViewModelError>) -> Void) {
+	public func searchForMovie(queryString: String, completion: @escaping (Result<MovieSearchResult, DomainError>) -> Void) {
 		apiProvider.searchContentNetwork().searchForMovie(queryString: queryString) { result in
 			completion(result.bimap(success: {
 				$0.asDomain()
-			}, failure: { _ in ViewModelError(title: "a", message: "aaa") }))
-			//			completion(result.map { $0 }.mapError(ViewModelError.init))
+			}, failure: { _ in DomainError.unknow }))
 		}
 	}
 }

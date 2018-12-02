@@ -2,7 +2,7 @@ import Foundation
 import Result
 import Domain
 
-class SearchMovieViewModel {
+final class SearchMovieViewModel {
 	var numberOfSections: Int {
 		return 1
 	}
@@ -26,7 +26,7 @@ class SearchMovieViewModel {
 				self.movieSearchResult = movieSearchResult
 				completion(.success(()))
 			} else {
-				completion(.failure(ViewModelError(title: "erro", message: "a mockerd one")))
+				completion(.failure(ViewModelError(error: result.error!)))//TODO:FIX
 				
 			}
 		

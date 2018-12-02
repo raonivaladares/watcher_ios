@@ -12,9 +12,18 @@ public struct GuestSession {
 	}
 }
 
+
 import NetworkPlataform
+
 extension GuestSessionNetworkModel {
 	func asDomain() -> GuestSession {
 		return GuestSession(success: self.success, expiresAt: self.expiresAt, id: self.id)
+	}
+}
+
+import DataPlataform
+extension GuestSessionNetworkModel {
+	func asDataPlataform() -> GuestSessionLocalDataModel {
+		return GuestSessionLocalDataModel(success: self.success, expiresAt: self.expiresAt, id: self.id)
 	}
 }

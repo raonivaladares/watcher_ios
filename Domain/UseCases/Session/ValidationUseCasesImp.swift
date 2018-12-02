@@ -12,22 +12,23 @@ final class ValidationUseCasesImp: SessionUseCases {
 		self.apiProvider = apiProvider
 	}
 	
-	func requestGuestSession(completion: @escaping (Result<Void, ViewModelError>) -> Void) {
+	func requestGuestSession(completion: @escaping (Result<Void, DomainError>) -> Void) {
 		apiProvider.guestSessionNetwork().requestGuestSessionToken { result in
-			if let guestSession = result.value {
-//				self.localDataProvider.save(guestSession.asDomain())
+			if let guestSessionNetworkModel = result.value {
+				self.localDataProvider.userDefaultsDataProvider.save(guestSessionNetworkModel.asDataPlataform())
 			}
 			
-			completion(result.bimap(success: { _ in }, failure: { _ in ViewModelError(title: "a", message: "aaa") }))
+			completion(result.bimap(success: { _ in }, failure: { _ in DomainError.unknow }))
 //			completion(result.map { $0 }.mapError(ViewModelError.init))
 		}
 	}
 	
 	func isCurrentGuestSessionValid() -> Bool {
-//		if let session = localDataProvider.query() {
-//			let now = Date()
-//			return session.expiresAt <= now
-//		}
-		return false
+		guard let guestSession: GuestSessionLocalDataModel = localDataProvider.userDefaultsDataProvider.query() else {
+			return false
+		}
+		
+		let now = Date()
+		return guestSession.expiresAt <= now
 	}
 }
