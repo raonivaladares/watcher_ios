@@ -4,14 +4,31 @@ import SnapKit
 class WelcomeViewController: UIViewController {
 	
 	// MARK: Private UI properties
+	let appLogoImageView: UIImageView = {
+		let imageView = UIImageView()
+		imageView.image = UIImage(named: "tmdb_logo")
+		
+		return imageView
+	}()
 	
-	let validationLabel: UILabel = {
+	let subTitleLabel: UILabel = {
 		let label = UILabel()
-		label.text = "API by"
+		label.text = "Welcome to the\n Watcher"
+		label.textAlignment = .center
 		label.font = UIFont.boldSystemFont(ofSize: 22)
 		label.textColor = .red
+		label.numberOfLines = 2
+		
+		return label
+	}()
+	
+	let bodyLabel: UILabel = {
+		let label = UILabel()
+		label.text = "A place to see movies, bla bla bla.... bla bla bla... bla bla bla"
+		label.textAlignment = .center
+		label.font = UIFont.boldSystemFont(ofSize: 15)
+		label.textColor = .red
 		label.numberOfLines = 0
-		label.translatesAutoresizingMaskIntoConstraints = false
 		
 		return label
 	}()
@@ -20,19 +37,27 @@ class WelcomeViewController: UIViewController {
 		let imageView = UIImageView()
 		imageView.image = UIImage(named: "tmdb_logo")
 		
-		imageView.translatesAutoresizingMaskIntoConstraints = false
-		
 		return imageView
 	}()
 	
-	let validationButton: UIButton = {
+	let tmdbDescriptionLabel: UILabel = {
+		let label = UILabel()
+		label.text = "Thanks The movie DB for the content"
+		label.textAlignment = .center
+		label.font = UIFont.boldSystemFont(ofSize: 12)
+		label.textColor = .red
+		label.numberOfLines = 0
+		
+		return label
+	}()
+	
+	let actionButton: UIButton = {
 		let button = UIButton()
 		button.setTitle("Start", for: .normal)
 		button.setTitleColor(.red, for: .normal)
 		button.backgroundColor = .blue
-		button.layer.cornerRadius = 20
-		button.addTarget(self, action: #selector(validationButtonHandler(_:)), for: .touchUpInside)
-		button.translatesAutoresizingMaskIntoConstraints = false
+		button.layer.cornerRadius = 10
+		button.addTarget(self, action: #selector(actionButtonHandler(_:)), for: .touchUpInside)
 		
 		return button
 	}()
@@ -71,7 +96,7 @@ extension WelcomeViewController {
 // MARK: Action Handlers
 
 extension WelcomeViewController {
-	@objc private func validationButtonHandler(_ sender: UIButton) {
+	@objc private func actionButtonHandler(_ sender: UIButton) {
 		//TODO: refactor
 		loadingController.showLoading()
 		viewModel.requestGuestNewSession { result in
@@ -94,27 +119,53 @@ extension WelcomeViewController {
 
 extension WelcomeViewController {
 	private func addViews() {
-		view.addSubviews(validationLabel,
-										 tmdLogoImageView,
-										 validationButton
+		view.addSubviews(
+			appLogoImageView,
+			subTitleLabel,
+			bodyLabel,
+			tmdLogoImageView,
+			tmdbDescriptionLabel,
+			actionButton
 		)
 	}
 	
 	private func defineAndActivateConstraints() {
-		validationLabel.snp.makeConstraints {
-			$0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
-			$0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(16)
-			$0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-16)
+		let topOrBottomMargins: CGFloat = 20
+		let sideMargins: CGFloat = 16
+		
+		appLogoImageView.snp.makeConstraints {
+			$0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
+			$0.centerX.equalToSuperview()
+			$0.width.equalTo(80)
+			$0.height.equalTo(80)
+		}
+		
+		subTitleLabel.snp.makeConstraints {
+			$0.top.equalTo(appLogoImageView.snp.bottom).offset(topOrBottomMargins)
+			$0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(sideMargins)
+			$0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-sideMargins)
+		}
+		
+		bodyLabel.snp.makeConstraints {
+			$0.top.equalTo(subTitleLabel.snp.bottom).offset(topOrBottomMargins)
+			$0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(sideMargins)
+			$0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-sideMargins)
 		}
 		
 		tmdLogoImageView.snp.makeConstraints {
+			$0.bottom.equalTo(tmdbDescriptionLabel.snp.top).offset(-topOrBottomMargins)
 			$0.centerX.equalToSuperview()
-			$0.centerY.equalToSuperview()
-			$0.width.equalTo(200)
-			$0.height.equalTo(200)
+			$0.width.equalTo(50)
+			$0.height.equalTo(50)
 		}
 		
-		validationButton.snp.makeConstraints {
+		tmdbDescriptionLabel.snp.makeConstraints {
+			$0.bottom.equalTo(actionButton.snp.top).offset(-topOrBottomMargins)
+			$0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(sideMargins)
+			$0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-sideMargins)
+		}
+		
+		actionButton.snp.makeConstraints {
 			$0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-40)
 			$0.centerX.equalToSuperview()
 			$0.width.equalTo(200)
