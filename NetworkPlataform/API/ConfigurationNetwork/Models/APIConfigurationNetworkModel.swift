@@ -7,11 +7,7 @@ public struct APIConfigurationNetworkModel {
 
 extension APIConfigurationNetworkModel {
     init(json: JSON) throws {
-        do {
-            images = try Images(json: json)
-        } catch {
-            throw error
-        }
+        images = try Images(json: json)
     }
 }
 

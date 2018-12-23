@@ -36,8 +36,3 @@ extension APIConfigurationNetworkModel.Images {
         backDropSizes = sizes.compactMap { $0.string }
     }
 }
-
-enum ModelError: Error {
-    case jsonWithMissingKey(key: String)
-    case jsonWithInvalidInput(key: String)
-}

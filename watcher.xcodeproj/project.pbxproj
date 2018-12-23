@@ -16,6 +16,7 @@
 		8419101721CFBA2300E64AA2 /* APIConfigurationNetworkModel+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8419101621CFBA2300E64AA2 /* APIConfigurationNetworkModel+Images.swift */; };
 		8419101921CFD1C300E64AA2 /* APIConfigurationNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8419101421CFB97300E64AA2 /* APIConfigurationNetworkModel.swift */; };
 		8419101B21CFD48200E64AA2 /* APIConfigurationNetworkModel+Images+Specs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8419101A21CFD48200E64AA2 /* APIConfigurationNetworkModel+Images+Specs.swift */; };
+		841B46D821D01B5B0027909F /* ModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B46D721D01B5B0027909F /* ModelError.swift */; };
 		D1269CD22186A5D800BF8227 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1269CD12186A5D800BF8227 /* UIView+Extensions.swift */; };
 		D1269CE42188731600BF8227 /* DataPlataform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1269CDB2188731600BF8227 /* DataPlataform.framework */; };
 		D1269CEB2188731600BF8227 /* DataPlataformTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1269CEA2188731600BF8227 /* DataPlataformTests.swift */; };
@@ -197,6 +198,7 @@
 		8419101421CFB97300E64AA2 /* APIConfigurationNetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfigurationNetworkModel.swift; sourceTree = "<group>"; };
 		8419101621CFBA2300E64AA2 /* APIConfigurationNetworkModel+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIConfigurationNetworkModel+Images.swift"; sourceTree = "<group>"; };
 		8419101A21CFD48200E64AA2 /* APIConfigurationNetworkModel+Images+Specs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIConfigurationNetworkModel+Images+Specs.swift"; sourceTree = "<group>"; };
+		841B46D721D01B5B0027909F /* ModelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelError.swift; sourceTree = "<group>"; };
 		86B319D93901C037D459E9CC /* Pods_watcherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watcherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A4AAF6F2C925496F9FF85AA /* Pods-watcherUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watcherUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-watcherUITests/Pods-watcherUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8A6AF1E52413C3217AA2EA8C /* Pods_Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -427,6 +429,15 @@
 			path = ConfigurationNetwork;
 			sourceTree = "<group>";
 		};
+		841B46D621D01B330027909F /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				D18AE0442121C54200CC50B0 /* ServerError.swift */,
+				841B46D721D01B5B0027909F /* ModelError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
 		D1269CD32186A5F700BF8227 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -639,6 +650,7 @@
 		D1688A42210CC79900947D1F /* NetworkPlataform */ = {
 			isa = PBXGroup;
 			children = (
+				841B46D621D01B330027909F /* Errors */,
 				D18AE0532121FDCF00CC50B0 /* Models */,
 				D18AE0492121CBC300CC50B0 /* API */,
 				D18AE0462121C5A300CC50B0 /* Router */,
@@ -650,7 +662,6 @@
 				D1688A6A210EB8A400947D1F /* ServerProviderConfiguration.swift */,
 				D14E4B1721164BA20056829F /* PrivateKeys.swift */,
 				D14E4B19211F425D0056829F /* WatcherServerErrorParser.swift */,
-				D18AE0442121C54200CC50B0 /* ServerError.swift */,
 			);
 			path = NetworkPlataform;
 			sourceTree = "<group>";
@@ -1454,6 +1465,7 @@
 				D1688A6B210EB8A400947D1F /* ServerProviderConfiguration.swift in Sources */,
 				D1688A61210EAC3D00947D1F /* WatcherServer.swift in Sources */,
 				D18AE0452121C54200CC50B0 /* ServerError.swift in Sources */,
+				841B46D821D01B5B0027909F /* ModelError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

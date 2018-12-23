@@ -30,4 +30,12 @@ struct WatcherServerErrorParser {
 			return ServerError.unkown
 		}
 	}
+    
+    #warning("Refactor this using classes")
+    func parse(modelError: ModelError) -> ServerError {
+        switch modelError {
+        case .jsonWithMissingKey(let key): return ServerError.jsonWithMissingKey(key: key)
+        case .jsonWithInvalidInput(let key): return ServerError.jsonWithInvalidInput(key: key)
+        }
+    }
 }

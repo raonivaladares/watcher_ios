@@ -19,11 +19,14 @@ public struct ConfigurationNetwork {
                 do {
                     let configuration = try APIConfigurationNetworkModel(json: json)
                     completion(.success(configuration))
-                } catch {
+                } catch let error as ModelError {
                     //ParseError here
-                    completion(.failure(ServerError.jsonMissingKey(key: "xxx")))
+                    let serverError = WatcherServerErrorParser().parse(modelError: error)
+                    completion(.failure(serverError))
+                } catch {
+                    completion(.failure(ServerError.unkown))
                 }
-				completion(.failure(ServerError.invalidJSON))
+                
 			}, ifFailure: {
 				completion(.failure($0))
 			})

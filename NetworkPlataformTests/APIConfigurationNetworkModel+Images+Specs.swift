@@ -12,21 +12,12 @@ final class APIConfigurationNetworkModelImagesSpecs: QuickSpec {
             context("init") {
                 let imagesJSONStringFactory = ImagesJSONStringFactory()
                 
-                context("when input scenario is valid") {
+                context("when input json is valid") {
                     let jsonString = imagesJSONStringFactory.make(with: .valid)
                     let json = JSON(parseJSON: jsonString)
-                    let imagesConfiguration = APIConfigurationNetworkModel.Images(json: json)
                     
                     it("should initialize with success") {
-                        expect(imagesConfiguration).notTo(beNil())
-                    }
-                    
-                    it("should initialize secureBaseURL") {
-                        expect(imagesConfiguration?.secureBaseURL).toNot(beEmpty())
-                    }
-                    
-                    it("should initialize backDropSizes") {
-                          expect(imagesConfiguration?.backDropSizes).toNot(beEmpty())
+                        expect { try APIConfigurationNetworkModel.Images(json: json) }.toNot(throwError())
                     }
                 }
             }
