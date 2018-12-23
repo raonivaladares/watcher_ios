@@ -409,13 +409,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8419101821CFBB1B00E64AA2 /* APIConfigurationNetworkModel */ = {
+		8419101821CFBB1B00E64AA2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				8419101421CFB97300E64AA2 /* APIConfigurationNetworkModel.swift */,
 				8419101621CFBA2300E64AA2 /* APIConfigurationNetworkModel+Images.swift */,
 			);
-			path = APIConfigurationNetworkModel;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		841B46D521D00A3F0027909F /* ConfigurationNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				8419101821CFBB1B00E64AA2 /* Models */,
+				D1BACA22217D675E00D5E499 /* ConfigurationNetwork.swift */,
+			);
+			path = ConfigurationNetwork;
 			sourceTree = "<group>";
 		};
 		D1269CD32186A5F700BF8227 /* Extensions */ = {
@@ -677,9 +686,9 @@
 		D18AE0492121CBC300CC50B0 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				841B46D521D00A3F0027909F /* ConfigurationNetwork */,
 				D18AE058212219D000CC50B0 /* GuestSessionNetwork.swift */,
 				D1418B4B214D53D3006C385D /* SearchContentNetwork.swift */,
-				D1BACA22217D675E00D5E499 /* ConfigurationNetwork.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -696,7 +705,6 @@
 		D18AE0532121FDCF00CC50B0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8419101821CFBB1B00E64AA2 /* APIConfigurationNetworkModel */,
 				D1418B54214D9F2D006C385D /* MovieSearchResult */,
 				D18AE0542121FDF700CC50B0 /* GuestSessionNetworkModel.swift */,
 			);

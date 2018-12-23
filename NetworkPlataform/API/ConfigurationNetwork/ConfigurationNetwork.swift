@@ -8,17 +8,21 @@ public struct ConfigurationNetwork {
 		
 		let parameters = ["api_key": watchServer.apiConfiguration.apiKey]
 		let request = RequestBuilder(
-			action: RouterAction.apiConfiguration.configuration,
-			configuration: watchServer.apiConfiguration
-			)
+                action: RouterAction.apiConfiguration.configuration,
+                configuration: watchServer.apiConfiguration
+        )
 			.parameters(parameters: parameters)
 			.build()
 		
 		watchServer.execute(request: request) { result in
 			result.analysis(ifSuccess: { json in
-				if let searchResult = MovieSearchResultNetworkModel(json: json) {
-//					completion(.success(searchResult))
-				}
+                do {
+                    let configuration = try APIConfigurationNetworkModel(json: json)
+                    completion(.success(configuration))
+                } catch {
+                    //ParseError here
+                    completion(.failure(ServerError.jsonMissingKey(key: "xxx")))
+                }
 				completion(.failure(ServerError.invalidJSON))
 			}, ifFailure: {
 				completion(.failure($0))

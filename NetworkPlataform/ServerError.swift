@@ -5,5 +5,6 @@ public enum ServerError: Error {
 	case serverInternalError
 	case emptyDataResponse
 	case invalidJSON
+    case jsonMissingKey(key: String)
 	case networkTimedOut
 }
