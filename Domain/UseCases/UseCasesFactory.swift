@@ -14,4 +14,8 @@ public struct UseCasesFactory {
 	public var session: SessionUseCases {
 		return ValidationUseCasesImp(localDataProvider: localDataProvider, apiProvider: apiProvider)
 	}
+    
+    public var configuration: APIConfigurationUseCases {
+        return APIConfigurationUseCasesImp(localDataProvider: localDataProvider, apiProvider: apiProvider)
+    }
 }

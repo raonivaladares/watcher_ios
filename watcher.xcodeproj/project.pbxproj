@@ -13,6 +13,8 @@
 		6BFE69F8A45A5DECA6CB63A1 /* Pods_DataPlataformTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C61CE64D8A80B2076D18664 /* Pods_DataPlataformTests.framework */; };
 		78BA3AF5931A247A2774DD46 /* Pods_Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6AF1E52413C3217AA2EA8C /* Pods_Domain.framework */; };
 		79795AE54A813DC23C53F104 /* Pods_NetworkPlataformTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C445F5520414CB242D1366 /* Pods_NetworkPlataformTests.framework */; };
+		8410364821E2D0380028F9A7 /* ConfigurationUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410364721E2D0380028F9A7 /* ConfigurationUseCases.swift */; };
+		8410364A21E2D1B50028F9A7 /* ConfigurationUseCasesImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410364921E2D1B50028F9A7 /* ConfigurationUseCasesImp.swift */; };
 		8419101721CFBA2300E64AA2 /* APIConfigurationNetworkModel+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8419101621CFBA2300E64AA2 /* APIConfigurationNetworkModel+Images.swift */; };
 		8419101921CFD1C300E64AA2 /* APIConfigurationNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8419101421CFB97300E64AA2 /* APIConfigurationNetworkModel.swift */; };
 		8419101B21CFD48200E64AA2 /* APIConfigurationNetworkModel+Images+Specs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8419101A21CFD48200E64AA2 /* APIConfigurationNetworkModel+Images+Specs.swift */; };
@@ -195,6 +197,8 @@
 		68A0CD52749101E7825F2B09 /* Pods_DomainTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DomainTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73DEE057611AAC8F76E941C6 /* Pods-NetworkPlataform.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkPlataform.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NetworkPlataform/Pods-NetworkPlataform.debug.xcconfig"; sourceTree = "<group>"; };
 		7CFB6212177AC5B1FCB0C4A4 /* Pods-NetworkPlataformTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkPlataformTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NetworkPlataformTests/Pods-NetworkPlataformTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8410364721E2D0380028F9A7 /* ConfigurationUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationUseCases.swift; sourceTree = "<group>"; };
+		8410364921E2D1B50028F9A7 /* ConfigurationUseCasesImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationUseCasesImp.swift; sourceTree = "<group>"; };
 		8419101421CFB97300E64AA2 /* APIConfigurationNetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfigurationNetworkModel.swift; sourceTree = "<group>"; };
 		8419101621CFBA2300E64AA2 /* APIConfigurationNetworkModel+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIConfigurationNetworkModel+Images.swift"; sourceTree = "<group>"; };
 		8419101A21CFD48200E64AA2 /* APIConfigurationNetworkModel+Images+Specs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIConfigurationNetworkModel+Images+Specs.swift"; sourceTree = "<group>"; };
@@ -411,6 +415,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8410364B21E2D1BC0028F9A7 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				8410364721E2D0380028F9A7 /* ConfigurationUseCases.swift */,
+				8410364921E2D1B50028F9A7 /* ConfigurationUseCasesImp.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
 		8419101821CFBB1B00E64AA2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -505,6 +518,7 @@
 			isa = PBXGroup;
 			children = (
 				D1EF8EB72185EF000083A3CE /* UseCasesFactory.swift */,
+				8410364B21E2D1BC0028F9A7 /* Configuration */,
 				D1418B53214D65CE006C385D /* SearchContent */,
 				D1418B52214D65BA006C385D /* Session */,
 			);
@@ -523,8 +537,8 @@
 		D1418B53214D65CE006C385D /* SearchContent */ = {
 			isa = PBXGroup;
 			children = (
-				D1418B4E214D5862006C385D /* SearchContentUseCasesImp.swift */,
 				D1418B5A214DA8B5006C385D /* SearchContentUseCases.swift */,
+				D1418B4E214D5862006C385D /* SearchContentUseCasesImp.swift */,
 			);
 			path = SearchContent;
 			sourceTree = "<group>";
@@ -1423,11 +1437,13 @@
 			files = (
 				D1AE05C821361CA50023D445 /* SessionUseCases.swift in Sources */,
 				D1418B5B214DA8B5006C385D /* SearchContentUseCases.swift in Sources */,
+				8410364821E2D0380028F9A7 /* ConfigurationUseCases.swift in Sources */,
 				D18AE0502121EB3800CC50B0 /* GuestSession.swift in Sources */,
 				D1418B59214DA07A006C385D /* MovieSearchResult+Result.swift in Sources */,
 				D1EF8EB82185EF000083A3CE /* UseCasesFactory.swift in Sources */,
 				D1418B422149F049006C385D /* MovieSearchResult.swift in Sources */,
 				D1418B50214D5C2C006C385D /* ValidationUseCasesImp.swift in Sources */,
+				8410364A21E2D1B50028F9A7 /* ConfigurationUseCasesImp.swift in Sources */,
 				D1D6602F21B480B4006C2104 /* DomainError.swift in Sources */,
 				D1418B4F214D5862006C385D /* SearchContentUseCasesImp.swift in Sources */,
 			);

@@ -5,7 +5,6 @@ public struct GuestSessionNetwork {
 	let watchServer: WatcherServer
 	
 	public func requestGuestSessionToken(completion: @escaping (Result<GuestSessionNetworkModel, ServerError>) -> Void) {
-		
 		let parameters = ["api_key": watchServer.apiConfiguration.apiKey]
 		let request = RequestBuilder(
 			action: RouterAction.userValidation.requestGuestSession,
