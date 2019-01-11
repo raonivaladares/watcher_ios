@@ -14,7 +14,18 @@ final class APIConfigurationUseCasesImp: APIConfigurationUseCases {
         self.apiProvider = apiProvider
     }
     
-    public func requestConfiguration(completion: @escaping (Result<Void, DomainError>) -> Void) {
-        
+    public func updateLocalConfiguration(completion: @escaping (Result<Void, DomainError>) -> Void) {
+        apiProvider.apiConfiguration().requestConfiguration { result in
+            completion(result.bimap(success: {
+                self.localDataProvider.userDefaultsDataProvider.save($0.asDataPlataform())
+                print("\($0)")
+                
+            }, failure: { _ in DomainError.unknow }))
+        }
+    }
+    
+    public func currentConfiguration() -> Configuration? {
+        let configuration: ConfigurarionDataModel? = self.localDataProvider.userDefaultsDataProvider.query()
+        return configuration?.asDomain()
     }
 }

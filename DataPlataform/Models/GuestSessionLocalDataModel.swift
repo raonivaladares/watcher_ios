@@ -1,11 +1,3 @@
-//
-//  GuestSessionLocalDataModel.swift
-//  DataPlataform
-//
-//  Created by Raoni Valadares on 02/12/18.
-//  Copyright © 2018 solo. All rights reserved.
-//
-
 import Foundation
 
 public struct GuestSessionLocalDataModel {

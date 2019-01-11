@@ -24,6 +24,13 @@ extension APIProvider {
 	}
 }
 
+extension APIProvider {
+    public func apiConfiguration() -> ConfigurationNetwork {
+        
+        return ConfigurationNetwork(watchServer: watchServer)
+    }
+}
+
 //TODO: Setup configurarion here
 // ex:
 //

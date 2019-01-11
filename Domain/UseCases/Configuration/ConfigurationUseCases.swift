@@ -3,5 +3,5 @@ import Result
 import NetworkPlataform
 
 public protocol APIConfigurationUseCases {
-    func requestConfiguration(completion: @escaping (Result<Void, DomainError>) -> Void)
+    func updateLocalConfiguration(completion: @escaping (Result<Void, DomainError>) -> Void)
 }

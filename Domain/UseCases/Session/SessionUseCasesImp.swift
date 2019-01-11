@@ -3,7 +3,7 @@ import NetworkPlataform
 import DataPlataform
 import Result
 
-final class ValidationUseCasesImp: SessionUseCases {
+final class SessionUseCasesImp: SessionUseCases {
 	private let localDataProvider: LocalDataProvider
 	private let apiProvider: APIProvider
 	

@@ -2,12 +2,13 @@ import Foundation
 import SwiftyJSON
 
 public struct APIConfigurationNetworkModel {
-    let images: Images
+    public let images: Images
 }
 
 extension APIConfigurationNetworkModel {
     init(json: JSON) throws {
-        images = try Images(json: json)
+        let imagesJson = json["images"]
+        images = try Images(json: imagesJson)
     }
 }
 

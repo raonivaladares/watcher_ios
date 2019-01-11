@@ -12,7 +12,7 @@ public struct UseCasesFactory {
 	}
 	
 	public var session: SessionUseCases {
-		return ValidationUseCasesImp(localDataProvider: localDataProvider, apiProvider: apiProvider)
+		return SessionUseCasesImp(localDataProvider: localDataProvider, apiProvider: apiProvider)
 	}
     
     public var configuration: APIConfigurationUseCases {

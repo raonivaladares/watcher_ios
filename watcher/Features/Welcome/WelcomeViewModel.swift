@@ -5,7 +5,7 @@ import Result
 final class WelcomeViewModel {
 	private let sessionUseCases: SessionUseCases
 	
-	init(sessionUseCases: SessionUseCases) {
+    init(sessionUseCases: SessionUseCases) {
 		self.sessionUseCases = sessionUseCases
 	}
 	

@@ -4,7 +4,7 @@ import Result
 public struct ConfigurationNetwork {
 	let watchServer: WatcherServer
 	
-	public func requestAPIConfiguration(completion: @escaping (Result<APIConfigurationNetworkModel, ServerError>) -> Void) {
+	public func requestConfiguration(completion: @escaping (Result<APIConfigurationNetworkModel, ServerError>) -> Void) {
 		
 		let parameters = ["api_key": watchServer.apiConfiguration.apiKey]
 		let request = RequestBuilder(

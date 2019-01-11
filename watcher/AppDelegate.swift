@@ -3,10 +3,11 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	var appCoordinator: AppCoordinator!
+    
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		// Override point for customization after application launch.
-		let window = UIWindow(frame: UIScreen.main.bounds)
+		RemoteImagesSettingsManager().updateSettings()
+        let window = UIWindow(frame: UIScreen.main.bounds)
 		appCoordinator = AppCoordinator(window: window)
 		appCoordinator.start()
 		
@@ -24,3 +25,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func applicationWillTerminate(_ application: UIApplication) {}
 }
 
+import Domain
+final class RemoteImagesSettingsManager {
+    func updateSettings() {
+        UseCasesFactory().configuration.updateLocalConfiguration { result in
+            result.analysis(ifSuccess: { _ in
+                var foo = 2
+                print("success")
+                
+            }, ifFailure: { _ in 
+                var foo = 2
+                print("fail")
+            })
+        }
+    }
+}

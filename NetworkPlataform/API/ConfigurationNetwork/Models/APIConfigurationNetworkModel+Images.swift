@@ -3,8 +3,8 @@ import SwiftyJSON
 
 public extension APIConfigurationNetworkModel {
     public struct Images {
-        let secureBaseURL: String
-        let backDropSizes: [String]
+        public let secureBaseURL: String
+        public let backDropSizes: [String]
     }
 }
 
