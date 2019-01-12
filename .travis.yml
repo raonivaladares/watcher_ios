@@ -4,3 +4,4 @@ osx_image: xcode10.1
 xcode_project: watcher.xcodeproj
 xcode_scheme: watcher
 xcode_sdk: iphonesimulator12.1
+podfile: Podfile
