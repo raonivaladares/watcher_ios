@@ -1,7 +1,6 @@
 os: osx
 language: Swift
 osx_image: xcode10.1
-xcode_project: watcher.xcodeproj
-xcode_scheme: watcher
-xcode_sdk: iphonesimulator12.1
-podfile: Podfile
+script:
+  - xctool -workspace watcher.xcworkspace -scheme watcher -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  - xctool test -workspace watcher.xcworkspace -scheme watcher -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
