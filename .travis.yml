@@ -1,6 +1,6 @@
 os: osx
 language: Swift
 osx_image: xcode10.1
-xcode_project: watcher_ios/watcher.xcworkspace
+xcode_project: watcher.xcworkspace
 xcode_scheme: watcher
 xcode_destination: platform=iOS Simulator,OS=12.1,name=iPhone X
