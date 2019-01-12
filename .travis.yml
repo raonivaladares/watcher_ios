@@ -1,5 +1,5 @@
-language: ruby
-rvm:
- - 2.2
- - jruby
 os: osx
+language: Swift
+xcode_project: watcher_ios/watcher.xcworkspace
+xcode_scheme: watcher
+xcode_destination: platform=iOS Simulator, OS=12.1, name=iPhone X
