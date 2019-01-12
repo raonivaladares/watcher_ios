@@ -24,7 +24,7 @@ final class APIConfigurationUseCasesImp: APIConfigurationUseCases {
         }
     }
     
-    public func currentConfiguration() -> Configuration? {
+    public func currentConfiguration() -> APIConfiguration? {
         let configuration: ConfigurarionDataModel? = self.localDataProvider.userDefaultsDataProvider.query()
         return configuration?.asDomain()
     }

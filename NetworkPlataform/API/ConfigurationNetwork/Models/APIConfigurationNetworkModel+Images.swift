@@ -5,6 +5,11 @@ public extension APIConfigurationNetworkModel {
     public struct Images {
         public let secureBaseURL: String
         public let backDropSizes: [String]
+        
+        public init(secureBaseURL: String, backDropSizes: [String]) {
+            self.secureBaseURL = secureBaseURL
+            self.backDropSizes = backDropSizes
+        }
     }
 }
 

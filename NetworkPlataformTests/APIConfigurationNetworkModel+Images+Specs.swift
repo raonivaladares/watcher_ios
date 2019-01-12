@@ -103,7 +103,7 @@ private final class ImagesJSONStringFactory {
         case .missingKeySecureBaseUrl: return missingKeySecureBaseUrl
         case .missingKeyBackDropSizes: return missingKeyBackDropSizes
         case .invalidContentOnSecureBaseUrl: return invalidContentOnSecureBaseUrl
-            case .invalidContentOnKeyBackDropSizes: return invalidContentOnKeyBackDropSizes
+        case .invalidContentOnKeyBackDropSizes: return invalidContentOnKeyBackDropSizes
             
         }
     }
@@ -161,7 +161,7 @@ private final class ImagesJSONStringFactory {
         return  """
             {
                 "secure_base_url": "https://image.tmdb.org/t/p/",
-                "backdrop_sizes": [t]
+                "backdrop_sizes": []
             }
         """
     }
