@@ -3,3 +3,4 @@ language: Swift
 osx_image: xcode10.1
 xcode_project: watcher.xcworkspace
 xcode_scheme: watcher
+xcode_sdk: iphonesimulator12.1
