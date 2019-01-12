@@ -1,0 +1,6 @@
+framework module Pods_DataPlataform {
+  umbrella header "Pods-DataPlataform-umbrella.h"
+
+  export *
+  module * { export * }
+}
