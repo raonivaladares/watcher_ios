@@ -2,5 +2,4 @@ os: osx
 language: Swift
 osx_image: xcode10.1
 script:
-  - xctool -workspace watcher.xcworkspace -scheme watcher -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-  - xctool test -workspace watcher.xcworkspace -scheme watcher -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+ xcodebuild clean test -scheme watcher -workspace watcher.xcworkspace  -destination "platform=iOS Simulator,name=iPhone X,OS=12.1" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
