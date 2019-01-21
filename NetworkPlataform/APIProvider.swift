@@ -1,7 +1,7 @@
 import Foundation
 import Alamofire
 
-public struct APIProvider {
+public final class APIProvider {
 	private let watchServer: WatcherServer
 	
 	public init() {
@@ -27,7 +27,7 @@ extension APIProvider {
 extension APIProvider {
     public func apiConfiguration() -> ConfigurationNetwork {
         
-        return ConfigurationNetwork(watchServer: watchServer)
+        return ConfigurationNetworkImp(watcherServer: watchServer)
     }
 }
 

@@ -26,7 +26,7 @@ final class APIConfigurationNetworkModelMapperSpecs: QuickSpec {
                     expect(apiConfigurationDataModel.images.backDropSizes[1]) == imagesNetworkModel.backDropSizes[1]
                     expect(apiConfigurationDataModel.images.backDropSizes[2]) == imagesNetworkModel.backDropSizes[2]
                 }
-            } // init
+            } // asDataPlataform
         }
     }
 }

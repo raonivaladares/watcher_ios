@@ -32,6 +32,9 @@
 		846114E521F3E5F000398940 /* JSONCodableImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846114E421F3E5F000398940 /* JSONCodableImp.swift */; };
 		846114E721F3E6FE00398940 /* JSONCodableImp+Specs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846114E621F3E6FE00398940 /* JSONCodableImp+Specs.swift */; };
 		846114E921F3E97A00398940 /* ModelStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846114E821F3E97A00398940 /* ModelStub.swift */; };
+		846114EB21F49BD200398940 /* UserDefaultsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846114EA21F49BD200398940 /* UserDefaultsDataProvider.swift */; };
+		846114ED21F49BF400398940 /* UserDefaultsDataProviderImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846114EC21F49BF400398940 /* UserDefaultsDataProviderImp.swift */; };
+		846114F321F4A0BB00398940 /* APIConfigurationUseCasesImp+Specs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846114F221F4A0BB00398940 /* APIConfigurationUseCasesImp+Specs.swift */; };
 		D1269CD22186A5D800BF8227 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1269CD12186A5D800BF8227 /* UIView+Extensions.swift */; };
 		D1269CE42188731600BF8227 /* DataPlataform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1269CDB2188731600BF8227 /* DataPlataform.framework */; };
 		D1269CEB2188731600BF8227 /* DataPlataformTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1269CEA2188731600BF8227 /* DataPlataformTests.swift */; };
@@ -228,6 +231,9 @@
 		846114E421F3E5F000398940 /* JSONCodableImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCodableImp.swift; sourceTree = "<group>"; };
 		846114E621F3E6FE00398940 /* JSONCodableImp+Specs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONCodableImp+Specs.swift"; sourceTree = "<group>"; };
 		846114E821F3E97A00398940 /* ModelStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelStub.swift; sourceTree = "<group>"; };
+		846114EA21F49BD200398940 /* UserDefaultsDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDataProvider.swift; sourceTree = "<group>"; };
+		846114EC21F49BF400398940 /* UserDefaultsDataProviderImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDataProviderImp.swift; sourceTree = "<group>"; };
+		846114F221F4A0BB00398940 /* APIConfigurationUseCasesImp+Specs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIConfigurationUseCasesImp+Specs.swift"; sourceTree = "<group>"; };
 		86B319D93901C037D459E9CC /* Pods_watcherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watcherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A4AAF6F2C925496F9FF85AA /* Pods-watcherUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watcherUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-watcherUITests/Pods-watcherUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8A6AF1E52413C3217AA2EA8C /* Pods_Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -491,6 +497,8 @@
 			children = (
 				846114DD21F3E4F400398940 /* UserDefaultsAbstraction.swift */,
 				846114DF21F3E56800398940 /* UserDefaultsAbstractionImp.swift */,
+				846114EA21F49BD200398940 /* UserDefaultsDataProvider.swift */,
+				846114EC21F49BF400398940 /* UserDefaultsDataProviderImp.swift */,
 			);
 			path = UserDefaults;
 			sourceTree = "<group>";
@@ -504,6 +512,39 @@
 			path = JSONCodable;
 			sourceTree = "<group>";
 		};
+		846114EE21F49C4000398940 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				843BA0D321EBFDC100006077 /* UserDefaultsDataProviderImp+Specs.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		846114EF21F49C9D00398940 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				846114E821F3E97A00398940 /* ModelStub.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		846114F021F49D0700398940 /* JSONCodable */ = {
+			isa = PBXGroup;
+			children = (
+				846114E621F3E6FE00398940 /* JSONCodableImp+Specs.swift */,
+			);
+			path = JSONCodable;
+			sourceTree = "<group>";
+		};
+		846114F121F4A0A300398940 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				D1D6603321B4A818006C2104 /* ValidationUseCases+Specs.swift */,
+				846114F221F4A0BB00398940 /* APIConfigurationUseCasesImp+Specs.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
 		D1269CD32186A5F700BF8227 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -515,8 +556,8 @@
 		D1269CDC2188731600BF8227 /* DataPlataform */ = {
 			isa = PBXGroup;
 			children = (
-				846114E121F3E5A100398940 /* JSONCodable */,
 				D1269CFB2189BC3400BF8227 /* LocalDataProvider.swift */,
+				846114E121F3E5A100398940 /* JSONCodable */,
 				846114DC21F3E4BB00398940 /* UserDefaults */,
 				D1D6602A21B47562006C2104 /* Models */,
 				D1269CDD2188731600BF8227 /* DataPlataform.h */,
@@ -528,11 +569,11 @@
 		D1269CE92188731600BF8227 /* DataPlataformTests */ = {
 			isa = PBXGroup;
 			children = (
+				846114EF21F49C9D00398940 /* Model */,
+				846114F021F49D0700398940 /* JSONCodable */,
+				846114EE21F49C4000398940 /* UserDefaults */,
 				D1269CEA2188731600BF8227 /* DataPlataformTests.swift */,
 				D1269CEC2188731700BF8227 /* Info.plist */,
-				843BA0D321EBFDC100006077 /* UserDefaultsDataProviderImp+Specs.swift */,
-				846114E621F3E6FE00398940 /* JSONCodableImp+Specs.swift */,
-				846114E821F3E97A00398940 /* ModelStub.swift */,
 			);
 			path = DataPlataformTests;
 			sourceTree = "<group>";
@@ -712,9 +753,9 @@
 		D1688A2C210CC76800947D1F /* DomainTests */ = {
 			isa = PBXGroup;
 			children = (
+				846114F121F4A0A300398940 /* UseCases */,
 				D1688A2D210CC76800947D1F /* DomainTests.swift */,
 				D1688A2F210CC76800947D1F /* Info.plist */,
-				D1D6603321B4A818006C2104 /* ValidationUseCases+Specs.swift */,
 				843BA0CF21EA0EA200006077 /* ConfigurationDataModel+Mapper+Specs.swift */,
 				843BA0D121EA1F9700006077 /* APIConfigurationNetworkModel+Mapper+Specs.swift */,
 			);
@@ -1473,8 +1514,10 @@
 				846114E521F3E5F000398940 /* JSONCodableImp.swift in Sources */,
 				D1D6602C21B475A1006C2104 /* GuestSessionLocalDataModel.swift in Sources */,
 				846114DE21F3E4F400398940 /* UserDefaultsAbstraction.swift in Sources */,
+				846114ED21F49BF400398940 /* UserDefaultsDataProviderImp.swift in Sources */,
 				846114E321F3E5C300398940 /* JSONCodable.swift in Sources */,
 				843BA0CA21E9560800006077 /* ConfigurarionDataModel.swift in Sources */,
+				846114EB21F49BD200398940 /* UserDefaultsDataProvider.swift in Sources */,
 				D1269CFC2189BC3400BF8227 /* LocalDataProvider.swift in Sources */,
 				846114E021F3E56800398940 /* UserDefaultsAbstractionImp.swift in Sources */,
 			);
@@ -1552,6 +1595,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				843BA0D221EA1F9700006077 /* APIConfigurationNetworkModel+Mapper+Specs.swift in Sources */,
+				846114F321F4A0BB00398940 /* APIConfigurationUseCasesImp+Specs.swift in Sources */,
 				843BA0D021EA0EA200006077 /* ConfigurationDataModel+Mapper+Specs.swift in Sources */,
 				D1688A2E210CC76800947D1F /* DomainTests.swift in Sources */,
 				D1D6603421B4A818006C2104 /* ValidationUseCases+Specs.swift in Sources */,

@@ -1,20 +1,28 @@
 import Foundation
 import Result
 
-public struct ConfigurationNetwork {
-	let watchServer: WatcherServer
+public protocol ConfigurationNetwork {
+    func requestConfiguration(completion: @escaping (Result<APIConfigurationNetworkModel, ServerError>) -> Void)
+}
+
+final class ConfigurationNetworkImp: ConfigurationNetwork {
+	let watcherServer: WatcherServer
+    
+    init(watcherServer: WatcherServer) {
+        self.watcherServer = watcherServer
+    }
 	
 	public func requestConfiguration(completion: @escaping (Result<APIConfigurationNetworkModel, ServerError>) -> Void) {
 		
-		let parameters = ["api_key": watchServer.apiConfiguration.apiKey]
+		let parameters = ["api_key": watcherServer.apiConfiguration.apiKey]
 		let request = RequestBuilder(
                 action: RouterAction.apiConfiguration.configuration,
-                configuration: watchServer.apiConfiguration
+                configuration: watcherServer.apiConfiguration
         )
 			.parameters(parameters: parameters)
 			.build()
 		
-		watchServer.execute(request: request) { result in
+		watcherServer.execute(request: request) { result in
 			result.analysis(ifSuccess: { json in
                 do {
                     let configuration = try APIConfigurationNetworkModel(json: json)

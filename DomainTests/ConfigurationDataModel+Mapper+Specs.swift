@@ -25,7 +25,7 @@ final class ConfigurationDataModelMapperSpecs: QuickSpec {
                     expect(apiConfiguration.images.backDropSizes[1]) == imagesDataModel.backDropSizes[1]
                     expect(apiConfiguration.images.backDropSizes[2]) == imagesDataModel.backDropSizes[2]
                 }
-            } // init
+            } // asDomain
         }
     }
 }

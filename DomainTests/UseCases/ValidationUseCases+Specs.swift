@@ -1,7 +1,7 @@
 import Quick
 import Nimble
 
-@testable import DataPlataform
+@testable import Domain
 
 final class ValidationUseCasesSpecs: QuickSpec {
 	override func spec() {

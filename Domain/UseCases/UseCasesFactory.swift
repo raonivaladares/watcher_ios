@@ -7,7 +7,7 @@ public struct UseCasesFactory {
 	private let apiProvider: APIProvider
 	
 	public init() {
-		self.localDataProvider = LocalDataProvider()
+		self.localDataProvider = LocalDataProviderImp()
 		self.apiProvider = APIProvider()
 	}
 	
@@ -16,6 +16,6 @@ public struct UseCasesFactory {
 	}
     
     public var configuration: APIConfigurationUseCases {
-        return APIConfigurationUseCasesImp(localDataProvider: localDataProvider, apiProvider: apiProvider)
+        return APIConfigurationUseCasesImp(localDataProvider: localDataProvider, apiProvider: apiProvider.apiConfiguration())
     }
 }

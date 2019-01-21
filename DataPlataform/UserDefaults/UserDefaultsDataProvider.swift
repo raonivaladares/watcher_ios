@@ -1,9 +1,7 @@
-//
-//  UserDefaultsDataProvider.swift
-//  DataPlataform
-//
-//  Created by Raoni de Oliveira Valadares on 1/20/19.
-//  Copyright © 2019 solo. All rights reserved.
-//
-
 import Foundation
+
+public protocol UserDefaultsDataProvider {
+    func save<T: Codable>(_ model: T)
+    func delete<T: Codable>(_ model: T.Type)
+    func query<T: Codable>() -> T?
+}
