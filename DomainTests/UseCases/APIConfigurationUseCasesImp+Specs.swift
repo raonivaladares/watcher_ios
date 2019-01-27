@@ -9,15 +9,57 @@ import Result
 final class APIConfigurationUseCasesImpSpecs: QuickSpec {
     override func spec() {
         describe("APIConfigurationUseCasesImpSpecs") {
-            let apiConfigurationNetworkModelImages = APIConfigurationNetworkModel.Images.init(secureBaseURL: "aaa", backDropSizes: ["aaa", "bbb"])
-            let apiConfigurationNetworkModel = APIConfigurationNetworkModel(images: apiConfigurationNetworkModelImages                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                )
-            let apiProviderMock = ConfigurationNetworkMock(result: .success(apiConfigurationNetworkModel))
-            let userDefaultsMock = UserDefaultsMock()
-            let localDataProviderMock = LocalDataProviderImp(userDefaultsDataProvider: userDefaultsMock)
-            let useCases = APIConfigurationUseCasesImp(localDataProvider: localDataProviderMock, apiProvider: apiProviderMock)
-            describe("?") {
-                it("?") {
-                   #warning("Under development")
+            context("when currentConfiguration is used after Initialization") {
+                let apiConfigurationNetworkModelImages = APIConfigurationNetworkModel.Images(secureBaseURL: "teste", backDropSizes: ["sizeM", "sizeB"])
+                let apiConfigurationNetworkModel = APIConfigurationNetworkModel(images: apiConfigurationNetworkModelImages                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                )
+                let apiProviderMock = ConfigurationNetworkMock(result: .success(apiConfigurationNetworkModel))
+                let userDefaultsMock = UserDefaultsMock()
+                let localDataProviderMock = LocalDataProviderImp(userDefaultsDataProvider: userDefaultsMock)
+                let useCases = APIConfigurationUseCasesImp(localDataProvider: localDataProviderMock, apiProvider: apiProviderMock)
+                
+                it("returns nil") {
+                    let result = useCases.currentConfiguration()
+                    expect(result).to(beNil())
+                }
+            }
+            
+            context("when it updates with success") {
+                let apiConfigurationNetworkModelImages = APIConfigurationNetworkModel.Images(secureBaseURL: "teste", backDropSizes: ["sizeM", "sizeB"])
+                let apiConfigurationNetworkModel = APIConfigurationNetworkModel(images: apiConfigurationNetworkModelImages)
+                let apiProviderMock = ConfigurationNetworkMock(result: .success(apiConfigurationNetworkModel))
+                let userDefaultsMock = UserDefaultsMock()
+                let localDataProviderMock = LocalDataProviderImp(userDefaultsDataProvider: userDefaultsMock)
+                let useCases = APIConfigurationUseCasesImp(localDataProvider: localDataProviderMock, apiProvider: apiProviderMock)
+                
+                it("returns a configuration") {
+                    useCases.updateLocalConfiguration { result in
+                        expect(result.value).toNot(beNil())
+                    }
+                }
+                
+                it("saves new configuration on local data") {
+                    useCases.updateLocalConfiguration { _ in }
+                    let result = useCases.currentConfiguration()
+                    expect(result).toNot(beNil())
+                }
+            }
+            
+            context("when it fails to update") {
+                let apiProviderMock = ConfigurationNetworkMock(result: .error(ServerError.unkown))
+                let userDefaultsMock = UserDefaultsMock()
+                let localDataProviderMock = LocalDataProviderImp(userDefaultsDataProvider: userDefaultsMock)
+                let useCases = APIConfigurationUseCasesImp(localDataProvider: localDataProviderMock, apiProvider: apiProviderMock)
+                
+                it("returns a configuration") {
+                    useCases.updateLocalConfiguration { result in
+                        expect(result.error).toNot(beNil())
+                    }
+                }
+                
+                it("saves new configuration on local data") {
+                    useCases.updateLocalConfiguration { _ in }
+                    let result = useCases.currentConfiguration()
+                    expect(result).to(beNil())
                 }
             }
         }
