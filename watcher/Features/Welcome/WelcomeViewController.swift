@@ -4,49 +4,27 @@ import SnapKit
 class WelcomeViewController: UIViewController {
 	
 	// MARK: Private UI properties
-	let appLogoImageView: UIImageView = {
-		let imageView = UIImageView()
-		imageView.image = UIImage(named: "tmdb_logo")
-		
-		return imageView
-	}()
-	
-	let subTitleLabel: UILabel = {
-		let label = UILabel()
-		label.text = "Welcome to the\n Watcher"
-		label.textAlignment = .center
-		label.font = UIFont.boldSystemFont(ofSize: 22)
-		label.textColor = .red
-		label.numberOfLines = 2
-		
-		return label
-	}()
-	
-	let bodyLabel: UILabel = {
-		let label = UILabel()
-		label.text = "A place to see movies, bla bla bla.... bla bla bla... bla bla bla"
-		label.textAlignment = .center
-		label.font = UIFont.boldSystemFont(ofSize: 15)
-		label.textColor = .red
-		label.numberOfLines = 0
-		
-		return label
-	}()
-	
-	let tmdLogoImageView: UIImageView = {
-		let imageView = UIImageView()
-		imageView.image = UIImage(named: "tmdb_logo")
-		
-		return imageView
-	}()
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 40)
+        label.textColor = .red
+        label.numberOfLines = 2
+        label.adjustsFontSizeToFitWidth = true
+        
+        return label
+    }()
+    
+	let appLogoImageView = UIImageView()
+	let tmdLogoImageView = UIImageView()
 	
 	let tmdbDescriptionLabel: UILabel = {
 		let label = UILabel()
-		label.text = "Thanks The movie DB for the content"
-		label.textAlignment = .center
-		label.font = UIFont.boldSystemFont(ofSize: 12)
+		label.textAlignment = .left
+		label.font = UIFont.boldSystemFont(ofSize: 18)
 		label.textColor = .red
-		label.numberOfLines = 0
+		label.numberOfLines = 2
+        label.adjustsFontSizeToFitWidth = true
 		
 		return label
 	}()
@@ -61,21 +39,61 @@ class WelcomeViewController: UIViewController {
 		
 		return button
 	}()
+    
+    let centerContainerView = UIView()
+    
+    let bottomContainerStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 20
+        
+        return stackView
+    }()
 	
 	// MARK: Private properties
 	
-	private let viewModel: WelcomeViewModel
 	private let loadingController = LoadingViewController()
-	
-	init(viewModel: WelcomeViewModel) {
-		self.viewModel = viewModel
-		
-		super.init(nibName: nil, bundle: nil)
-	}
+    
+    enum States {
+        case loading
+        case show
+        case error(ViewModelError)
+    }
+    
+    enum ViewActions {
+        case confirmed
+    }
+    
+    var viewActionsHandler: ((ViewActions) -> Void)?
+    
+    func bind(_ viewModel: WelcomeViewModel) {
+        titleLabel.text = viewModel.title
+        appLogoImageView.image = UIImage.init(named: viewModel.watcherLogoImageName)
+        tmdLogoImageView.image = UIImage.init(named: viewModel.tmdbLogoImageName)
+        tmdbDescriptionLabel.text = viewModel.tmdbDescription
+        
+        if viewModel.isLoading {
+            loadingController.showLoading()
+        } else {
+            loadingController.hideLoading()
+        }
+        
+        if let error = viewModel.viewModelError {
+            let alertController = UIAlertController(title: error.title, message: error.message, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            alertController.addAction(okAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
 	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
 }
 
 // MARK: ViewController life-cycle
@@ -90,6 +108,7 @@ extension WelcomeViewController {
 		
 		addViews()
 		defineAndActivateConstraints()
+        self.navigationController?.isNavigationBarHidden = true
 	}
 }
 
@@ -97,21 +116,7 @@ extension WelcomeViewController {
 
 extension WelcomeViewController {
 	@objc private func actionButtonHandler(_ sender: UIButton) {
-		//TODO: refactor
-		loadingController.showLoading()
-		viewModel.requestGuestNewSession { result in
-			self.loadingController.hideLoading()
-			result.analysis(ifSuccess: {
-				let homeViewController = SearchMovieViewController()
-				self.present(homeViewController, animated: true)
-			}, ifFailure: { viewModelError in
-				let alertController = UIAlertController(title: viewModelError.title, message: viewModelError.message, preferredStyle: .alert)
-				let okAction = UIAlertAction(title: "OK", style: .default)
-				
-				alertController.addAction(okAction)
-				self.present(alertController, animated: true, completion: nil)
-			})
-		}
+        viewActionsHandler?(.confirmed)
 	}
 }
 
@@ -119,57 +124,64 @@ extension WelcomeViewController {
 
 extension WelcomeViewController {
 	private func addViews() {
-		view.addSubviews(
-			appLogoImageView,
-			subTitleLabel,
-			bodyLabel,
-			tmdLogoImageView,
-			tmdbDescriptionLabel,
-			actionButton
+        centerContainerView.addSubviews(
+            appLogoImageView,
+            titleLabel,
+            actionButton
+        )
+        bottomContainerStackView.addArrangedSubview(tmdLogoImageView)
+        bottomContainerStackView.addArrangedSubview(tmdbDescriptionLabel)
+        
+        view.addSubviews(
+			centerContainerView,
+            bottomContainerStackView
 		)
 	}
 	
 	private func defineAndActivateConstraints() {
-		let topOrBottomMargins: CGFloat = 20
-		let sideMargins: CGFloat = 16
-		
+		centerContainerView.backgroundColor = .purple
+        centerContainerView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().offset(20)
+            $0.trailing.equalToSuperview().offset(-20)
+            $0.height.equalToSuperview().multipliedBy(0.6)
+        }
+        
+        titleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+        }
+        
 		appLogoImageView.snp.makeConstraints {
-			$0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
-			$0.centerX.equalToSuperview()
+			$0.top.equalTo(titleLabel.snp.bottom).offset(20)
+            $0.centerX.equalToSuperview()
 			$0.width.equalTo(80)
 			$0.height.equalTo(80)
 		}
 		
-		subTitleLabel.snp.makeConstraints {
-			$0.top.equalTo(appLogoImageView.snp.bottom).offset(topOrBottomMargins)
-			$0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(sideMargins)
-			$0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-sideMargins)
-		}
-		
-		bodyLabel.snp.makeConstraints {
-			$0.top.equalTo(subTitleLabel.snp.bottom).offset(topOrBottomMargins)
-			$0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(sideMargins)
-			$0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-sideMargins)
-		}
-		
-		tmdLogoImageView.snp.makeConstraints {
-			$0.bottom.equalTo(tmdbDescriptionLabel.snp.top).offset(-topOrBottomMargins)
-			$0.centerX.equalToSuperview()
-			$0.width.equalTo(50)
-			$0.height.equalTo(50)
-		}
-		
-		tmdbDescriptionLabel.snp.makeConstraints {
-			$0.bottom.equalTo(actionButton.snp.top).offset(-topOrBottomMargins)
-			$0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(sideMargins)
-			$0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-sideMargins)
-		}
-		
 		actionButton.snp.makeConstraints {
-			$0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-40)
 			$0.centerX.equalToSuperview()
-			$0.width.equalTo(200)
-			$0.height.equalTo(40)
+            $0.leading.equalToSuperview()
+            $0.bottom.equalToSuperview()
+			$0.trailing.equalToSuperview()
+			$0.height.equalTo(60)
 		}
+        
+        bottomContainerStackView.snp.makeConstraints {
+            $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(60)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-60)
+        }
+        
+        tmdLogoImageView.snp.makeConstraints {
+            $0.width.equalTo(50)
+            $0.height.equalTo(50)
+        }
+        
+//        tmdbDescriptionLabel.snp.makeConstraints {
+//
+//
+//        }
 	}
 }

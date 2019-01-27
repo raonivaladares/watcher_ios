@@ -9,14 +9,20 @@ struct AppCoordinator {
 			self.window = window
 	}
 	
+    private var welcomeCompletion: (WelcomeController.Action) -> Void = { _ in
+        
+    }
+    
 	func start() {
-		let viewModel = WelcomeViewModel(sessionUseCases: useCasesFactory.session)
-		let controller = WelcomeViewController(viewModel: viewModel)
-		let navigationController = UINavigationController(rootViewController: controller)
+        let controller = WelcomeController(sessionUseCases: useCasesFactory.session, completion: welcomeCompletion)
+//        let viewModel = WelcomeViewModel(sessionUseCases: useCasesFactory.session)
+//        let controller = WelcomeViewController(viewModel: viewModel)
+		let navigationController = UINavigationController(rootViewController: controller.viewController)
 		
 		window.rootViewController = navigationController
 		window.makeKeyAndVisible()
 	}
+    
 }
 
 extension UIColor {

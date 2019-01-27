@@ -26,6 +26,8 @@
 		843BA0D021EA0EA200006077 /* ConfigurationDataModel+Mapper+Specs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843BA0CF21EA0EA200006077 /* ConfigurationDataModel+Mapper+Specs.swift */; };
 		843BA0D221EA1F9700006077 /* APIConfigurationNetworkModel+Mapper+Specs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843BA0D121EA1F9700006077 /* APIConfigurationNetworkModel+Mapper+Specs.swift */; };
 		843BA0D421EBFDC100006077 /* UserDefaultsDataProviderImp+Specs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843BA0D321EBFDC100006077 /* UserDefaultsDataProviderImp+Specs.swift */; };
+		846088D421FDD38300929473 /* RemoteImagesSettinsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846088D321FDD38300929473 /* RemoteImagesSettinsManager.swift */; };
+		846088D621FDD3E900929473 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846088D521FDD3E900929473 /* WelcomeController.swift */; };
 		846114DE21F3E4F400398940 /* UserDefaultsAbstraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846114DD21F3E4F400398940 /* UserDefaultsAbstraction.swift */; };
 		846114E021F3E56800398940 /* UserDefaultsAbstractionImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846114DF21F3E56800398940 /* UserDefaultsAbstractionImp.swift */; };
 		846114E321F3E5C300398940 /* JSONCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846114E221F3E5C300398940 /* JSONCodable.swift */; };
@@ -225,6 +227,8 @@
 		843BA0CF21EA0EA200006077 /* ConfigurationDataModel+Mapper+Specs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConfigurationDataModel+Mapper+Specs.swift"; sourceTree = "<group>"; };
 		843BA0D121EA1F9700006077 /* APIConfigurationNetworkModel+Mapper+Specs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIConfigurationNetworkModel+Mapper+Specs.swift"; sourceTree = "<group>"; };
 		843BA0D321EBFDC100006077 /* UserDefaultsDataProviderImp+Specs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaultsDataProviderImp+Specs.swift"; sourceTree = "<group>"; };
+		846088D321FDD38300929473 /* RemoteImagesSettinsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImagesSettinsManager.swift; sourceTree = "<group>"; };
+		846088D521FDD3E900929473 /* WelcomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
 		846114DD21F3E4F400398940 /* UserDefaultsAbstraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsAbstraction.swift; sourceTree = "<group>"; };
 		846114DF21F3E56800398940 /* UserDefaultsAbstractionImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsAbstractionImp.swift; sourceTree = "<group>"; };
 		846114E221F3E5C300398940 /* JSONCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCodable.swift; sourceTree = "<group>"; };
@@ -492,6 +496,14 @@
 			path = Configuration;
 			sourceTree = "<group>";
 		};
+		846088D221FDD35C00929473 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				846088D321FDD38300929473 /* RemoteImagesSettinsManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		846114DC21F3E4BB00398940 /* UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
@@ -697,6 +709,7 @@
 		D16889E2210CBC8B00947D1F /* watcher */ = {
 			isa = PBXGroup;
 			children = (
+				846088D221FDD35C00929473 /* Managers */,
 				D1D6603021B48141006C2104 /* Errors */,
 				D1269CD32186A5F700BF8227 /* Extensions */,
 				D1EF8EB42184D2B80083A3CE /* Coordinators */,
@@ -843,6 +856,7 @@
 			children = (
 				D18AE05E212A25D000CC50B0 /* WelcomeViewController.swift */,
 				D18AE061212A3BB500CC50B0 /* WelcomeViewModel.swift */,
+				846088D521FDD3E900929473 /* WelcomeController.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -1538,6 +1552,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				846088D421FDD38300929473 /* RemoteImagesSettinsManager.swift in Sources */,
 				D1EF8EB62184D30D0083A3CE /* AppCoordinator.swift in Sources */,
 				D1418B392144158C006C385D /* LoadingChildViewController.swift in Sources */,
 				D18AE062212A3BB500CC50B0 /* WelcomeViewModel.swift in Sources */,
@@ -1545,6 +1560,7 @@
 				D1269CD22186A5D800BF8227 /* UIView+Extensions.swift in Sources */,
 				D1418B452149FB41006C385D /* SearchMovieCellContent.swift in Sources */,
 				D16889E4210CBC8B00947D1F /* AppDelegate.swift in Sources */,
+				846088D621FDD3E900929473 /* WelcomeController.swift in Sources */,
 				D1418B3E21449844006C385D /* SearchMovieViewModel.swift in Sources */,
 				D1418B3C2144345E006C385D /* SearchMovieViewController.swift in Sources */,
 				D1D6603221B48168006C2104 /* ViewModelError.swift in Sources */,

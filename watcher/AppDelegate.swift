@@ -24,19 +24,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func applicationWillTerminate(_ application: UIApplication) {}
 }
-
-import Domain
-final class RemoteImagesSettingsManager {
-    func updateSettings() {
-        UseCasesFactory().configuration.updateLocalConfiguration { result in
-            result.analysis(ifSuccess: { _ in
-                var foo = 2
-                print("success")
-                
-            }, ifFailure: { _ in 
-                var foo = 2
-                print("fail")
-            })
-        }
-    }
-}
