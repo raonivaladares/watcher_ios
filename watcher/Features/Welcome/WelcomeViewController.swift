@@ -2,13 +2,15 @@ import UIKit
 import SnapKit
 
 class WelcomeViewController: UIViewController {
-	
+	let viewControllerBackgroundColor = UIColor(red: 43/255, green: 43/255, blue: 43/255, alpha: 1)
+    
 	// MARK: Private UI properties
     let titleLabel: UILabel = {
+        let blueSo = UIColor.init(red: 109/255, green: 206/255, blue: 186/255, alpha: 1)
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 40)
-        label.textColor = .red
+        label.textColor = blueSo
         label.numberOfLines = 2
         label.adjustsFontSizeToFitWidth = true
         
@@ -19,10 +21,11 @@ class WelcomeViewController: UIViewController {
 	let tmdLogoImageView = UIImageView()
 	
 	let tmdbDescriptionLabel: UILabel = {
+        let blueSo = UIColor.init(red: 109/255, green: 206/255, blue: 186/255, alpha: 1)
 		let label = UILabel()
 		label.textAlignment = .left
 		label.font = UIFont.boldSystemFont(ofSize: 18)
-		label.textColor = .red
+		label.textColor = blueSo
 		label.numberOfLines = 2
         label.adjustsFontSizeToFitWidth = true
 		
@@ -30,16 +33,19 @@ class WelcomeViewController: UIViewController {
 	}()
 	
 	let actionButton: UIButton = {
+        let blueSo = UIColor.init(red: 109/255, green: 206/255, blue: 186/255, alpha: 1)
 		let button = UIButton()
-		button.setTitle("Start", for: .normal)
-		button.setTitleColor(.red, for: .normal)
-		button.backgroundColor = .blue
-		button.layer.cornerRadius = 10
+		button.setTitleColor(blueSo, for: .normal)
+		button.backgroundColor = .clear
+		button.layer.cornerRadius = 3
+        button.layer.borderWidth = 3
+        button.layer.borderColor = blueSo.cgColor
 		button.addTarget(self, action: #selector(actionButtonHandler(_:)), for: .touchUpInside)
 		
 		return button
 	}()
     
+    let logoContainer = UIView()
     let centerContainerView = UIView()
     
     let bottomContainerStackView: UIStackView = {
@@ -65,10 +71,39 @@ class WelcomeViewController: UIViewController {
     }
     
     var viewActionsHandler: ((ViewActions) -> Void)?
+	
+	required init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
     
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+}
+
+// MARK: ViewController life-cycle
+
+extension WelcomeViewController {
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		view.backgroundColor = viewControllerBackgroundColor
+		addChild(loadingController)
+		view.addSubview(loadingController.view)
+		loadingController.didMove(toParent: self)
+		
+		addViews()
+		defineAndActivateConstraints()
+        self.navigationController?.isNavigationBarHidden = true
+	}
+}
+
+// MARK: - Public methods
+
+extension WelcomeViewController {
     func bind(_ viewModel: WelcomeViewModel) {
         titleLabel.text = viewModel.title
         appLogoImageView.image = UIImage.init(named: viewModel.watcherLogoImageName)
+        actionButton.setTitle(viewModel.buttonTitle, for: .normal)
         tmdLogoImageView.image = UIImage.init(named: viewModel.tmdbLogoImageName)
         tmdbDescriptionLabel.text = viewModel.tmdbDescription
         
@@ -86,30 +121,6 @@ class WelcomeViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
         }
     }
-	
-	required init?(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-}
-
-// MARK: ViewController life-cycle
-
-extension WelcomeViewController {
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		view.backgroundColor = .white
-		addChild(loadingController)
-		view.addSubview(loadingController.view)
-		loadingController.didMove(toParent: self)
-		
-		addViews()
-		defineAndActivateConstraints()
-        self.navigationController?.isNavigationBarHidden = true
-	}
 }
 
 // MARK: Action Handlers
@@ -124,9 +135,9 @@ extension WelcomeViewController {
 
 extension WelcomeViewController {
 	private func addViews() {
+        logoContainer.addSubviews(titleLabel, appLogoImageView)
         centerContainerView.addSubviews(
-            appLogoImageView,
-            titleLabel,
+            logoContainer,
             actionButton
         )
         bottomContainerStackView.addArrangedSubview(tmdLogoImageView)
@@ -139,12 +150,18 @@ extension WelcomeViewController {
 	}
 	
 	private func defineAndActivateConstraints() {
-		centerContainerView.backgroundColor = .purple
         centerContainerView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalToSuperview().offset(-20)
+            $0.leading.equalToSuperview().offset(40)
+            $0.trailing.equalToSuperview().offset(-40)
             $0.height.equalToSuperview().multipliedBy(0.6)
+        }
+        
+        logoContainer.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.height.equalToSuperview().multipliedBy(0.4)
         }
         
         titleLabel.snp.makeConstraints {
@@ -154,10 +171,11 @@ extension WelcomeViewController {
         }
         
 		appLogoImageView.snp.makeConstraints {
-			$0.top.equalTo(titleLabel.snp.bottom).offset(20)
+			$0.top.equalTo(titleLabel.snp.bottom).offset(10)
+            $0.bottom.equalToSuperview()
             $0.centerX.equalToSuperview()
-			$0.width.equalTo(80)
-			$0.height.equalTo(80)
+            $0.width.equalTo(logoContainer.snp.height).multipliedBy(0.5)
+            $0.height.equalToSuperview().multipliedBy(0.5)
 		}
 		
 		actionButton.snp.makeConstraints {
@@ -178,10 +196,5 @@ extension WelcomeViewController {
             $0.width.equalTo(50)
             $0.height.equalTo(50)
         }
-        
-//        tmdbDescriptionLabel.snp.makeConstraints {
-//
-//
-//        }
 	}
 }
