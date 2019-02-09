@@ -60,6 +60,8 @@ target 'watcher' do
 	target 'watcherTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Quick'
+    pod 'Nimble'
   end
 
   target 'watcherUITests' do

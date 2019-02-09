@@ -28,6 +28,10 @@
 		843BA0D421EBFDC100006077 /* UserDefaultsDataProviderImp+Specs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843BA0D321EBFDC100006077 /* UserDefaultsDataProviderImp+Specs.swift */; };
 		846088D421FDD38300929473 /* RemoteImagesSettinsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846088D321FDD38300929473 /* RemoteImagesSettinsManager.swift */; };
 		846088D621FDD3E900929473 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846088D521FDD3E900929473 /* WelcomeController.swift */; };
+		84608B0B220F008900D7C220 /* ApplicationStartupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84608B0A220F008900D7C220 /* ApplicationStartupCoordinator.swift */; };
+		84608B0E220F069400D7C220 /* ApplicationSplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84608B0D220F069400D7C220 /* ApplicationSplashController.swift */; };
+		84608B10220F06F400D7C220 /* ApplicationSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84608B0F220F06F400D7C220 /* ApplicationSplashViewController.swift */; };
+		84608B13220F187000D7C220 /* ApplicationSplashController+Specs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84608B12220F187000D7C220 /* ApplicationSplashController+Specs.swift */; };
 		846114DE21F3E4F400398940 /* UserDefaultsAbstraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846114DD21F3E4F400398940 /* UserDefaultsAbstraction.swift */; };
 		846114E021F3E56800398940 /* UserDefaultsAbstractionImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846114DF21F3E56800398940 /* UserDefaultsAbstractionImp.swift */; };
 		846114E321F3E5C300398940 /* JSONCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846114E221F3E5C300398940 /* JSONCodable.swift */; };
@@ -229,6 +233,10 @@
 		843BA0D321EBFDC100006077 /* UserDefaultsDataProviderImp+Specs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaultsDataProviderImp+Specs.swift"; sourceTree = "<group>"; };
 		846088D321FDD38300929473 /* RemoteImagesSettinsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImagesSettinsManager.swift; sourceTree = "<group>"; };
 		846088D521FDD3E900929473 /* WelcomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
+		84608B0A220F008900D7C220 /* ApplicationStartupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStartupCoordinator.swift; sourceTree = "<group>"; };
+		84608B0D220F069400D7C220 /* ApplicationSplashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSplashController.swift; sourceTree = "<group>"; };
+		84608B0F220F06F400D7C220 /* ApplicationSplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSplashViewController.swift; sourceTree = "<group>"; };
+		84608B12220F187000D7C220 /* ApplicationSplashController+Specs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApplicationSplashController+Specs.swift"; sourceTree = "<group>"; };
 		846114DD21F3E4F400398940 /* UserDefaultsAbstraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsAbstraction.swift; sourceTree = "<group>"; };
 		846114DF21F3E56800398940 /* UserDefaultsAbstractionImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsAbstractionImp.swift; sourceTree = "<group>"; };
 		846114E221F3E5C300398940 /* JSONCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCodable.swift; sourceTree = "<group>"; };
@@ -504,6 +512,23 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		84608B0C220F064400D7C220 /* ApplicationSplash */ = {
+			isa = PBXGroup;
+			children = (
+				84608B0D220F069400D7C220 /* ApplicationSplashController.swift */,
+				84608B0F220F06F400D7C220 /* ApplicationSplashViewController.swift */,
+			);
+			path = ApplicationSplash;
+			sourceTree = "<group>";
+		};
+		84608B11220F181A00D7C220 /* ApplicationSplash */ = {
+			isa = PBXGroup;
+			children = (
+				84608B12220F187000D7C220 /* ApplicationSplashController+Specs.swift */,
+			);
+			path = ApplicationSplash;
+			sourceTree = "<group>";
+		};
 		846114DC21F3E4BB00398940 /* UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
@@ -727,6 +752,7 @@
 		D16889F7210CBC9400947D1F /* watcherTests */ = {
 			isa = PBXGroup;
 			children = (
+				84608B11220F181A00D7C220 /* ApplicationSplash */,
 				D16889F8210CBC9400947D1F /* watcherTests.swift */,
 				D16889FA210CBC9400947D1F /* Info.plist */,
 			);
@@ -745,6 +771,7 @@
 		D1688A14210CC12F00947D1F /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				84608B0C220F064400D7C220 /* ApplicationSplash */,
 				D1418B3A2144341B006C385D /* SearchMovie */,
 				D1C2710D213B1174001C7DAB /* Welcome */,
 			);
@@ -898,6 +925,7 @@
 			isa = PBXGroup;
 			children = (
 				D1EF8EB52184D30D0083A3CE /* AppCoordinator.swift */,
+				84608B0A220F008900D7C220 /* ApplicationStartupCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -1003,6 +1031,7 @@
 				D16889F0210CBC9400947D1F /* Sources */,
 				D16889F1210CBC9400947D1F /* Frameworks */,
 				D16889F2210CBC9400947D1F /* Resources */,
+				8780CF157D7E88FB77725F99 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1400,6 +1429,30 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NetworkPlataformTests/Pods-NetworkPlataformTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		8780CF157D7E88FB77725F99 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-watcherTests/Pods-watcherTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-watcherTests/Pods-watcherTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AE29F3A321279323AB93DA70 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1555,6 +1608,7 @@
 				846088D421FDD38300929473 /* RemoteImagesSettinsManager.swift in Sources */,
 				D1EF8EB62184D30D0083A3CE /* AppCoordinator.swift in Sources */,
 				D1418B392144158C006C385D /* LoadingChildViewController.swift in Sources */,
+				84608B10220F06F400D7C220 /* ApplicationSplashViewController.swift in Sources */,
 				D18AE062212A3BB500CC50B0 /* WelcomeViewModel.swift in Sources */,
 				D18AE05F212A25D000CC50B0 /* WelcomeViewController.swift in Sources */,
 				D1269CD22186A5D800BF8227 /* UIView+Extensions.swift in Sources */,
@@ -1565,6 +1619,8 @@
 				D1418B3C2144345E006C385D /* SearchMovieViewController.swift in Sources */,
 				D1D6603221B48168006C2104 /* ViewModelError.swift in Sources */,
 				D1418B4021455281006C385D /* SearchMovieResultCell.swift in Sources */,
+				84608B0E220F069400D7C220 /* ApplicationSplashController.swift in Sources */,
+				84608B0B220F008900D7C220 /* ApplicationStartupCoordinator.swift in Sources */,
 				D1418B48214D3A13006C385D /* UIImageView+AsyncLoad.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1573,6 +1629,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84608B13220F187000D7C220 /* ApplicationSplashController+Specs.swift in Sources */,
 				D16889F9210CBC9400947D1F /* watcherTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

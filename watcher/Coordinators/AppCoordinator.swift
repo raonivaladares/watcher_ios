@@ -31,7 +31,7 @@ final class AppCoordinator {
 		window.makeKeyAndVisible()
 	}
 }
-
+ 
 extension UIColor {
 //	class var primaryAppColor: UIColor { return .black }
 //	class var secundaryAppColor: UIColor { return UIColor(displayP3Red: 41/255, green: 46/255, blue: 52/255, alpha: 1) }

@@ -60,12 +60,6 @@ class WelcomeViewController: UIViewController {
 	
 	private let loadingController = LoadingViewController()
     
-    enum States {
-        case loading
-        case show
-        case error(ViewModelError)
-    }
-    
     enum ViewActions {
         case confirmed
     }
@@ -101,13 +95,13 @@ extension WelcomeViewController {
 
 extension WelcomeViewController {
     func bind(_ viewModel: WelcomeViewModel) {
-        titleLabel.text = viewModel.title
-        appLogoImageView.image = UIImage.init(named: viewModel.watcherLogoImageName)
-        actionButton.setTitle(viewModel.buttonTitle, for: .normal)
-        tmdLogoImageView.image = UIImage.init(named: viewModel.tmdbLogoImageName)
-        tmdbDescriptionLabel.text = viewModel.tmdbDescription
+        viewModel.title.executeIfChanged { titleLabel.text = $0 }
+        viewModel.watcherLogoImageName.executeIfChanged { appLogoImageView.image = UIImage(named: $0) }
+        viewModel.buttonTitle.executeIfChanged { actionButton.setTitle($0, for: .normal) }
+        viewModel.tmdbLogoImageName.executeIfChanged { tmdLogoImageView.image = UIImage(named: $0) }
+        viewModel.tmdbDescription.executeIfChanged {tmdbDescriptionLabel.text = $0}
         
-        if viewModel.isLoading {
+        if viewModel.isLoading.value {
             loadingController.showLoading()
         } else {
             loadingController.hideLoading()

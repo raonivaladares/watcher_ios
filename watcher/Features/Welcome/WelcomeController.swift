@@ -24,7 +24,7 @@ final class WelcomeController {
 
 extension WelcomeController {
     private func bindViewModel() {
-        let viewModel = WelcomeViewModel(state: .show)
+        let viewModel = WelcomeViewModel(state: .start)
         viewController.bind(viewModel)
     }
     

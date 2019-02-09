@@ -3,13 +3,17 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	var appCoordinator: AppCoordinator!
+    var applicationStartupCoordinator: ApplicationStartupCoordinator!
     
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		RemoteImagesSettingsManager().updateSettings()
-        let window = UIWindow(frame: UIScreen.main.bounds)
-		appCoordinator = AppCoordinator(window: window)
-		appCoordinator.start()
+		
+        
+//        appCoordinator = AppCoordinator(window: window)
+//        appCoordinator.start()
+        
+        applicationStartupCoordinator = ApplicationStartupCoordinator()
+        applicationStartupCoordinator.start()
 		
 		return true
 	}
