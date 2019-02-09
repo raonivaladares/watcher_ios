@@ -13,7 +13,7 @@ final class ApplicationStartupCoordinator {
     }
     
     func start() {
-        let controller = ApplicationSplashController(useCases: useCasesFactory.configuration)
+        let controller = ApplicationSplashController(useCases: useCasesFactory.configuration, completion: { _ in })
         rootNavigation.setViewControllers([controller.viewController], animated: true)
         window.rootViewController = rootNavigation
         window.makeKeyAndVisible()
