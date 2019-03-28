@@ -18,10 +18,10 @@ final class ApplicationSplashController {
         self.viewController = viewController
         self.completion = completion
         
-        viewController.viewOutput = { event in
+        viewController.viewOutput = { [weak self] event in
             switch event {
             case .retryButtonTapped:
-                self.requestApplicationConfiguration()
+                self?.requestApplicationConfiguration()
             }
         }
         

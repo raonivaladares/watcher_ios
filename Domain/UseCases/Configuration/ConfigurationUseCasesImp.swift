@@ -16,14 +16,10 @@ final class APIConfigurationUseCasesImp: APIConfigurationUseCases {
     
     public func updateLocalConfiguration(completion: @escaping (Result<Void, DomainError>) -> Void) {
         apiProvider.requestConfiguration { result in
-            
-            let deadlineTime = DispatchTime.now() + .seconds(5)
-            DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
-                completion(result.bimap(success: {
-                    self.localDataProvider.userDefaultsDataProvider.save($0.asDataPlataform())
-                    
-                }, failure: { _ in DomainError.unknow }))
-            }
+            completion(result.bimap(success: {
+                self.localDataProvider.userDefaultsDataProvider.save($0.asDataPlataform())
+                
+            }, failure: { _ in DomainError.unknow }))
         }
     }
     
