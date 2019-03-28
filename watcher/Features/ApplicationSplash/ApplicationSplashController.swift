@@ -18,6 +18,13 @@ final class ApplicationSplashController {
         self.viewController = viewController
         self.completion = completion
         
+        viewController.viewOutput = { event in
+            switch event {
+            case .retryButtonTapped:
+                self.requestApplicationConfiguration()
+            }
+        }
+        
         requestApplicationConfiguration()
     }
 }
@@ -29,40 +36,14 @@ extension ApplicationSplashController {
         
         useCases.updateLocalConfiguration { result in
             result.analysis(ifSuccess: { [weak self] _ in
-//                let viewModel = ApplicationSplashViewModel(state: .endLoading)
-                let error = DomainError.unknow
-                let viewModel = ApplicationSplashViewModel(state: .error(ViewModelError(error: error)))
+                let viewModel = ApplicationSplashViewModel(state: .endLoading)
                 self?.viewController.bind(viewModel)
+                self?.completion(.configurationCompleted)
             }, ifFailure: { [weak self] domainError in
                 let viewModelError = ViewModelError(error: domainError)
                 let viewModel = ApplicationSplashViewModel(state: .error(viewModelError))
                 self?.viewController.bind(viewModel)
             })
-        }
-    }
-}
-
-struct ApplicationSplashViewModel {
-    let isLoading: Bool
-    let viewModelError: ViewModelError?
-    
-    enum State {
-        case startLoading
-        case endLoading
-        case error(ViewModelError)
-    }
-    
-    init(state: State) {
-        switch state {
-        case .startLoading:
-            isLoading = true
-            viewModelError = nil
-        case .endLoading:
-            isLoading = false
-            viewModelError = nil
-        case .error(let viewModelError):
-            isLoading = false
-            self.viewModelError = viewModelError
         }
     }
 }

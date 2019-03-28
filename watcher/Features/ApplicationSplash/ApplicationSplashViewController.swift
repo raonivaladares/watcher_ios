@@ -2,20 +2,17 @@ import UIKit
 import SnapKit
 
 final class ApplicationSplashViewController: UIViewController {
-    private let spinnerContainerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .black
-        view.alpha = 0
-        
-        return view
-    }()
     
-    private let spinner: UIActivityIndicatorView = {
-        let spinner = UIActivityIndicatorView(style: .whiteLarge)
-        spinner.hidesWhenStopped = true
-        spinner.isUserInteractionEnabled = true
+    enum Event {
+        case retryButtonTapped
+    }
+    
+    private let logoImageView: UIImageView = {
+        let image = UIImage(named: "watcher_logo")
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .center
         
-        return spinner
+        return imageView
     }()
     
     private let retryButton: UIButton = {
@@ -38,29 +35,10 @@ final class ApplicationSplashViewController: UIViewController {
         }
     }
     
-    private func startLoadingAnimated() {
-        UIView.transition(with: view, duration: 1, options: .transitionCrossDissolve, animations: {
-            self.spinnerContainerView.alpha = 1
-            self.spinner.startAnimating()
-        })
-    }
-    
-    private func stopLoadingAnimated() {
-        UIView.transition(with: view, duration: 1, options: .transitionCrossDissolve, animations: {
-            self.spinnerContainerView.alpha = 0
-            self.spinner.stopAnimating()
-        })
-    }
+    // MARK: - Public properties
     
     var viewOutput: ((Event) -> Void)?
     
-    enum Event {
-        case retry
-    }
-    
-    @objc private func retryButtonHandler(_ sender: UIButton) {
-        
-    }
     
     // MARK: - Initialization
     
@@ -76,12 +54,14 @@ final class ApplicationSplashViewController: UIViewController {
     
     func bind(_ viewModel: ApplicationSplashViewModel){
         isLoading = viewModel.isLoading
+        retryButton.isHidden = viewModel.isRetryButtonHidden
+        
         if let viewModelError = viewModel.viewModelError {
             let alertController = UIAlertController(title: viewModelError.title, message: viewModelError.message, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default)
             alertController.addAction(okAction)
             
-            self.present(alertController, animated: true, completion: nil)
+            present(alertController, animated: true, completion: nil)
         }
     }
 }
@@ -105,25 +85,50 @@ extension ApplicationSplashViewController {
     }
 }
 
+// MARK: - Event handlers
+
+extension ApplicationSplashViewController {
+    @objc private func retryButtonHandler(_ sender: UIButton) {
+        viewOutput?(.retryButtonTapped)
+    }
+}
+
+extension ApplicationSplashViewController {
+    private func startLoadingAnimated() {
+        UIView.animate(
+            withDuration: 1,
+            delay: 0,
+            options: [.autoreverse, .repeat],
+            animations: {
+                self.logoImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+            }
+        )
+    }
+    
+    private func stopLoadingAnimated() {
+        UIView.animate(
+            withDuration: 1,
+            delay: 0,
+            options: .beginFromCurrentState,
+            animations: {
+                self.logoImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }
+        )
+    }
+}
+
 // MARK: - Private methods - UI
 
 extension ApplicationSplashViewController {
     private func addViews() {
-        spinnerContainerView.addSubview(spinner)
         view.addSubviews(
-            spinnerContainerView,
+            logoImageView,
             retryButton
-            )
+        )
     }
     
     private func defineAndActivateConstraints() {
-        spinnerContainerView.snp.makeConstraints {
-            $0.center.equalToSuperview()
-            $0.width.equalTo(100)
-            $0.height.equalTo(100)
-        }
-        
-        spinner.snp.makeConstraints {
+        logoImageView.snp.makeConstraints {
             $0.center.equalToSuperview()
         }
         
@@ -146,7 +151,6 @@ extension ApplicationColors {
         switch self {
         case .yellow: return UIColor(red: 255/255, green: 205/255, blue: 1/255, alpha: 1)
         case .black: return UIColor(red: 38/255, green: 38/255, blue: 38/255, alpha: 1)
-
         }
     }
 }
