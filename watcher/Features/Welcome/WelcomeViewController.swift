@@ -2,18 +2,15 @@ import UIKit
 import SnapKit
 
 class WelcomeViewController: UIViewController {
-	let viewControllerBackgroundColor = UIColor(red: 254/255, green: 211/255, blue: 0/255, alpha: 1)
-    
 	// MARK: Private UI properties
     
 	let appLogoImageView = UIImageView()
     
     let welcomeDescriptionLabel: UILabel = {
-        let blueSo = UIColor.init(red: 43/255, green: 43/255, blue: 43/255, alpha: 1)
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 18)
-        label.textColor = blueSo
+        label.textColor = UIColor.AppColors.black
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
         
@@ -21,10 +18,9 @@ class WelcomeViewController: UIViewController {
     }()
     
     let actionButton: UIButton = {
-        let blueSo = UIColor.init(red: 43/255, green: 43/255, blue: 43/255, alpha: 1)
         let button = UIButton()
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = blueSo
+        button.backgroundColor = UIColor.AppColors.black
         button.layer.cornerRadius = 15
         button.addTarget(self, action: #selector(actionButtonHandler(_:)), for: .touchUpInside)
         
@@ -34,11 +30,10 @@ class WelcomeViewController: UIViewController {
 	let tmdLogoImageView = UIImageView()
 	
 	let tmdbDescriptionLabel: UILabel = {
-        let blueSo = UIColor.init(red: 43/255, green: 43/255, blue: 43/255, alpha: 0.4)
 		let label = UILabel()
 		label.textAlignment = .left
 		label.font = UIFont.boldSystemFont(ofSize: 14)
-		label.textColor = blueSo
+		label.textColor = UIColor.AppColors.black.withAlphaComponent(0.4)
 		label.numberOfLines = 2
         label.adjustsFontSizeToFitWidth = true
 		
@@ -79,7 +74,7 @@ class WelcomeViewController: UIViewController {
 extension WelcomeViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		view.backgroundColor = viewControllerBackgroundColor
+		view.backgroundColor = UIColor.AppColors.yellow
 		addChild(loadingController)
 		view.addSubview(loadingController.view)
 		loadingController.didMove(toParent: self)
@@ -94,7 +89,7 @@ extension WelcomeViewController {
 
 extension WelcomeViewController {
     func bind(_ viewModel: WelcomeViewModel) {
-        viewModel.title.executeIfChanged { welcomeDescriptionLabel.text = $0 }
+        viewModel.welcomeDescription.executeIfChanged { welcomeDescriptionLabel.text = $0 }
         viewModel.watcherLogoImageName.executeIfChanged { appLogoImageView.image = UIImage(named: $0) }
         viewModel.buttonTitle.executeIfChanged { actionButton.setTitle($0, for: .normal) }
         viewModel.tmdbLogoImageName.executeIfChanged { tmdLogoImageView.image = UIImage(named: $0) }
@@ -144,11 +139,10 @@ extension WelcomeViewController {
 	}
 	
 	private func defineAndActivateConstraints() {
-//        centerContainerView.backgroundColor = .red
         centerContainerView.snp.makeConstraints {
             $0.centerY.equalToSuperview().offset(-10)
-            $0.leading.equalToSuperview().offset(40)
-            $0.trailing.equalToSuperview().offset(-40)
+            $0.leading.equalToSuperview().offset(30)
+            $0.trailing.equalToSuperview().offset(-30)
             $0.height.equalToSuperview().multipliedBy(0.65)
         }
         
