@@ -2,29 +2,42 @@ import UIKit
 import SnapKit
 
 class WelcomeViewController: UIViewController {
-	let viewControllerBackgroundColor = UIColor(red: 43/255, green: 43/255, blue: 43/255, alpha: 1)
+	let viewControllerBackgroundColor = UIColor(red: 254/255, green: 211/255, blue: 0/255, alpha: 1)
     
 	// MARK: Private UI properties
-    let titleLabel: UILabel = {
-        let blueSo = UIColor.init(red: 109/255, green: 206/255, blue: 186/255, alpha: 1)
+    
+	let appLogoImageView = UIImageView()
+    
+    let welcomeDescriptionLabel: UILabel = {
+        let blueSo = UIColor.init(red: 43/255, green: 43/255, blue: 43/255, alpha: 1)
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 40)
+        label.font = UIFont.boldSystemFont(ofSize: 18)
         label.textColor = blueSo
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
         
         return label
     }()
     
-	let appLogoImageView = UIImageView()
+    let actionButton: UIButton = {
+        let blueSo = UIColor.init(red: 43/255, green: 43/255, blue: 43/255, alpha: 1)
+        let button = UIButton()
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = blueSo
+        button.layer.cornerRadius = 15
+        button.addTarget(self, action: #selector(actionButtonHandler(_:)), for: .touchUpInside)
+        
+        return button
+    }()
+    
 	let tmdLogoImageView = UIImageView()
 	
 	let tmdbDescriptionLabel: UILabel = {
-        let blueSo = UIColor.init(red: 109/255, green: 206/255, blue: 186/255, alpha: 1)
+        let blueSo = UIColor.init(red: 43/255, green: 43/255, blue: 43/255, alpha: 0.4)
 		let label = UILabel()
 		label.textAlignment = .left
-		label.font = UIFont.boldSystemFont(ofSize: 18)
+		label.font = UIFont.boldSystemFont(ofSize: 14)
 		label.textColor = blueSo
 		label.numberOfLines = 2
         label.adjustsFontSizeToFitWidth = true
@@ -32,20 +45,6 @@ class WelcomeViewController: UIViewController {
 		return label
 	}()
 	
-	let actionButton: UIButton = {
-        let blueSo = UIColor.init(red: 109/255, green: 206/255, blue: 186/255, alpha: 1)
-		let button = UIButton()
-		button.setTitleColor(blueSo, for: .normal)
-		button.backgroundColor = .clear
-		button.layer.cornerRadius = 3
-        button.layer.borderWidth = 3
-        button.layer.borderColor = blueSo.cgColor
-		button.addTarget(self, action: #selector(actionButtonHandler(_:)), for: .touchUpInside)
-		
-		return button
-	}()
-    
-    let logoContainer = UIView()
     let centerContainerView = UIView()
     
     let bottomContainerStackView: UIStackView = {
@@ -95,7 +94,7 @@ extension WelcomeViewController {
 
 extension WelcomeViewController {
     func bind(_ viewModel: WelcomeViewModel) {
-        viewModel.title.executeIfChanged { titleLabel.text = $0 }
+        viewModel.title.executeIfChanged { welcomeDescriptionLabel.text = $0 }
         viewModel.watcherLogoImageName.executeIfChanged { appLogoImageView.image = UIImage(named: $0) }
         viewModel.buttonTitle.executeIfChanged { actionButton.setTitle($0, for: .normal) }
         viewModel.tmdbLogoImageName.executeIfChanged { tmdLogoImageView.image = UIImage(named: $0) }
@@ -129,11 +128,12 @@ extension WelcomeViewController {
 
 extension WelcomeViewController {
 	private func addViews() {
-        logoContainer.addSubviews(titleLabel, appLogoImageView)
         centerContainerView.addSubviews(
-            logoContainer,
+            appLogoImageView,
+            welcomeDescriptionLabel,
             actionButton
         )
+        
         bottomContainerStackView.addArrangedSubview(tmdLogoImageView)
         bottomContainerStackView.addArrangedSubview(tmdbDescriptionLabel)
         
@@ -144,38 +144,30 @@ extension WelcomeViewController {
 	}
 	
 	private func defineAndActivateConstraints() {
+//        centerContainerView.backgroundColor = .red
         centerContainerView.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
+            $0.centerY.equalToSuperview().offset(-10)
             $0.leading.equalToSuperview().offset(40)
             $0.trailing.equalToSuperview().offset(-40)
-            $0.height.equalToSuperview().multipliedBy(0.6)
+            $0.height.equalToSuperview().multipliedBy(0.65)
         }
         
-        logoContainer.snp.makeConstraints {
+        appLogoImageView.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-            $0.height.equalToSuperview().multipliedBy(0.4)
-        }
-        
-        titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-        }
-        
-		appLogoImageView.snp.makeConstraints {
-			$0.top.equalTo(titleLabel.snp.bottom).offset(10)
-            $0.bottom.equalToSuperview()
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(logoContainer.snp.height).multipliedBy(0.5)
-            $0.height.equalToSuperview().multipliedBy(0.5)
-		}
+        }
+        
+        welcomeDescriptionLabel.snp.makeConstraints {
+            $0.top.equalTo(appLogoImageView.snp.bottom).offset(40)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+        }
 		
 		actionButton.snp.makeConstraints {
 			$0.centerX.equalToSuperview()
+            $0.top.equalTo(welcomeDescriptionLabel.snp.bottom).offset(40)
             $0.leading.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.bottom.lessThanOrEqualToSuperview()
 			$0.trailing.equalToSuperview()
 			$0.height.equalTo(60)
 		}
@@ -188,7 +180,7 @@ extension WelcomeViewController {
         
         tmdLogoImageView.snp.makeConstraints {
             $0.width.equalTo(50)
-            $0.height.equalTo(50)
+            $0.height.equalTo(44)
         }
 	}
 }

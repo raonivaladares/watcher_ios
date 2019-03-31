@@ -21,8 +21,8 @@ extension WelcomeViewModel {
     init(state: States) {
         switch state {
         case .start:
-            title.write(value: "THE \n WATCHER")
-            watcherLogoImageName.write(value: "tmdb_logo")
+            title.write(value: "The $79 iWork ’08 appears to be a good deal for anyone needing an affordable office suite for the Mac.")
+            watcherLogoImageName.write(value: "watcher_logo")
             buttonTitle.write(value: "start")
             tmdbLogoImageName.write(value: "tmdb_logo")
             buttonTitle.write(value: "start")
