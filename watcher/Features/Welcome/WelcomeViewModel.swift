@@ -23,9 +23,8 @@ extension WelcomeViewModel {
         case .start:
             welcomeDescription.write(value: "The $79 iWork ’08 appears to be a good deal for anyone needing an affordable office suite for the Mac.")
             watcherLogoImageName.write(value: "watcher_logo")
-            buttonTitle.write(value: "start")
             tmdbLogoImageName.write(value: "tmdb_logo")
-            buttonTitle.write(value: "start")
+            buttonTitle.write(value: "START")
             tmdbDescription.write(value: "Thanks The Movie DB for the content")
         case .show:
             isLoading.write(value: false)

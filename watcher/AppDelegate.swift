@@ -7,14 +7,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		
-        
-//        appCoordinator = AppCoordinator(window: window)
-//        appCoordinator.start()
-        
-        applicationStartupCoordinator = ApplicationStartupCoordinator()
+		applicationStartupCoordinator = ApplicationStartupCoordinator()
         applicationStartupCoordinator.start()
-		
+
 		return true
 	}
 

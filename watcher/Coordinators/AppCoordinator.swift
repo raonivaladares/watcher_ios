@@ -32,12 +32,6 @@ final class AppCoordinator {
 	}
 }
  
-extension UIColor {
-//	class var primaryAppColor: UIColor { return .black }
-//	class var secundaryAppColor: UIColor { return UIColor(displayP3Red: 41/255, green: 46/255, blue: 52/255, alpha: 1) }
-//	class var textColor: UIColor { return .white }
-}
-
 
 final class SearchCoodinator {
     let navigation: UINavigationController

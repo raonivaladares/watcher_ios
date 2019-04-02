@@ -9,8 +9,8 @@ class WelcomeViewController: UIViewController {
     let welcomeDescriptionLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 18)
-        label.textColor = UIColor.AppColors.black
+        label.font = UIFont.init(name: "OpenSans-Semibold", size: 18)
+        label.textColor = UIColor.AppColors.black.withAlphaComponent(0.8)
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
         
@@ -20,6 +20,7 @@ class WelcomeViewController: UIViewController {
     let actionButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.init(name: "OpenSans-Extrabold", size: 15)
         button.backgroundColor = UIColor.AppColors.black
         button.layer.cornerRadius = 15
         button.addTarget(self, action: #selector(actionButtonHandler(_:)), for: .touchUpInside)
@@ -32,7 +33,7 @@ class WelcomeViewController: UIViewController {
 	let tmdbDescriptionLabel: UILabel = {
 		let label = UILabel()
 		label.textAlignment = .left
-		label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.font = UIFont.init(name: "OpenSans-Semibold", size: 14)
 		label.textColor = UIColor.AppColors.black.withAlphaComponent(0.4)
 		label.numberOfLines = 2
         label.adjustsFontSizeToFitWidth = true
@@ -82,6 +83,12 @@ extension WelcomeViewController {
 		addViews()
 		defineAndActivateConstraints()
         self.navigationController?.isNavigationBarHidden = true
+        
+        
+        
+//        tmdbDescriptionLabel.font = UIFont.init(name: "OpenSans-ExtraBold", size: 14)
+//        tmdbDescriptionLabel.font = UIFont.init(name: "OpenSans-ExtraBold", size: 14)
+        UIFont.familyNames
 	}
 }
 

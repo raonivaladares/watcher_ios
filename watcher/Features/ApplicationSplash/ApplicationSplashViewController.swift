@@ -4,6 +4,7 @@ import SnapKit
 final class ApplicationSplashViewController: UIViewController {
     
     enum Event {
+        case animationFinished
         case retryButtonTapped
     }
     
@@ -112,6 +113,8 @@ extension ApplicationSplashViewController {
             options: .beginFromCurrentState,
             animations: {
                 self.logoImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }, completion: { isFinished in 
+                self.viewOutput?(.animationFinished)
             }
         )
     }

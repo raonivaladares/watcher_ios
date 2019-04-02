@@ -6,9 +6,16 @@ final class ApplicationSplashController {
         case configurationCompleted
     }
     
+    // MARK: Public properties
+    
     let viewController: ApplicationSplashViewController
+    
+    // MARK: Private properties
+    
     private let useCases: APIConfigurationUseCases
     private let completion: (Event) -> Void
+    
+    // MARK: Inits
     
     init(viewController: ApplicationSplashViewController = .init(),
          useCases: APIConfigurationUseCases,
@@ -20,6 +27,8 @@ final class ApplicationSplashController {
         
         viewController.viewOutput = { [weak self] event in
             switch event {
+            case .animationFinished:
+                self?.completion(.configurationCompleted)
             case .retryButtonTapped:
                 self?.requestApplicationConfiguration()
             }
@@ -29,6 +38,8 @@ final class ApplicationSplashController {
     }
 }
 
+// MARK: Private methods
+
 extension ApplicationSplashController {
     private func requestApplicationConfiguration() {
         let viewModel = ApplicationSplashViewModel(state: .startLoading)
@@ -36,9 +47,11 @@ extension ApplicationSplashController {
         
         useCases.updateLocalConfiguration { result in
             result.analysis(ifSuccess: { [weak self] _ in
-                let viewModel = ApplicationSplashViewModel(state: .endLoading)
-                self?.viewController.bind(viewModel)
-                self?.completion(.configurationCompleted)
+                let deadlineTime = DispatchTime.now() + .seconds(2)
+                DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+                    let viewModel = ApplicationSplashViewModel(state: .endLoading)
+                    self?.viewController.bind(viewModel)
+                }
             }, ifFailure: { [weak self] domainError in
                 let viewModelError = ViewModelError(error: domainError)
                 let viewModel = ApplicationSplashViewModel(state: .error(viewModelError))

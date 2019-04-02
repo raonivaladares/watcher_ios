@@ -1,11 +1,3 @@
-//
-//  UIColors+AppColors.swift
-//  watcher
-//
-//  Created by Raoni de Oliveira Valadares on 3/31/19.
-//  Copyright © 2019 solo. All rights reserved.
-//
-
 import UIKit
 
 extension UIColor {
