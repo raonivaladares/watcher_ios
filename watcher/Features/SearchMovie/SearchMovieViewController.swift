@@ -1,13 +1,15 @@
 import UIKit
+import SnapKit
 
 class SearchMovieViewController: UIViewController {
 	
 	// MARK: Private UI properties
-	
+   
 	private let tableView: UITableView = {
 		let tableView = UITableView()
 		tableView.backgroundColor = .clear
 		tableView.estimatedRowHeight = 140
+        tableView.sectionHeaderHeight = 220
 		tableView.rowHeight = UITableView.automaticDimension
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		
@@ -23,27 +25,20 @@ extension SearchMovieViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		view.backgroundColor = .black
+		view.backgroundColor = UIColor.AppColors.yellow
 		
 		addViews()
 		defineAndActivateConstraints()
+        configureUIElements()
 		registerCells()
 		
 		tableView.dataSource = self
 		tableView.delegate = self
-		
-		title = "Search Movie"
-		navigationController?.navigationBar.prefersLargeTitles = true
-		
-		let searchController = UISearchController(searchResultsController: nil)
-		searchController.searchResultsUpdater = self
-		searchController.searchBar.barStyle = .black
-		navigationItem.searchController = searchController
-		navigationItem.hidesSearchBarWhenScrolling = false
 	}
 	
 	private func registerCells() {
 		tableView.register(SearchMovieResultCell.self, forCellReuseIdentifier: "SearchMovieResultCell")
+        tableView.register(SearchMoviewHeaderCell.self, forHeaderFooterViewReuseIdentifier: "SearchMoviewHeaderCell")
 	}
 	
 	@objc private func search(_ text: String) {
@@ -74,7 +69,11 @@ extension SearchMovieViewController: UISearchResultsUpdating {
 // MARK: UITableViewDataSource
 
 extension SearchMovieViewController: UITableViewDataSource {
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return viewModel.numberOfRolls
 	}
 	
@@ -87,6 +86,12 @@ extension SearchMovieViewController: UITableViewDataSource {
 		
 		return cell
 	}
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SearchMoviewHeaderCell") as! SearchMoviewHeaderCell
+        
+        return header
+    }
 }
 
 // MARK: UITableViewDelegate
@@ -96,16 +101,17 @@ extension SearchMovieViewController: UITableViewDelegate {}
 // MARK: - Private methods - UI
 
 extension SearchMovieViewController {
+    private func configureUIElements() {
+        
+    }
+    
 	private func addViews() {
 		view.addSubview(tableView)
 	}
 	
 	private func defineAndActivateConstraints() {
-		NSLayoutConstraint.activate([
-			tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-			tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-			tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-			tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-			])
+        tableView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
 	}
 }

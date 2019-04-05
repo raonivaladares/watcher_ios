@@ -11,13 +11,17 @@ final class WelcomeController {
     
     let viewController: WelcomeViewController
     
+    private let completion: (Action) -> Void
+    
     init(viewController: WelcomeViewController = .init(),
         sessionUseCases: SessionUseCases,
-        completion: (Action) -> Void) {
+        completion: @escaping (Action) -> Void) {
         
         self.viewController = viewController
         self.sessionUseCases = sessionUseCases
+        self.completion = completion
         viewController.viewActionsHandler = viewControllerOutputHandler
+        
         bindViewModel()
     }
 }
@@ -41,12 +45,12 @@ extension WelcomeController {
         case .confirmed:
             let viewModel = WelcomeViewModel(state: .loading)
             self.viewController.bind(viewModel)
-            print(".loading")
+            
             self.requestGuestNewSession { result in
                 result.analysis(ifSuccess: { _ in
                     let viewModel = WelcomeViewModel(state: .show)
                     self.viewController.bind(viewModel)
-                    print(".show")
+                    self.completion(.confirm)
                 }, ifFailure: { viewModelError in
                     let viewModel = WelcomeViewModel(state: .error(viewModelError))
                     self.viewController.bind(viewModel)

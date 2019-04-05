@@ -32,13 +32,13 @@ final class WelcomeCoordinator {
         controller = WelcomeController(sessionUseCases: useCasesFactory.session) { event in
             switch event {
             case .confirm:
-                print("configurationCompleted")
+                SearchMovieCoordinator(navigationController: navigationController, useCasesFactory: useCasesFactory).start()
             }
         }
     }
     
     func start() {
-        navigationController.present(controller.viewController, animated: true, completion: nil)
-//        navigationController.pushViewController(controller.viewController, animated: true)
+//        navigationController.present(controller.viewController, animated: true, completion: nil)
+        navigationController.pushViewController(controller.viewController, animated: true)
     }
 }
