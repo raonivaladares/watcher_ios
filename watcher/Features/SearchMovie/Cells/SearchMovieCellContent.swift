@@ -12,7 +12,11 @@ struct SearchMovieCellContent {
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateFormat = "YYYY"
 		
-		movieYear = dateFormatter.string(from: movie.releaseDate)
-		movieCoverPath = movie.backdropPath
+		movieYear = "(\(dateFormatter.string(from: movie.releaseDate)))"
+        if let fullPath = movie.backdropPath {
+            movieCoverPath = "https://image.tmdb.org/t/p/w500/\(fullPath)"
+        } else {
+            movieCoverPath = nil
+        }
 	}
 }

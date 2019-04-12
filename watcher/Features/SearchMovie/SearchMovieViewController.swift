@@ -34,7 +34,18 @@ extension SearchMovieViewController {
 		
 		tableView.dataSource = self
 		tableView.delegate = self
+        
+        let tapRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(dismissKeyboard))
+        
+        view.addGestureRecognizer(tapRecognizer)
 	}
+    
+    @objc func dismissKeyboard() {
+        
+        view.endEditing(true)
+    }
 	
 	private func registerCells() {
 		tableView.register(SearchMovieResultCell.self, forCellReuseIdentifier: "SearchMovieResultCell")
@@ -83,15 +94,30 @@ extension SearchMovieViewController: UITableViewDataSource {
 		
 		let content = viewModel.cellContent(forIndex: indexPath.row)
 		cell.configure(withContent: content)
-		
+        
 		return cell
 	}
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "SearchMoviewHeaderCell") as! SearchMoviewHeaderCell
-        
+        header.textFieldEditingDidChangeHandler = { [weak self] text in
+            self?.textFieldDidEndEditing(text: text)
+        }
         return header
     }
+}
+
+extension SearchMovieViewController {
+    func textFieldDidEndEditing(text: String?) {
+        
+        if let text = text,
+            !text.isEmpty {
+            NSObject.cancelPreviousPerformRequests(withTarget: self)
+            perform(#selector(search), with: text, afterDelay: 2)
+        }
+    }
+    
+    
 }
 
 // MARK: UITableViewDelegate

@@ -2,7 +2,7 @@ import Foundation
 import SwiftyJSON
 
 public extension APIConfigurationNetworkModel {
-    public struct Images {
+    struct Images {
         public let secureBaseURL: String
         public let backDropSizes: [String]
         

@@ -6,7 +6,10 @@ class SearchMovieResultCell: UITableViewCell {
 	
 	private let coverImageView: UIImageView = {
 		let imageView = UIImageView()
-		imageView.backgroundColor = .red
+		imageView.backgroundColor = UIColor.init(red: 191/255, green: 144/255, blue: 15/255, alpha: 1)
+        imageView.layer.cornerRadius = 10
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		
 		return imageView
@@ -24,8 +27,8 @@ class SearchMovieResultCell: UITableViewCell {
 	private let movieNameLabel: UILabel = {
 		let label = UILabel()
 		label.numberOfLines = 2
-		label.textColor = .white
-		label.font = UIFont.boldSystemFont(ofSize: 15)
+		label.textColor = UIColor.AppColors.black
+		label.font = UIFont(name: "OpenSans-Bold", size: 15)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		
 		return label
@@ -33,7 +36,8 @@ class SearchMovieResultCell: UITableViewCell {
 	
 	private let movieYearlabel: UILabel = {
 		let label = UILabel()
-		label.textColor = .white
+		label.textColor = UIColor.AppColors.black
+        UIFont(name: "OpenSans", size: 15)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		
 		return label
@@ -77,8 +81,8 @@ extension SearchMovieResultCell {
 	
 	private func defineAndActivateConstraints() {
 		NSLayoutConstraint.activate([
-			coverImageView.widthAnchor.constraint(equalToConstant: 60),
-			coverImageView.heightAnchor.constraint(equalToConstant: 100),
+			coverImageView.widthAnchor.constraint(equalToConstant: 90),
+			coverImageView.heightAnchor.constraint(equalToConstant: 110),
 			coverImageView.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 20),
 			coverImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
 			coverImageView.bottomAnchor.constraint(greaterThanOrEqualTo: contentView.bottomAnchor, constant: -20),
