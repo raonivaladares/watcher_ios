@@ -80,15 +80,11 @@ extension WelcomeViewController {
 		view.addSubview(loadingController.view)
 		loadingController.didMove(toParent: self)
 		
-		addViews()
-		defineAndActivateConstraints()
         self.navigationController?.isNavigationBarHidden = true
         
+		addViews()
+		defineAndActivateConstraints()
         
-        
-//        tmdbDescriptionLabel.font = UIFont.init(name: "OpenSans-ExtraBold", size: 14)
-//        tmdbDescriptionLabel.font = UIFont.init(name: "OpenSans-ExtraBold", size: 14)
-        UIFont.familyNames
 	}
 }
 
