@@ -6,7 +6,7 @@ class SearchMovieViewController: UIViewController {
 	// MARK: Private UI properties
    
 	private let tableView: UITableView = {
-		let tableView = UITableView()
+		let tableView = UITableView.init(frame: .zero, style: .grouped)
 		tableView.backgroundColor = .clear
 		tableView.estimatedRowHeight = 140
         tableView.sectionHeaderHeight = 220

@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-final class SearchMoviewHeaderCell: UITableViewHeaderFooterView, UITextFieldDelegate {
+final class SearchMoviewHeaderCell: UITableViewHeaderFooterView {
     private let descriptionLabel = UILabel()
     private let logoImageView = UIImageView()
     private let searchTextField = UITextField()
@@ -11,8 +11,34 @@ final class SearchMoviewHeaderCell: UITableViewHeaderFooterView, UITextFieldDele
         super.init(reuseIdentifier: reuseIdentifier)
         
         addViews()
+        configureUIElements()
         defineAndActivateConstraints()
-        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: Action Handlers
+
+extension SearchMoviewHeaderCell {
+    @objc func textFieldEditingDidChange(_ sender: UITextField) {
+        textFieldEditingDidChangeHandler?(sender.text)
+    }
+}
+
+// MARK: UITextFieldDelegate
+
+extension SearchMoviewHeaderCell: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchTextField.resignFirstResponder()
+        return true
+    }
+}
+
+extension SearchMoviewHeaderCell {
+    private func configureUIElements() {
         descriptionLabel.text = "Wich movie are you looking for?"
         descriptionLabel.font = UIFont(name: "OpenSans-Extrabold", size: 23)
         descriptionLabel.numberOfLines = 3
@@ -23,29 +49,12 @@ final class SearchMoviewHeaderCell: UITableViewHeaderFooterView, UITextFieldDele
         searchTextField.placeholder = "Type any movie here!"
         searchTextField.font = UIFont(name: "OpenSans-Semibold", size: 15)
         searchTextField.setSidePaddingPoints(5)
+        searchTextField.layer.cornerRadius = 5
+        searchTextField.autocorrectionType = .no
         searchTextField.addTarget(self, action: #selector(textFieldEditingDidChange(_:)), for: .editingChanged)
-        
         searchTextField.delegate = self
     }
     
-    @objc func textFieldEditingDidChange(_ sender: UITextField) {
-        textFieldEditingDidChangeHandler?(sender.text)
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        searchTextField.resignFirstResponder()
-        //or
-        //self.view.endEditing(true)
-        return true
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-extension SearchMoviewHeaderCell {
     private func addViews() {
        contentView.addSubviews(descriptionLabel,
                     logoImageView,
@@ -71,13 +80,5 @@ extension SearchMoviewHeaderCell {
             $0.trailing.equalToSuperview().offset(-20)
             $0.height.equalTo(50)
         }
-    }
-}
-
-extension UITextField {
-    func setSidePaddingPoints(_ amount: CGFloat){
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
-        self.leftView = paddingView
-        self.leftViewMode = .always
     }
 }

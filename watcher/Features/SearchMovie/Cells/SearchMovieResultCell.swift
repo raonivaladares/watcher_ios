@@ -37,7 +37,7 @@ class SearchMovieResultCell: UITableViewCell {
 	private let movieYearlabel: UILabel = {
 		let label = UILabel()
 		label.textColor = UIColor.AppColors.black
-        UIFont(name: "OpenSans", size: 15)
+        label.font = UIFont(name: "OpenSans", size: 15)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		
 		return label

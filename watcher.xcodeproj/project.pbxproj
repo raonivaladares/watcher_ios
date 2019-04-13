@@ -52,6 +52,7 @@
 		8472CC5822517FDA00BAFBFF /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8472CC5122516B9000BAFBFF /* OpenSans-SemiBold.ttf */; };
 		8472CC60225195EA00BAFBFF /* FontsWorkAround.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8472CC5F225195EA00BAFBFF /* FontsWorkAround.xib */; };
 		8492C109224C46AA00029F1F /* ApplicationSplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492C108224C46AA00029F1F /* ApplicationSplashViewModel.swift */; };
+		84AA4CC42262287000324605 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA4CC32262287000324605 /* UITextField+Extensions.swift */; };
 		D1269CD22186A5D800BF8227 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1269CD12186A5D800BF8227 /* UIView+Extensions.swift */; };
 		D1269CE42188731600BF8227 /* DataPlataform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1269CDB2188731600BF8227 /* DataPlataform.framework */; };
 		D1269CEB2188731600BF8227 /* DataPlataformTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1269CEA2188731600BF8227 /* DataPlataformTests.swift */; };
@@ -268,6 +269,7 @@
 		8472CC5422516C3300BAFBFF /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		8472CC5F225195EA00BAFBFF /* FontsWorkAround.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FontsWorkAround.xib; sourceTree = "<group>"; };
 		8492C108224C46AA00029F1F /* ApplicationSplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSplashViewModel.swift; sourceTree = "<group>"; };
+		84AA4CC32262287000324605 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		86B319D93901C037D459E9CC /* Pods_watcherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watcherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A4AAF6F2C925496F9FF85AA /* Pods-watcherUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watcherUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-watcherUITests/Pods-watcherUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8A6AF1E52413C3217AA2EA8C /* Pods_Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -630,6 +632,7 @@
 			isa = PBXGroup;
 			children = (
 				D1269CD12186A5D800BF8227 /* UIView+Extensions.swift */,
+				84AA4CC32262287000324605 /* UITextField+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1668,6 +1671,7 @@
 				84178E122255751A00E15BEA /* SearchMovieController.swift in Sources */,
 				D18AE05F212A25D000CC50B0 /* WelcomeViewController.swift in Sources */,
 				D1269CD22186A5D800BF8227 /* UIView+Extensions.swift in Sources */,
+				84AA4CC42262287000324605 /* UITextField+Extensions.swift in Sources */,
 				D1418B452149FB41006C385D /* SearchMovieCellContent.swift in Sources */,
 				D16889E4210CBC8B00947D1F /* AppDelegate.swift in Sources */,
 				846088D621FDD3E900929473 /* WelcomeController.swift in Sources */,
