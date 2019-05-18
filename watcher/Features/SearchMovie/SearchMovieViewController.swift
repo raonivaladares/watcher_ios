@@ -2,7 +2,10 @@ import UIKit
 import SnapKit
 
 class SearchMovieViewController: UIViewController {
-	
+    enum ViewAction {
+        case seeDetails
+    }
+    
 	// MARK: Private UI properties
    
 	private let tableView: UITableView = {
@@ -17,6 +20,8 @@ class SearchMovieViewController: UIViewController {
 	}()
 	
 	private var viewModel = SearchMovieViewModel()
+    
+    var viewActionsHandler: ((ViewAction) -> Void)?
 }
 
 // MARK: ViewController life-cycle
@@ -34,18 +39,7 @@ extension SearchMovieViewController {
 		
 		tableView.dataSource = self
 		tableView.delegate = self
-        
-        let tapRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: #selector(dismissKeyboard))
-        
-        view.addGestureRecognizer(tapRecognizer)
 	}
-    
-    @objc func dismissKeyboard() {
-        
-        view.endEditing(true)
-    }
 	
 	private func registerCells() {
 		tableView.register(SearchMovieResultCell.self, forCellReuseIdentifier: "SearchMovieResultCell")
@@ -105,6 +99,13 @@ extension SearchMovieViewController: UITableViewDataSource {
         }
         return header
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        view.endEditing(true)
+        viewActionsHandler?(.seeDetails)
+    }
+    
 }
 
 extension SearchMovieViewController {
@@ -122,7 +123,11 @@ extension SearchMovieViewController {
 
 // MARK: UITableViewDelegate
 
-extension SearchMovieViewController: UITableViewDelegate {}
+extension SearchMovieViewController: UITableViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
+}
 
 // MARK: - Private methods - UI
 

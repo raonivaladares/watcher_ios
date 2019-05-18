@@ -23,7 +23,6 @@ final class MovieDescriptionView: UIViewController {
 // MARK: - Private methods - UI
 
 extension MovieDescriptionView {
-    
     private func configureUIElements() {
             coverImageView.backgroundColor = .red
     }
