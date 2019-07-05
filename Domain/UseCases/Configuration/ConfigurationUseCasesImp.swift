@@ -3,7 +3,6 @@ import Foundation
 import Foundation
 import DataPlataform
 import NetworkPlataform
-import Result
 
 final class APIConfigurationUseCasesImp: APIConfigurationUseCases {
     private let localDataProvider: LocalDataProvider
@@ -16,10 +15,14 @@ final class APIConfigurationUseCasesImp: APIConfigurationUseCases {
     
     public func updateLocalConfiguration(completion: @escaping (Result<Void, DomainError>) -> Void) {
         apiProvider.requestConfiguration { result in
-            completion(result.bimap(success: {
-                self.localDataProvider.userDefaultsDataProvider.save($0.asDataPlataform())
-                
-            }, failure: { _ in DomainError.unknow }))
+            switch result {
+            case .success(let APIConfigurationNetworkModel):
+                self.localDataProvider
+                    .userDefaultsDataProvider
+                    .save(APIConfigurationNetworkModel.asDataPlataform())
+            case .failure(_):
+                completion(.failure(DomainError.unknow))
+            }
         }
     }
     

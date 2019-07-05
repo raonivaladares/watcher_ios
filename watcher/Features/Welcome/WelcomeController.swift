@@ -1,5 +1,4 @@
 import Foundation
-import Result
 import Domain
 
 final class WelcomeController {
@@ -47,14 +46,15 @@ extension WelcomeController {
             self.viewController.bind(viewModel)
             
             self.requestGuestNewSession { result in
-                result.analysis(ifSuccess: { _ in
+                switch result {
+                case .success:
                     let viewModel = WelcomeViewModel(state: .show)
                     self.viewController.bind(viewModel)
                     self.completion(.confirm)
-                }, ifFailure: { viewModelError in
+                case .failure(let viewModelError):
                     let viewModel = WelcomeViewModel(state: .error(viewModelError))
                     self.viewController.bind(viewModel)
-                })
+                }
             }
         }
     }

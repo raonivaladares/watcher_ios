@@ -25,7 +25,6 @@ final class ApplicationSplashControllerSpecs: QuickSpec {
 }
 
 import Domain
-import Result
 private class UseCaseStub: APIConfigurationUseCases {
     func updateLocalConfiguration(completion: @escaping (Result<Void, DomainError>) -> Void) {
         

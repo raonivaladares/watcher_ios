@@ -48,12 +48,13 @@ extension SearchMovieViewController {
 	
 	@objc private func search(_ text: String) {
 		viewModel.search(movieName: text) { result in
-			result.analysis(ifSuccess: { _ in
-				self.tableView.reloadData()
-			}, ifFailure: { viewModelError in
-				print(viewModelError.title)
-				print(viewModelError.message)
-			})
+            switch result {
+            case .success:
+                self.tableView.reloadData()
+            case .failure(let viewModelError):
+                print(viewModelError.title)
+                print(viewModelError.message)
+            }
 		}
 	}
 }

@@ -1,5 +1,4 @@
 import Foundation
-import Result
 
 public protocol ConfigurationNetwork {
     func requestConfiguration(completion: @escaping (Result<APIConfigurationNetworkModel, ServerError>) -> Void)
@@ -23,7 +22,8 @@ final class ConfigurationNetworkImp: ConfigurationNetwork {
 			.build()
 		
 		watcherServer.execute(request: request) { result in
-			result.analysis(ifSuccess: { json in
+            switch result {
+            case .success(let json):
                 do {
                     let configuration = try APIConfigurationNetworkModel(json: json)
                     completion(.success(configuration))
@@ -34,10 +34,9 @@ final class ConfigurationNetworkImp: ConfigurationNetwork {
                 } catch {
                     completion(.failure(ServerError.unkown))
                 }
-                
-			}, ifFailure: {
-				completion(.failure($0))
-			})
+            case .failure(let error):
+                completion(.failure(error))
+            }
 		}
 	}
 }

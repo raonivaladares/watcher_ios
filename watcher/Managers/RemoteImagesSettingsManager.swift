@@ -3,12 +3,12 @@ import Domain
 final class RemoteImagesSettingsManager {
     func updateSettings() {
         UseCasesFactory().configuration.updateLocalConfiguration { result in
-            result.analysis(ifSuccess: { _ in
+            switch result {
+            case .success:
                 print("success")
-                
-            }, ifFailure: { _ in
-                print("fail")
-            })
+            case .failure:
+                print("fail")   
+            }
         }
     }
 }

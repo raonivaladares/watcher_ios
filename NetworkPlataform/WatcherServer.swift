@@ -1,6 +1,6 @@
 import Foundation
 import Alamofire
-import enum Result.Result
+//import enum Result.Result
 import SwiftyJSON
 
 struct WatcherServer {
@@ -12,8 +12,8 @@ struct WatcherServer {
 		self.apiConfiguration = apiConfiguration
 	}
 	
-	func execute(request: Requestable, completion: @escaping (Result<JSON, ServerError>) -> Void){
-		Alamofire.request(
+	func execute(request: Requestable, completion: @escaping (Result<JSON, ServerError>) -> Void) {
+        Alamofire.AF.request(
 			request.path,
 			method: request.method,
 			parameters: request.parameters,

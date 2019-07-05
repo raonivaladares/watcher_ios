@@ -2,7 +2,6 @@ import Quick
 import Nimble
 import NetworkPlataform
 import DataPlataform
-import Result
 
 @testable import Domain
 
@@ -33,7 +32,8 @@ final class APIConfigurationUseCasesImpSpecs: QuickSpec {
                 
                 it("returns a configuration") {
                     useCases.updateLocalConfiguration { result in
-                        expect(result.value).toNot(beNil())
+                        expect(try? result.get()).toNot(beNil())
+                        
                     }
                 }
                 
@@ -52,7 +52,11 @@ final class APIConfigurationUseCasesImpSpecs: QuickSpec {
                 
                 it("returns a configuration") {
                     useCases.updateLocalConfiguration { result in
-                        expect(result.error).toNot(beNil())
+                        var error: Error?
+                        if case .failure(let domainError) = result {
+                            error = domainError
+                        }
+                        expect(error).toNot(beNil())
                     }
                 }
                 

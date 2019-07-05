@@ -1,5 +1,4 @@
 import Foundation
-import Result
 import NetworkPlataform
 
 public protocol APIConfigurationUseCases {

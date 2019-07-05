@@ -1,6 +1,5 @@
 import Foundation
 import NetworkPlataform
-import Result
 
 public struct SearchContentUseCasesImp: SearchContentUseCases {
 	private let apiProvider: APIProvider
@@ -11,9 +10,12 @@ public struct SearchContentUseCasesImp: SearchContentUseCases {
 	
 	public func searchForMovie(queryString: String, completion: @escaping (Result<MovieSearchResult, DomainError>) -> Void) {
 		apiProvider.searchContentNetwork().searchForMovie(queryString: queryString) { result in
-			completion(result.bimap(success: {
-				$0.asDomain()
-			}, failure: { _ in DomainError.unknow }))
+            switch result {
+            case .success(let movieSearchNetworkModel):
+                completion(.success(movieSearchNetworkModel.asDomain()))
+            case .failure(_):
+                completion(.failure(DomainError.unknow))
+            }
 		}
 	}
 }

@@ -1,5 +1,4 @@
 import Foundation
-import Result
 
 public struct GuestSessionNetwork {
 	let watchServer: WatcherServer
@@ -14,16 +13,18 @@ public struct GuestSessionNetwork {
 			.build()
 		
 		watchServer.execute(request: request) { result in
-			result.analysis(ifSuccess: { json in
-				guard let guestSession = GuestSessionNetworkModel(json: json) else {
-					completion(.failure(ServerError.invalidJSON))
-					return
-				}
-				
-				completion(.success(guestSession))
-			}, ifFailure: {
-				completion(.failure($0))
-			})
+			switch result {
+            case .success(let json):
+                guard let guestSession = GuestSessionNetworkModel(json: json) else {
+                    completion(.failure(ServerError.invalidJSON))
+                    return
+                }
+                
+                completion(.success(guestSession))
+                completion(.failure(ServerError.invalidJSON))
+            case .failure(let error):
+                completion(.failure(error))
+            }
 		}
 	}
 }

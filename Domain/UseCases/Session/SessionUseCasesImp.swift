@@ -1,7 +1,6 @@
 import Foundation
 import NetworkPlataform
 import DataPlataform
-import Result
 
 final class SessionUseCasesImp: SessionUseCases {
 	private let localDataProvider: LocalDataProvider
@@ -14,11 +13,13 @@ final class SessionUseCasesImp: SessionUseCases {
 	
 	func requestGuestSession(completion: @escaping (Result<Void, DomainError>) -> Void) {
 		apiProvider.guestSessionNetwork().requestGuestSessionToken { result in
-			if let guestSessionNetworkModel = result.value {
-				self.localDataProvider.userDefaultsDataProvider.save(guestSessionNetworkModel.asDataPlataform())
-			}
+            switch result{
+            case .success(let guestSessionNetworkModel):
+                self.localDataProvider.userDefaultsDataProvider.save(guestSessionNetworkModel.asDataPlataform())
+            case .failure(let error):
+                completion(.failure(DomainError.unknow))
+            }
 			
-			completion(result.bimap(success: { _ in }, failure: { _ in DomainError.unknow }))
 //			completion(result.map { $0 }.mapError(ViewModelError.init))
 		}
 	}

@@ -45,18 +45,19 @@ extension ApplicationSplashController {
         let viewModel = ApplicationSplashViewModel(state: .startLoading)
         viewController.bind(viewModel)
         
-        useCases.updateLocalConfiguration { result in
-            result.analysis(ifSuccess: { [weak self] _ in
+        useCases.updateLocalConfiguration { [weak self] result in
+            switch result {
+            case .success:
                 let deadlineTime = DispatchTime.now() + .seconds(2)
                 DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
                     let viewModel = ApplicationSplashViewModel(state: .endLoading)
                     self?.viewController.bind(viewModel)
                 }
-            }, ifFailure: { [weak self] domainError in
+            case .failure(let domainError):
                 let viewModelError = ViewModelError(error: domainError)
                 let viewModel = ApplicationSplashViewModel(state: .error(viewModelError))
                 self?.viewController.bind(viewModel)
-            })
+            }
         }
     }
 }

@@ -2,7 +2,7 @@ import Foundation
 import Alamofire
 
 struct WatcherServerErrorParser {
-	func parse(dataResponse: DefaultDataResponse) -> ServerError? {
+    func parse(dataResponse: DataResponse<Data?>) -> ServerError? {
 		guard let response = dataResponse.response,
 			let data = dataResponse.data else {
 				

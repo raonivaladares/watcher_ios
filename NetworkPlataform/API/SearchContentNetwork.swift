@@ -1,5 +1,4 @@
 import Foundation
-import Result
 
 public struct SearchContentNetwork {
 	let watchServer: WatcherServer
@@ -15,14 +14,15 @@ public struct SearchContentNetwork {
 			.build()
 		
 		watchServer.execute(request: request) { result in
-			result.analysis(ifSuccess: { json in
-				if let searchResult = MovieSearchResultNetworkModel(json: json) {
-					completion(.success(searchResult))
-				}
-				completion(.failure(ServerError.invalidJSON))
-			}, ifFailure: {
-				completion(.failure($0))
-			})
+			switch result {
+            case .success(let json):
+                if let searchResult = MovieSearchResultNetworkModel(json: json) {
+                    completion(.success(searchResult))
+                }
+                completion(.failure(ServerError.invalidJSON))
+            case .failure(let error):
+                completion(.failure(error))
+            }
 		}
 	}
 }
