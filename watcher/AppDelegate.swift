@@ -5,7 +5,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var applicationStartupCoordinator: ApplicationStartupCoordinator!
     
 
-	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+	func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
 		applicationStartupCoordinator = ApplicationStartupCoordinator()
         applicationStartupCoordinator.start()
 

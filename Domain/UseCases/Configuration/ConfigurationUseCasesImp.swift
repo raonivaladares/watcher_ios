@@ -20,6 +20,7 @@ final class APIConfigurationUseCasesImp: APIConfigurationUseCases {
                 self.localDataProvider
                     .userDefaultsDataProvider
                     .save(APIConfigurationNetworkModel.asDataPlataform())
+                completion(.success(()))
             case .failure(_):
                 completion(.failure(DomainError.unknow))
             }
