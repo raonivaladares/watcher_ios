@@ -21,7 +21,6 @@ public struct GuestSessionNetwork {
                 }
                 
                 completion(.success(guestSession))
-                completion(.failure(ServerError.invalidJSON))
             case .failure(let error):
                 completion(.failure(error))
             }

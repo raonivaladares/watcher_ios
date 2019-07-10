@@ -16,11 +16,11 @@ final class SessionUseCasesImp: SessionUseCases {
             switch result{
             case .success(let guestSessionNetworkModel):
                 self.localDataProvider.userDefaultsDataProvider.save(guestSessionNetworkModel.asDataPlataform())
+                completion(.success(()))
             case .failure(let error):
+                //TODO: Error
                 completion(.failure(DomainError.unknow))
             }
-			
-//			completion(result.map { $0 }.mapError(ViewModelError.init))
 		}
 	}
 	
