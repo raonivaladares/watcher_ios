@@ -646,10 +646,10 @@
 			isa = PBXGroup;
 			children = (
 				84AA4CCE2262948500324605 /* Views */,
-				84AA4CC6226288FE00324605 /* MovieDetailsViewController.swift */,
-				84AA4CC82262893500324605 /* MovieDetailsController.swift */,
-				84AA4CCA2262894C00324605 /* MovieDetailsViewModel.swift */,
 				84AA4CCC22628AA400324605 /* MovieDetailsCoordinator.swift */,
+				84AA4CC82262893500324605 /* MovieDetailsController.swift */,
+				84AA4CC6226288FE00324605 /* MovieDetailsViewController.swift */,
+				84AA4CCA2262894C00324605 /* MovieDetailsViewModel.swift */,
 			);
 			path = MovieDetails;
 			sourceTree = "<group>";
@@ -978,9 +978,9 @@
 			isa = PBXGroup;
 			children = (
 				8428C1F822D42E0900C30B2E /* WelcomeCoordinator.swift */,
+				846088D521FDD3E900929473 /* WelcomeController.swift */,
 				D18AE05E212A25D000CC50B0 /* WelcomeViewController.swift */,
 				D18AE061212A3BB500CC50B0 /* WelcomeViewModel.swift */,
-				846088D521FDD3E900929473 /* WelcomeController.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";

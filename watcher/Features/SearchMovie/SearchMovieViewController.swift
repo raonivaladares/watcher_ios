@@ -3,7 +3,7 @@ import SnapKit
 
 class SearchMovieViewController: UIViewController {
     enum ViewAction {
-        case seeDetails
+        case itemSelected(SearchMovieCellContent)
     }
     
 	// MARK: Private UI properties
@@ -104,7 +104,9 @@ extension SearchMovieViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         view.endEditing(true)
-        viewActionsHandler?(.seeDetails)
+        
+        let item = viewModel.cellContents[indexPath.row]
+        viewActionsHandler?(.itemSelected(item))
     }
     
 }
