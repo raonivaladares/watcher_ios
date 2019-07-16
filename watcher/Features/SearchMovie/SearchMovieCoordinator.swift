@@ -14,10 +14,9 @@ final class SearchMovieCoordinator {
         let navigationController = UINavigationController()
         controller = SearchMovieController { action in
             switch action {
-            case .itemSelected:
-                MovieDetailsCoordinator(
-                    navigationController: navigationController
-                ).start()
+            case .itemSelected(let movie):
+                let viewController = MovieDetailsAssembler().assemble(with: movie)
+                navigationController.pushViewController(viewController, animated: true)
             }
         }
         navigationController.viewControllers = [controller.viewController]

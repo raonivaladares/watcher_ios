@@ -2,7 +2,7 @@ import Foundation
 
 final class SearchMovieController {
     enum Action {
-        case itemSelected
+        case itemSelected(movie: Movie)
     }
     let viewController: SearchMovieViewController
     
@@ -14,7 +14,7 @@ final class SearchMovieController {
             switch viewAction {
             case .itemSelected(let item):
                 print("item: \(item)")
-                completion(.itemSelected)
+                completion(.itemSelected(movie: Movie()))
             }
         }
     }
