@@ -7,9 +7,21 @@ class MovieDetailsViewController: UIViewController {
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = .red
         
         return scrollView
+    }()
+    
+    private let contentView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.AppColors.yellow
+        
+        return view
+    }()
+    
+    private let coverImageView: CoverImageView = {
+        let coverImageView = CoverImageView()
+        
+        return coverImageView
     }()
     
     var viewOutputHandler: ViewOutput?
@@ -21,8 +33,6 @@ extension MovieDetailsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.AppColors.yellow
-        
         addViewProperties()
         defineAndActivateConstraints()
     }
@@ -33,11 +43,25 @@ extension MovieDetailsViewController {
 extension MovieDetailsViewController {
     private func addViewProperties() {
         view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubviews(coverImageView)
     }
     
     private func defineAndActivateConstraints() {
         scrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        
+        contentView.snp.makeConstraints {
+            $0.width.equalToSuperview()
+            $0.height.equalToSuperview()
+            $0.edges.equalToSuperview()
+        }
+        
+        coverImageView.snp.makeConstraints {
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.height.equalTo(100)
         }
     }
 }

@@ -126,6 +126,7 @@
 		F219BEA3FDB33BD64759184A /* Pods_DataPlataform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7E830676147B25F6AA319D /* Pods_DataPlataform.framework */; };
 		FE82BA2F22DDF18C00D7C51C /* MovieDetailsAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82BA2E22DDF18C00D7C51C /* MovieDetailsAssembler.swift */; };
 		FE82BA3222DDFE4B00D7C51C /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82BA3122DDFE4B00D7C51C /* Movie.swift */; };
+		FE82BA3522DE195300D7C51C /* CoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82BA3422DE195300D7C51C /* CoverImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -369,6 +370,7 @@
 		F7268EE95E445AA92E54900F /* Pods-NetworkPlataformTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkPlataformTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NetworkPlataformTests/Pods-NetworkPlataformTests.release.xcconfig"; sourceTree = "<group>"; };
 		FE82BA2E22DDF18C00D7C51C /* MovieDetailsAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsAssembler.swift; sourceTree = "<group>"; };
 		FE82BA3122DDFE4B00D7C51C /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		FE82BA3422DE195300D7C51C /* CoverImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -659,6 +661,7 @@
 		84AA4CCE2262948500324605 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FE82BA3322DE18E900D7C51C /* CoverImage */,
 				84AA4CD12262966700324605 /* MovieDescription */,
 			);
 			path = Views;
@@ -1036,6 +1039,14 @@
 				FE82BA3122DDFE4B00D7C51C /* Movie.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		FE82BA3322DE18E900D7C51C /* CoverImage */ = {
+			isa = PBXGroup;
+			children = (
+				FE82BA3422DE195300D7C51C /* CoverImageView.swift */,
+			);
+			path = CoverImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1712,6 +1723,7 @@
 				8428C1F922D42E0900C30B2E /* WelcomeCoordinator.swift in Sources */,
 				FE82BA2F22DDF18C00D7C51C /* MovieDetailsAssembler.swift in Sources */,
 				84608B0B220F008900D7C220 /* ApplicationStartupCoordinator.swift in Sources */,
+				FE82BA3522DE195300D7C51C /* CoverImageView.swift in Sources */,
 				8492C109224C46AA00029F1F /* ApplicationSplashViewModel.swift in Sources */,
 				8472CC4E2251694B00BAFBFF /* UIColors+AppColors.swift in Sources */,
 				D1418B48214D3A13006C385D /* UIImageView+AsyncLoad.swift in Sources */,
