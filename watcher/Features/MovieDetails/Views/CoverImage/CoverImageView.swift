@@ -10,6 +10,9 @@ final class CoverImageView: UIView {
     
     init() {
         super.init(frame: .zero)
+        
+        addViewProperties()
+        defineAndActivateConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {

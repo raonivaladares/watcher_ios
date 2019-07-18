@@ -24,6 +24,20 @@ class MovieDetailsViewController: UIViewController {
         return coverImageView
     }()
     
+    private let movieSummaryView: MovieSummaryView = {
+        let view = MovieSummaryView()
+        
+        return view
+    }()
+    
+    private let sinopseView: MovieSinopseView = {
+        let view = MovieSinopseView()
+        
+        return view
+    }()
+    
+    
+    
     var viewOutputHandler: ViewOutput?
 }
 
@@ -45,11 +59,13 @@ extension MovieDetailsViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubviews(coverImageView)
+        contentView.addSubview(movieSummaryView)
+        contentView.addSubview(sinopseView)
     }
     
     private func defineAndActivateConstraints() {
         scrollView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.edges.equalTo(view.safeAreaLayoutGuide.snp.edges)
         }
         
         contentView.snp.makeConstraints {
@@ -59,9 +75,24 @@ extension MovieDetailsViewController {
         }
         
         coverImageView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.height.equalTo(400)
+        }
+        
+        movieSummaryView.snp.makeConstraints {
+            $0.top.equalTo(coverImageView.snp.bottom)
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
             $0.height.equalTo(100)
+        }
+        
+        sinopseView.snp.makeConstraints {
+            $0.top.equalTo(movieSummaryView.snp.bottom)
+            $0.leading.equalToSuperview()
+            $0.bottom.lessThanOrEqualTo(contentView.snp.bottom)
+            $0.trailing.equalToSuperview()
         }
     }
 }
