@@ -4,12 +4,11 @@ final class MovieSinopseView: UIView {
     private let sinopseLabel: UILabel = {
         let label = UILabel()
         label.text = """
-            adsaskdhl alasdj l;ajd jsl; sjdla; jdlj dskljd ;adsaskdhl alasdj l;ajd jsl; sjdla; jdlj dskljd ;adsaskdhl alasdj l;ajd jsl; sjdla; jdlj dskljd ;adsaskdhl alasdj l;ajd jsl; sjdla; jdlj dskljd ;adsaskdhl alasdj l;ajd jsl; sjdla; jdlj dskljd ;adsaskdhl alasdj l;ajd jsl; sjdla; jdlj dskljd ;adsaskdhl alasdj l;ajd jsl; sjdla; jdlj dskljd ;adsaskdhl alasdj l;ajd jsl; sjdla; jdlj dskljd ;adsaskdhl alasdj l;ajd jsl; sjdla; jdlj dskljd ;adsaskdhl alasdj l;ajd jsl; sjdla; jdlj dskljd ;adsaskdhl alasdj l;ajd jsl; sjdla; jdlj dskljd ;
-        
-            adsaskdhl alasdj l;ajd jsl; sjdla; jdlj dskljd ;adsaskdhl alasdj l;ajd jsl; sjdla; jdlj dskljd ;adsaskdhl alasdj l;ajd jsl; sjdla; jdlj dskljd ;adsaskdhl alasdj l;ajd jsl; sjdla; jdlj dskljd ;adsaskdhl alasdj l;ajd jsl; sjdla; jdlj dskljd ;adsaskdhl alasdj l;ajd jsl; sjdla; jdlj dskljd ;adsaskdhl alasdj l;ajd jsl; sjdla; jdlj dskljd ;
-        
-            adsaskdhl alasdj l;ajd jsl; sjdla; jdlj dskljd ;adsaskdhl alasdj l;ajd jsl; sjdla; jdlj dskljd ;adsaskdhl alasdj l;ajd jsl; sjdla; jdlj dskljd ;adsaskdhl alasdj l;ajd jsl; sjdla; jdlj dskljd ;
+        Joel Barish, heartbroken that his girlfriend underwent a procedure to erase him from her memory, decides to do the same. However, as he watches his memories of her fade away, he realises that he still loves her, and may be too late to correct his mistake.
         """
+        label.numberOfLines = 0
+        label.font = UIFont.init(name: "OpenSans-Regular", size: 15)
+        label.textColor = UIColor.AppColors.black
         
         return label
     }()
@@ -17,7 +16,9 @@ final class MovieSinopseView: UIView {
     init() {
         super.init(frame: .zero)
         
-        backgroundColor = .white
+        backgroundColor = UIColor.AppColors.white
+        addViewProperties()
+        defineAndActivateConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {

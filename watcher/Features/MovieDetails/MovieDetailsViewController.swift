@@ -69,8 +69,8 @@ extension MovieDetailsViewController {
         }
         
         contentView.snp.makeConstraints {
-            $0.width.equalToSuperview()
-            $0.height.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview().priority(.low)
             $0.edges.equalToSuperview()
         }
         
@@ -83,16 +83,16 @@ extension MovieDetailsViewController {
         
         movieSummaryView.snp.makeConstraints {
             $0.top.equalTo(coverImageView.snp.bottom)
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
+            $0.leading.equalToSuperview().offset(25)
+            $0.trailing.equalToSuperview().offset(-25)
             $0.height.equalTo(100)
         }
         
         sinopseView.snp.makeConstraints {
             $0.top.equalTo(movieSummaryView.snp.bottom)
-            $0.leading.equalToSuperview()
+            $0.leading.equalToSuperview().offset(25)
             $0.bottom.lessThanOrEqualTo(contentView.snp.bottom)
-            $0.trailing.equalToSuperview()
+            $0.trailing.equalToSuperview().offset(-25)
         }
     }
 }
