@@ -63,7 +63,7 @@ class SearchMovieResultCell: UITableViewCell {
 		movieYearlabel.text = content.movieYear
 		if let stringPath = content.movieCoverPath,
 			 let url = URL(string: stringPath) {
-				coverImageView.load(url: url)
+            coverImageView.load(fromURL: url)
 		}
 	}
 }

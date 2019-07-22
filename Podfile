@@ -54,7 +54,8 @@ target 'watcher' do
 
   # Pods for watcher
 	pod 'SnapKit'
-	
+	pod 'Kingfisher'
+  
 	target 'watcherTests' do
     inherit! :search_paths
     # Pods for testing

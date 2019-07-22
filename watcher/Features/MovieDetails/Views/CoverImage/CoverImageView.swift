@@ -1,14 +1,7 @@
 import UIKit
 
 final class CoverImageView: UIView {
-    private let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        
-        return imageView
-    }()
-    
+    private let imageView = UIImageView()
     private let gradientView = GradientBackgroundView()
     
     // MARK: - Inits
@@ -25,8 +18,7 @@ final class CoverImageView: UIView {
     }
     
     func configure(coverURL: URL) {
-        imageView.load(url: coverURL)
-        imageView.load(url: URL(string: "https://image.tmdb.org/t/p/original//4iJfYYoQzZcONB9hNzg0J0wWyPH.jpg")!)
+        imageView.load(fromURL: coverURL)
     }
 }
 
