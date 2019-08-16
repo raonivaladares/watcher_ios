@@ -51,6 +51,7 @@ extension MovieDetailsViewController {
         defineAndActivateConstraints()
         
         coverImageView.configure(coverURL: URL(string: "https://image.tmdb.org/t/p/w500/4iJfYYoQzZcONB9hNzg0J0wWyPH.jpg")!)
+        movieSummaryView.configure(rate: 8.9)
     }
 }
 
